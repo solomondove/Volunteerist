@@ -44,12 +44,11 @@ export const login = (user) => dispatch => {
     return SessionAPIUtil.login(user)
         .then((res) => {
             const { token } = res.data;
-            localStorage.setItem('jwtToken, token');
+            localStorage.setItem('jwtToken', token);
             SessionAPIUtil.setAuthToken(token);
             const decoded = jwt_decode(token);
             dispatch(receiveCurrentUser(decoded));
-        })
-        .catch((err) => {
+        }, (err) => {
             dispatch(receiveSessionErrors(err.response.data));
         });
 }
