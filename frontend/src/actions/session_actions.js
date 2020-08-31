@@ -36,7 +36,7 @@ export const logoutUser = () => {
 export const signup = user => dispatch => {
     return SessionAPIUtil.signup(user)
         .then(() => dispatch(receiveUserSignIn()),
-        (err) => dispatch(receiverSessionErrors(err.response.data))
+        (err) => dispatch(receiveSessionErrors(err.response.data))
         );
 };
 
@@ -50,7 +50,7 @@ export const login = (user) => dispatch => {
             dispatch(receiveCurrentUser(decoded));
         })
         .catch((err) => {
-            dispatch(receiverSessionErrors(err.response.data));
+            dispatch(receiveSessionErrors(err.response.data));
         });
 }
 
