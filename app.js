@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 
 const users = require('./routes/api/users');
+const asks = require('./routes/api/asks');
 
 const app = express();
 const db = require("./config/keys").mongoURI;
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users);
+app.use("/api/asks", asks);
 
 app.use(passport.initialize());
 require('./config/passport')(passport);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const AskSchema = new Schema({
+const OfferSchema = new Schema({
   category: {
     type: String,
     required: true,
@@ -37,7 +37,6 @@ const AskSchema = new Schema({
     lng: {
       type: Number,
     },
-    required: true
   },
   volunteers: {
     type: Array,
@@ -49,4 +48,4 @@ const AskSchema = new Schema({
   timestamps: true
 })
 
-module.exports = User = mongoose.model('User', UserSchema);
+module.exports = Offer = mongoose.model('Offer', OfferSchema);

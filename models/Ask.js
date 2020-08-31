@@ -37,7 +37,6 @@ const AskSchema = new Schema({
     lng: {
       type: Number,
     }, 
-    required: true
   },
   volunteers: {
     type: Array,
@@ -49,4 +48,4 @@ const AskSchema = new Schema({
   timestamps: true
 })
 
-module.exports = User = mongoose.model('User', UserSchema);
+module.exports = Ask = mongoose.model('Ask', AskSchema);
