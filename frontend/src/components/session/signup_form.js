@@ -36,6 +36,9 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         let user = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            gender: this.state.gender,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
@@ -63,7 +66,7 @@ class SignupForm extends React.Component {
                             type="text"
                             value={this.state.firstName}
                             onChange={this.update("firstName")}
-                            placeholder="FirstName"
+                            placeholder="First Name"
                         />
                         <br />
                         <input
