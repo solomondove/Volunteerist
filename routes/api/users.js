@@ -7,8 +7,12 @@ const passport = require('passport');
 
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
+const validateEditInput = require('../../validation/edit_user');
 
 const express = require('express');
+// const { db } = require('../../models/User');
+// const db = require("../../config/keys").mongoURI;
+const { isValidObjectId } = require('mongoose');
 const router = express.Router();
 
 router.get('/test', (req, res) => res.json({ msg: "This is the users route" }));
@@ -17,6 +21,34 @@ router.get('/:id', (req, res) => {
   User.findById(req.params.id)
     .then(user => res.json(user))
     .catch(err => res.status(404).json({ nouserfound: 'No user found with that ID' }))
+})
+
+router.patch('/update/:id', (req, res) => {
+
+  const { errors, isValid } = validateEditInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  User.findById(req.params.id)
+  .then(user => {
+    if (!user) {
+      errors.id = 'User does not exist';
+      return res.status(400).json(errors);
+    } else {
+      User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, user) {
+        if (err) {
+          console.log("err", err);
+          res.status(500).send(err);
+        } else {
+          console.log("success");
+          res.send(user);
+        }
+      })
+    }
+  })
+  .catch(err => console.log(err))
 })
 
 router.get('/current', passport.authenticate('jwt', { session: false }),
