@@ -13,7 +13,6 @@ export const receiveAllAsks = (asks) => {
 };
 
 export const receiveAsk = (ask) => {
-    debugger
     return ({
         type: RECEIVE_ASK,
         ask
@@ -46,7 +45,6 @@ export const fetchAsk = askId => dispatch => {
 } 
 
 export const createAsk = ask => dispatch => {
-    debugger
     return AskAPIUtil.postAsk(ask)
         .then(ask => dispatch(receiveAsk(ask)))
 }

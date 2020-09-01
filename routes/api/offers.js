@@ -46,7 +46,6 @@ router.post('/', (req, res) => {
       posterId: req.body.posterId,
       location: req.body.location,
     })
-    debugger
     newOffer.save().then(offer => res.json(offer));
   }
 );
