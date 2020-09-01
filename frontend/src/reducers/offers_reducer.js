@@ -5,7 +5,8 @@ export default function (oldState = {}, action) {
     let newState = Object.assign({}, oldState);
     switch (action.type) {
         case RECEIVE_OFFER:
-            newState[action.offer.id] = action.offer
+            debugger
+            newState[action.offer.data._id] = action.offer.data
             return newState
         case RECEIVE_ALL_OFFERS:
             return action.offers
