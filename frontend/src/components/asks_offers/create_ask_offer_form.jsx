@@ -10,7 +10,7 @@ class AskOfferForm extends React.Component {
             timeCommitment: "",
             deadline: "",
             timeOfDay: "",
-            // posterId: this.props.currentUser.id,
+            posterId: this.props.currentUser.id,
             location: { lat: "", lng: ""},
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,7 +32,7 @@ class AskOfferForm extends React.Component {
             timeCommitment: "",
             deadline: "",
             timeOfDay: "",
-            // posterId: this.props.currentUser.id,
+            posterId: this.props.currentUser.id,
             location: { lat: "", lng: "" },
         });
         this.props.processForm(data)
