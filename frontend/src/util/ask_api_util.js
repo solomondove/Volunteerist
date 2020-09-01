@@ -19,3 +19,7 @@ export const editAsk = (ask) => {
 export const deleteAsk = (askId) => {
     return axios.delete(`/api/asks/${askId}`)
 }
+
+export const getUserAsks = (id) => {
+    return axios.get(`/api/asks/user/${id}`)
+}

@@ -19,3 +19,7 @@ export const editOffer = (offer) => {
 export const deleteOffer = (offerId) => {
     return axios.delete(`/api/offers/${offerId}`)
 }
+
+export const getUserOffers = (id) => {
+    return axios.get(`/api/offers/user/${id}`)
+}
