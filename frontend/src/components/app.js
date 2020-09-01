@@ -10,7 +10,7 @@ import NavBarContainer from './nav/nav_bar_container';
 import AskFormContainer from './asks_offers/ask_form_container';
 import OfferFormContainer from './asks_offers/offer_form_container';
 import DashboardContainer from './dashboard/dashboard_container';
-
+import AskShowContainer from './asks_offers/ask_show_container';
 
 const App = () => (
     <div>
@@ -24,8 +24,8 @@ const App = () => (
             <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
             <ProtectedRoute exact path="/ask" component={AskFormContainer} />
             <ProtectedRoute exact path="/offer" component={OfferFormContainer} />
+            <ProtectedRoute exact path="/asks/:ask_id" component={AskShowContainer} />
         </Switch>
-
     </div>
 );
 
