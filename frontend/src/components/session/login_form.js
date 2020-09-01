@@ -16,18 +16,10 @@ class LoginForm extends React.Component {
     }
 
 
-<<<<<<< HEAD
-    componentWillReceiveProps(nextProps) {
-        debugger
-        if (nextProps.currentUser === true) {
-            this.props.history.push('/dashboard');
-        }
-=======
     // componentWillReceiveProps(nextProps) {
     //     if (nextProps.currentUser === true) {
     //         this.props.history.push('/dashboard');
     //     }
->>>>>>> b9dc366eef448f1b5382f52575d54b8eaf8b1e56
 
     //     this.setState({ errors: nextProps.errors })
     // }
