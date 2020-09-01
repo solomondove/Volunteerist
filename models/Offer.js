@@ -27,7 +27,7 @@ const OfferSchema = new Schema({
     type: Number,
   },
   posterId: {
-    type: Number,
+    type: String,
     required: true
   },
   location: {

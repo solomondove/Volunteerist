@@ -24,18 +24,6 @@ module.exports = function validateAskInput(data) {
     errors.description = 'Please describe your ask using at least 25 characters';
   }
 
-  if (!Validator.isNumeric(data.timeCommitment, { no_symbols: false })) {
-    errors.timeCommitment = 'Please enter a valid length of time';
-  }
-
-  if (!Validator.isAfter(data.deadline)) {
-    errors.deadline = 'Please enter a deadline later than the current time';
-  }
-
-  if (!Validator.isNumeric(data.timeOfDay, { no_symbols: false })) {
-    errors.timeOfDay = 'Please enter a valid length of time';
-  }
-
   return {
     errors,
     isValid: Object.keys(errors).length === 0
