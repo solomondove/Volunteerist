@@ -3,7 +3,7 @@ import Profile from "./profile";
 
 const mapStateToProps = (state) => {
     return {
-        currentUser: state.session.user,
+        currentUser: state.entities.users[state.session.id]
     };
 };
 
