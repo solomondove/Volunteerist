@@ -5,10 +5,7 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
             email: "",
-            gender: "", 
             password: "",
             password2: "",
             errors: {},
@@ -36,9 +33,6 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         let user = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            gender: this.state.gender,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
@@ -61,29 +55,6 @@ class SignupForm extends React.Component {
             <div className="signup-form-container">
                 <form onSubmit={this.handleSubmit}>
                     <div className="signup-form">
-                        <br />
-                        <input
-                            type="text"
-                            value={this.state.firstName}
-                            onChange={this.update("firstName")}
-                            placeholder="First Name"
-                        />
-                        <br />
-                        <input
-                            type="text"
-                            value={this.state.lastName}
-                            onChange={this.update("lastName")}
-                            placeholder="Last Name"
-                        />
-                        <br />
-                        <select value={this.state.gender} onChange={this.update('gender')}>
-                            <option value="" disabled>Select a gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="non-binary">Non-binary</option>
-                            <option value="other">Other</option>
-                            <option value="decline to answer">Decline to answer</option>
-                        </select>
                         <br />
                         <input
                             type="text"
