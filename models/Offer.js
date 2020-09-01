@@ -43,6 +43,10 @@ const OfferSchema = new Schema({
   },
   comments: {
     type: Array,
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 }, {
   timestamps: true

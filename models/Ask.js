@@ -27,7 +27,7 @@ const AskSchema = new Schema({
     type: Number,
   },
   posterId: {
-    type: Number,
+    type: String,
     required: true
   },
   location: {
@@ -43,6 +43,10 @@ const AskSchema = new Schema({
   },
   comments: {
     type: Array,
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 }, {
   timestamps: true
