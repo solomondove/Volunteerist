@@ -6,8 +6,6 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
-router.get("/test", (req, res) => res.json({ msg: 'This is the asks route'}));
-
 router.get("/", (req, res) => {
   Ask.find()
     .sort({ date: -1 })
