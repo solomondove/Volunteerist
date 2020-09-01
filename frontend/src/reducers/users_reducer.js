@@ -5,15 +5,14 @@ const initialState = {
     user: {}
 };
 
-export default function (state = initialState, action) {
+export default function (oldState = initialState, action) {
+    Object.freeze(oldState);
+    let newState = Object.assign({}, oldState);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return {
-                ...state,
-                isAuthenticated: !!action.currentUser,
-                users: action.currentUser
-            };
+            let tempId = action.currentUser._id
+            return {[tempId]: action.currentUser}
         default:
-            return state;
+            return oldState;
     }
 }
