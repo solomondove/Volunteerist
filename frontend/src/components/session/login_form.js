@@ -17,6 +17,7 @@ class LoginForm extends React.Component {
 
 
     componentWillReceiveProps(nextProps) {
+        debugger
         if (nextProps.currentUser === true) {
             this.props.history.push('/dashboard');
         }
@@ -31,6 +32,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
 
         let user = {
