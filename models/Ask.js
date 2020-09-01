@@ -24,7 +24,7 @@ const AskSchema = new Schema({
     type: Date,
   },
   timeOfDay: {
-    type: Number,
+    type: String,
   },
   posterId: {
     type: String,
