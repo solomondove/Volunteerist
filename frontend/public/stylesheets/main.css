@@ -1,0 +1,11 @@
+.dashboard {
+  color: green;
+}
+
+.dashboard a:visited{ 
+  color: green;
+}
+
+.dashboard-asks a {
+  color: green
+}
