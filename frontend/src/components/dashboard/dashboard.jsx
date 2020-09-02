@@ -17,8 +17,8 @@ class Dashboard extends React.Component {
         return (
           <div className="dashboard">
             <div className="dashboard-asks">
-              <Link to={"/ask"}>Create an Ask</Link>
-              <Link to={"/offer"}>Create an Offer</Link>
+              <Link to={"/asks/new"}>Create an Ask</Link>
+              <Link to={"/offers/new"}>Create an Offer</Link>
             </div>
             <div>
               <Link to={"/profile"}>Your Profile</Link>
