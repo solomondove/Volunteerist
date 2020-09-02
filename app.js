@@ -28,7 +28,7 @@ app.use("/api/users", users);
 app.use("/api/asks", asks);
 app.use("/api/offers", offers);
 
-app.post('/api/asks/:id/comment', (req, res) => {
+app.post('/api/asks/:id/comments', (req, res) => {
     let comment = new Comment(req.body);
     comment.save().then(result => (
       Ask.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
@@ -36,6 +36,12 @@ app.post('/api/asks/:id/comment', (req, res) => {
 
     io.emit('message', req.body);
     res.sendStatus(200);
+})
+
+app.get('/api/asks/:id/comments', (req, res) => {
+  Comment.find({ askId: req.params.id })
+    .then(comments => res.json(comments))
+    .catch(err => console.log(err))
 })
 
 // app.patch('/api/asks/:id/comment', async (req, res) => {

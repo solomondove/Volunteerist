@@ -6,6 +6,10 @@ const CommentSchema = new Schema({
     type: String,
     required: true
   },
+  posterName: {
+    type: String,
+    required: true
+  },
   askId: {
     type: String,
     required: true

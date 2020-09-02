@@ -4,13 +4,13 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 let socket;
 
-const Comments = ({addAskComment, askId, currentUser}) => {
+const Comments = ({addAskComment, askId, currentUser, comments}) => {
 
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(comments);
   const [ask, setAskId] = useState('');
-  const [currUser, setCurrentUser] = useState(currentUser);
+  const [currUser] = useState(currentUser);
   const ENDPOINT = 'localhost:5000';
 
   useEffect(() => {
@@ -35,19 +35,17 @@ const Comments = ({addAskComment, askId, currentUser}) => {
     event.preventDefault();
 
     if(message) {
-      addAskComment({body: message, posterId: currUser._id, askId: ask})
+      addAskComment({body: message, posterId: currUser._id, askId: ask, posterName: name})
       socket.emit('sendMessage', message, () => setMessage(''))
       setMessage('')
     }
   }
 
-  console.log(message, messages);
-
   return(
     <div>
       <ScrollToBottom>
         {messages.map((message, i) => (
-          <div key={i}>{name}: {message.body}</div>
+          <div key={i}>{message.posterName}: {message.body}</div>
         ))}
       </ScrollToBottom>
       <form>

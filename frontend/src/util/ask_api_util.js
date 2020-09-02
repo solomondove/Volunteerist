@@ -25,5 +25,5 @@ export const getUserAsks = (id) => {
 };
 
 export const addAskComment = (comment) => {
-    return axios.post(`/api/asks/${comment.askId}/comment`, comment);
+    return axios.post(`/api/asks/${comment.askId}/comments`, comment);
 };
