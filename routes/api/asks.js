@@ -13,27 +13,6 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json({ noasksfound: "No asks found"}));
 });
 
-router.patch('/:id/comment', (req, res) => {
-  Ask.findById(req.params.id)
-    .then(ask => {
-      if (!ask) {
-        errors.id = 'Ask does not exist';
-        return res.status(400).json(errors);
-      } else {
-        Ask.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, ask) {
-          if (err) {
-            console.log("err", err);
-            res.status(500).send(err);
-          } else {
-            console.log("success");
-            res.send(ask);
-          }
-        })
-      }
-    })
-    .catch(err => console.log(err))
-});
-
 router.get('/user/:user_id', (req, res) => {
   Ask.find({ user: req.params.user_id })
     .then(asks => res.json(asks))

@@ -8,7 +8,7 @@ class Ask extends React.Component {
 
   render() {
     return (
-      <div>hi</div>
+      <Comments askId={this.props.askId}/>
     )
   }
 
