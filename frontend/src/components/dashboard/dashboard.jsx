@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        const mapComponent = (this.state.visiible === "asks") ? (
+        const mapComponent = (this.state.visible === "asks") ? (
           <AskMapContainer />
         ) : (
           <OfferMapContainer />
