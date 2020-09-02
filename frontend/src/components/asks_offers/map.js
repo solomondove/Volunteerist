@@ -7,22 +7,21 @@ class AskMap extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            listings: Object.values(this.props.listings), 
+            listings: this.props.listings, 
             showingInfoWindow: false, 
             activeListing: {}, 
             selectedPlace: {}
         }
 
-        
+        this.onMarkerClick = this.onMarkerClick.bind(this); 
+        this.onMapClicked = this.onMapClicked.bind(this); 
     }
 
     componentDidMount() {
         this.props.fetch(); 
     }
 
-    componendDidUpdate() {
-    
-    }
+
 
     onMarkerClick = (props, marker, e) => {
         this.setState({
@@ -46,25 +45,27 @@ class AskMap extends React.Component {
            <div> 
 
                 <Map google={this.props.google} styles={mapStyle} zoom={14} onClick={this.onMapClicked}>
-                    {/* {this.state.listings.map(listing => {
-                        <Marker onClick={this.onMarkerClick}
-                                listing={listing}
-                                position={listing.location} /> 
-                    })} */}
+                    {this.state.listings.map(listing => {
+                        return (
+                            <Marker onClick={() => this.onMarkerClick()}
+                            listing={listing}
+                            position={listing.location} /> 
+                            )
+                    })}
                     <Marker onClick={this.onMarkerClick}
                         listing={{ title: "Delores Park", description: "This is the description", timeCommitment: 2, category: "yardwork"}}
                         position={{ lat: 37.759703, lng: -122.428093 }} /> 
                     
                     <InfoWindow 
-                            marker={this.state.activeMarker}
-                            visible={this.state.showingInfoWindow}> 
-                            <div id="info-window">
-                                <h1>{this.state.selectedPlace.title}</h1>
-                                <p>{this.state.selectedPlace.category}</p> 
-                                <p>{this.state.selectedPlace.timeCommitment}</p>
-                                <p>{this.state.selectedPlace.description}</p>
-                            </div>
-                        </InfoWindow>
+                        marker={this.state.activeMarker}
+                        visible={this.state.showingInfoWindow}> 
+                        <div id="info-window">
+                            <h1>{this.state.selectedPlace.title}</h1>
+                            <p>{this.state.selectedPlace.category}</p> 
+                            <p>{this.state.selectedPlace.timeCommitment}</p>
+                            <p>{this.state.selectedPlace.description}</p>
+                        </div>
+                    </InfoWindow>
                 </Map>
            </div>
        )

@@ -11,7 +11,7 @@ module.exports = function validateAskInput(data) {
   data.location.lng = validText(data.location.lng.toString()) ? data.location.lng.toString() : '';
   let location = `${data.location.lat}, ${data.location.lng}`;
 
-  console.log(location)
+  
 
 
 
