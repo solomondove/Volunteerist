@@ -34,6 +34,10 @@ class AskOfferForm extends React.Component {
         )
     }
 
+    // componentDidMount() {
+    //     this.props.fetchUser(this.props.currentUserId)
+    // }
+
     update(field) {
         return (e) => {
             this.setState({ [field]: e.currentTarget.value });
@@ -43,6 +47,16 @@ class AskOfferForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const data = Object.assign({}, this.state);
+        this.setState({
+            category: "",
+            title: "",
+            description: "",
+            timeCommitment: "",
+            deadline: "",
+            timeOfDay: "",
+            posterId: this.props.currentUserId,
+            location: { lat: "", lng: "" },
+        });
         this.props.processForm(data)
              .then((res) => {
                 if (res.type !== 'RECEIVE_OFFER_ERRORS') {

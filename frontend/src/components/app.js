@@ -14,7 +14,6 @@ import AskShowContainer from './asks_offers/ask_show_container';
 
 const App = () => (
     <div>
-        <NavBarContainer />
         <Switch>
             <AuthRoute exact path="/" component={MainPage} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
