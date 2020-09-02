@@ -13,7 +13,7 @@ class AskOfferForm extends React.Component {
             deadline: "",
             timeOfDay: "",
             address: '', 
-            posterId: this.props.currentUser.id,
+            posterId: this.props.currentUserId,
             location: { lat: "", lng: ""},
 
         }
@@ -24,7 +24,8 @@ class AskOfferForm extends React.Component {
 
     componentDidMount() {
         Geocode.setApiKey(Keys.GoogleMapsAPI);
-        this.props.clearErrors()
+        this.props.clearErrors();
+        this.props.fetchUser(this.props.currentUserId)
     }
 
     
@@ -55,7 +56,6 @@ class AskOfferForm extends React.Component {
                 const formattedAddress = response.results[0].formatted_address; 
                 const {lat, lng} = response.results[0].geometry.location; 
                 this.setState({location: { lat: lat, lng: lng }, address: formattedAddress}); 
-                console.log(lat, lng); 
             }, 
             error => console.log(error)
         )
@@ -63,21 +63,10 @@ class AskOfferForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const data = Object.assign({}, this.state);
-        this.setState({
-            category: "",
-            title: "",
-            description: "",
-            timeCommitment: "",
-            deadline: "",
-            timeOfDay: "",
-            posterId: this.props.currentUserId,
-            location: { lat: "", lng: "" },
-        });
-        this.props.processForm(data)
+        this.props.processForm(this.state)
              .then((res) => {
                 if (res.type !== 'RECEIVE_OFFER_ERRORS' && res.type !== 'RECEIVE_ASK_ERRORS') {
-                    this.props.history.push('/dashboard')
+               this.props.history.push('/dashboard')
              }})
     }
 

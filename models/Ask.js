@@ -33,9 +33,11 @@ const AskSchema = new Schema({
   location: {
     lat: {
       type: Number,
+      // required: true
     },
     lng: {
       type: Number,
+      // required: true
     }, 
   },
   volunteers: {

@@ -63,7 +63,7 @@ export const fetchAsk = askId => dispatch => {
         );
 } 
 
-export const createAsk = ask => dispatch => {
+export const createAsk = ask => dispatch => { 
     return AskAPIUtil.postAsk(ask)
         .then(ask => dispatch(receiveAsk(ask)),
             (err) => dispatch(receiveAskErrors(err.response.data))

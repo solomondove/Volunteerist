@@ -15,7 +15,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
     return ({
         processForm: ask => dispatch(createAsk(ask)),
-        fetchUser: user => dispatch(fetchUser(user)),
+        fetchUser: userId => dispatch(fetchUser(userId)),
         clearErrors: () => dispatch(clearAskErrors())
     })
 }
