@@ -21,6 +21,10 @@ class AskMap extends React.Component {
         this.props.fetch(); 
     }
 
+    componendDidUpdate() {
+    
+    }
+
     onMarkerClick = (props, marker, e) => {
         this.setState({
             selectedPlace: props.listing, 
@@ -39,7 +43,6 @@ class AskMap extends React.Component {
     }
 
    render() { 
-
        return ( 
            <div> 
 

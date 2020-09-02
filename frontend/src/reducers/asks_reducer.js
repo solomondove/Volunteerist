@@ -8,7 +8,7 @@ export default function (oldState = {}, action) {
             newState[action.ask.data._id] = action.ask.data
             return newState
         case RECEIVE_ALL_ASKS:
-            return action.asks
+            return Object.assign({}, action.asks.data); 
         case RECEIVE_USER_ASKS:
             return action.asks;
         case REMOVE_ASK:

@@ -8,13 +8,14 @@ import MainPage from './main/main_page';
 import AskMapContainer from './asks_offers/ask_map_container'; 
 import ProfileContainer from './profile/profile_container';
 import NavBarContainer from './nav/nav_bar_container';
-import AskFormContainer from './asks_offers_form/ask_form_container';
-import OfferFormContainer from './asks_offers_form/offer_form_container';
+import AskFormContainer from './asks_offers/ask_form_container';
+import OfferFormContainer from './asks_offers/offer_form_container';
 import DashboardContainer from './dashboard/dashboard_container';
 import AskShowContainer from './asks_offers/ask_show_container';
 
 const App = () => (
     <div>
+        <NavBarContainer /> 
         <Switch>
             <AuthRoute exact path="/askmap" component={AskMapContainer} /> 
             <AuthRoute exact path="/" component={MainPage} />
