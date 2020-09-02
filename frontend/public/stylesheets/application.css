@@ -57,7 +57,7 @@ h1 {
 
 a {
 	text-decoration: none;
-	padding: 5px 10px;
+	padding: 6px 10px 4px;
 	border: 2px solid #ffffef;
 	display: block;
 	margin: 5px 10px 5px 0;
@@ -92,7 +92,21 @@ body {
 	cursor: pointer;
 }
 
-input:focus {
+input {
+	width: 80%;
+}
+
+select {
+	width:88%;
+	border-radius: 5px;
+	background-color: #ffffef;
+	border-style: inset;
+	color: #333333;
+	border-color: #c7c7bc;
+	border-width: 2px;
+}
+
+input:focus, select:focus {
 	border: 1px solid white;
 	outline-color: #c2cb16;
 }

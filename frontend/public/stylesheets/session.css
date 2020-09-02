@@ -36,3 +36,8 @@
   background-color: #e27d25;
 }
 
+.signup-login-form select {
+  font-size: 14px;
+  padding: 5px;
+  margin: 10px 0;
+}

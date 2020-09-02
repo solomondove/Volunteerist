@@ -31,7 +31,6 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
 
         let user = {
