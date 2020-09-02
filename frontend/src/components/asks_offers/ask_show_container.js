@@ -1,17 +1,18 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import AskShow from './ask_show';
+import { fetchAsk } from '../../actions/ask_actions';
 
-class Ask extends React.Component {
-
-  componentDidMount() {
-    this.props.fetchAsk(this.props.askId)
-  }
-
-  render() {
-    return (
-      <div>hi</div>
-    )
-  }
-
+const mSTP = (state, { match }) => {
+  return ({
+    currentUser: state.entities.users[state.session.id],
+    askId: match.params.ask_id
+  })
 }
 
-export default Ask;
+const mDTP = dispatch => {
+  return ({
+    fetchAsk: (askId) => (dispatch(fetchAsk(askId)))
+  })
+}
+
+export default connect(mSTP, mDTP)(AskShow)
