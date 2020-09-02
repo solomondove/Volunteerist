@@ -14,12 +14,16 @@ export const postAsk = (ask) => {
 
 export const editAsk = (ask) => {
     return axios.patch(`/api/asks/${ask.id}`)
-}
+};
 
 export const deleteAsk = (askId) => {
     return axios.delete(`/api/asks/${askId}`)
-}
+};
 
 export const getUserAsks = (id) => {
     return axios.get(`/api/asks/user/${id}`)
-}
+};
+
+export const addAskComment = (partialAsk) => {
+    return axios.patch(`/api/asks/${partialAsk.id}/comment`)
+};

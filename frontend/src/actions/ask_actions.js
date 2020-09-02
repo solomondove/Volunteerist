@@ -64,3 +64,8 @@ export const fetchUserAsks = id => dispatch => {
         .then(asks => dispatch(receiveUserAsks(asks)))
 }
 
+export const addAskComment = partialAsk => dispatch => {
+    return AskAPIUtil.addAskComment(partialAsk)
+        .then(ask => dispatch(receiveAsk(ask)))
+}
+
