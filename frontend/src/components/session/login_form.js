@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.currentUser === true) {
-            this.props.history.push('/tweets');
+            this.props.history.push('/dashboard');
         }
 
         this.setState({ errors: nextProps.errors })
@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
             password: this.state.password
         };
 
-        this.props.login(user);
+        this.props.login(user).then(() => this.props.history.push('/dashboard'));
     }
 
     renderErrors() {
@@ -55,8 +55,9 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="signup-login-form-container">
+                <form className="signup-login-form" onSubmit={this.handleSubmit}> 
+                    <h1>Login</h1>
                     <div>
                         <input type="text"
                             value={this.state.email}
@@ -70,7 +71,7 @@ class LoginForm extends React.Component {
                             placeholder="Password"
                         />
                         <br />
-                        <input type="submit" value="Submit" />
+                        <input className="btn" type="submit" value="Submit" />
                         {this.renderErrors()}
                     </div>
                 </form>
