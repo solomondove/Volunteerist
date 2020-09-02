@@ -24,11 +24,10 @@ class AskOfferForm extends React.Component {
 
     componentDidMount() {
         Geocode.setApiKey(Keys.GoogleMapsAPI);
-    }
-
-    componentDidMount() {
         this.props.clearErrors()
     }
+
+    
 
     renderErrors() {
         return (
@@ -42,9 +41,7 @@ class AskOfferForm extends React.Component {
         )
     }
 
-    // componentDidMount() {
-    //     this.props.fetchUser(this.props.currentUserId)
-    // }
+
 
     update(field) {
         return (e) => {
