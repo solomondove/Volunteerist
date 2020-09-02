@@ -9,8 +9,8 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className="dashboard">
+                <div className="dashboard-asks">
                     <Link to={"/ask"}>Create an Ask</Link>
                     <Link to={"/offer"}>Create an Offer</Link>
                 </div>
