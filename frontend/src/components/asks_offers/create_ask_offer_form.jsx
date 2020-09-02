@@ -1,4 +1,6 @@
 import React from 'react';
+import Geocode from 'react-geocode'; 
+import Keys from '../../util/keys'; 
 
 class AskOfferForm extends React.Component {
     constructor(props) {
@@ -10,17 +12,22 @@ class AskOfferForm extends React.Component {
             timeCommitment: "",
             deadline: "",
             timeOfDay: "",
-            posterId: this.props.currentUserId,
+            address: '', 
+            posterId: this.props.currentUser.id,
             location: { lat: "", lng: ""},
 
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this); 
+        this.submitAddress = this.submitAddress.bind(this); 
         this.renderErrors = this.renderErrors.bind(this)
     }
 
     componentDidMount() {
+        Geocode.setApiKey(Keys.GoogleMapsAPI);
         this.props.clearErrors()
     }
+
+    
 
     renderErrors() {
         return (
@@ -34,14 +41,24 @@ class AskOfferForm extends React.Component {
         )
     }
 
-    // componentDidMount() {
-    //     this.props.fetchUser(this.props.currentUserId)
-    // }
+
 
     update(field) {
         return (e) => {
             this.setState({ [field]: e.currentTarget.value });
         }
+    }
+    
+    submitAddress(){
+        Geocode.fromAddress(this.state.address).then(
+            response => {
+                const formattedAddress = response.results[0].formatted_address; 
+                const {lat, lng} = response.results[0].geometry.location; 
+                this.setState({location: { lat: lat, lng: lng }, address: formattedAddress}); 
+                console.log(lat, lng); 
+            }, 
+            error => console.log(error)
+        )
     }
 
     handleSubmit(e) {
@@ -71,7 +88,19 @@ class AskOfferForm extends React.Component {
         }
         return (
             <div>
+
                 <h2 className="formTitle" >{formType}</h2>
+                <label>location
+                        <textarea
+                        rows='3'  
+                        columns="30"
+                        placeholder="address"
+                        value={this.state.address}
+                        onChange={this.update('address')} />
+                    <button
+                        onClick={() => this.submitAddress()}>Add Address
+                        </button>
+                </label>
                 <form className="fullForm" onSubmit={this.handleSubmit}>
                     <select className="categorySelect"
                         value={this.state.category} 
@@ -130,6 +159,7 @@ class AskOfferForm extends React.Component {
                             <option value="any">Any</option>
                         </select>
                     </label>
+                    <br/> 
                     <br/>
                     <button className="submitBtn">{formType}</button>
                     <div className='errors'>
