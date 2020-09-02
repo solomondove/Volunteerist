@@ -46,6 +46,7 @@ router.post('/', (req, res) => {
       posterId: req.body.posterId,
       location: req.body.location,
     })
+    
     newOffer.save().then(offer => res.json(offer));
   }
 );
