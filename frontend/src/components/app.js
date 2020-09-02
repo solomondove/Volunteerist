@@ -12,6 +12,7 @@ import AskFormContainer from './asks_offers/ask_form_container';
 import OfferFormContainer from './asks_offers/offer_form_container';
 import DashboardContainer from './dashboard/dashboard_container';
 import AskShowContainer from './asks_offers/ask_show_container';
+import AsksIndexContainer from "./asks_offers/asks_index_container"
 
 const App = () => (
     <div>
@@ -24,8 +25,10 @@ const App = () => (
 
             <ProtectedRoute exact path="/profile" component={ProfileContainer} />
             <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
-            <ProtectedRoute exact path="/ask" component={AskFormContainer} />
-            <ProtectedRoute exact path="/offer" component={OfferFormContainer} />
+            <ProtectedRoute exact path="/asks" component={AsksIndexContainer} />
+            <ProtectedRoute exact path="/asks/new" component={AskFormContainer} />
+            {/* <ProtectedRoute exact path="/offers" component={OffersIndexContainer} /> */}
+            <ProtectedRoute exact path="/offers/new" component={OfferFormContainer} />
             <ProtectedRoute exact path="/asks/:ask_id" component={AskShowContainer} />
         </Switch>
     </div>
