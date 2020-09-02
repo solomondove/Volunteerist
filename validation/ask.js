@@ -20,6 +20,10 @@ module.exports = function validateAskInput(data) {
     errors.description = 'Please enter a description of your ask';
   }
 
+  if (Validator.isEmpty(data.location)) {
+    errors.location = 'Please enter a valid address';
+  }
+
   if (!Validator.isLength(data.description, { min: 25 })) {
     errors.description = 'Please describe your ask using at least 25 characters';
   }

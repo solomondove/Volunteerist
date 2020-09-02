@@ -52,7 +52,6 @@ class AskMap extends React.Component {
                                 position={listing.location} /> 
                     })} */}
                     <Marker onClick={this.onMarkerClick}
-                       icon={<i class="fas fa-map-marker-alt"></i>}
                         listing={{ title: "Delores Park", description: "This is the description", timeCommitment: 2, category: "yardwork"}}
                         position={{ lat: 37.759703, lng: -122.428093 }} /> 
                     
