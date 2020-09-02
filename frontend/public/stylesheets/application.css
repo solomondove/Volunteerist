@@ -110,3 +110,7 @@ input:focus, select:focus {
 	border: 1px solid white;
 	outline-color: #c2cb16;
 }
+
+#root, .app, body, html {
+	height: 100%;
+}

@@ -14,7 +14,7 @@ import DashboardContainer from './dashboard/dashboard_container';
 import AskShowContainer from './asks_offers/ask_show_container';
 
 const App = () => (
-    <div>
+    <div className='app'>
         <NavBarContainer /> 
         <Switch>
             <AuthRoute exact path="/askmap" component={AskMapContainer} /> 
