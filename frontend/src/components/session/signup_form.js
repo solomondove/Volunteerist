@@ -58,6 +58,29 @@ class SignupForm extends React.Component {
                     <div>
                         <input
                             type="text"
+                            value={this.state.firstName}
+                            onChange={this.update("firstName")}
+                            placeholder="First Name"
+                        />
+                        <br />
+                        <input
+                            type="text"
+                            value={this.state.lastName}
+                            onChange={this.update("lastName")}
+                            placeholder="Last Name"
+                        />
+                        <br />
+                        <select value={this.state.gender} onChange={this.update('gender')}>
+                            <option value="" disabled>Select a gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="non-binary">Non-binary</option>
+                            <option value="other">Other</option>
+                            <option value="decline to answer">Decline to answer</option>
+                        </select>
+                        <br />
+                        <input
+                            type="text"
                             value={this.state.email}
                             onChange={this.update("email")}
                             placeholder="Email"

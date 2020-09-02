@@ -12,8 +12,26 @@ class AskOfferForm extends React.Component {
             timeOfDay: "",
             posterId: this.props.currentUserId,
             location: { lat: "", lng: ""},
+
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.renderErrors = this.renderErrors.bind(this)
+    }
+
+    componentDidMount() {
+        this.props.clearErrors()
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {Object.values(this.props.errors).map((error, i) => {
+                    return (<li key={i}>
+                        {error}
+                    </li>)
+                })}
+            </ul>
+        )
     }
 
     // componentDidMount() {
@@ -40,7 +58,10 @@ class AskOfferForm extends React.Component {
             location: { lat: "", lng: "" },
         });
         this.props.processForm(data)
-            .then(() => this.props.history.push('/dashboard'));
+             .then((res) => {
+                if (res.type !== 'RECEIVE_OFFER_ERRORS') {
+                    this.props.history.push('/dashboard')
+             }})
     }
 
     render() {
@@ -111,6 +132,9 @@ class AskOfferForm extends React.Component {
                     </label>
                     <br/>
                     <button className="submitBtn">{formType}</button>
+                    <div className='errors'>
+                        {this.renderErrors()}
+                    </div>
                 </form>
             </div>
         )
