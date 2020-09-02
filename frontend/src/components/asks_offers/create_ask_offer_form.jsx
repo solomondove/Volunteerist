@@ -76,7 +76,7 @@ class AskOfferForm extends React.Component {
         });
         this.props.processForm(data)
              .then((res) => {
-                if (res.type !== 'RECEIVE_OFFER_ERRORS') {
+                if (res.type !== 'RECEIVE_OFFER_ERRORS' && res.type !== 'RECEIVE_ASK_ERRORS') {
                     this.props.history.push('/dashboard')
              }})
     }
