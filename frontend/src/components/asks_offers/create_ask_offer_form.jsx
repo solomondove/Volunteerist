@@ -15,14 +15,36 @@ class AskOfferForm extends React.Component {
             address: '', 
             posterId: this.props.currentUser.id,
             location: { lat: "", lng: ""},
+
         }
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.submitAddress = this.submitAddress.bind(this); 
+        this.renderErrors = this.renderErrors.bind(this)
     }
 
     componentDidMount() {
-        Geocode.setApiKey(Keys.GoogleMapsAPI); 
+        Geocode.setApiKey(Keys.GoogleMapsAPI);
     }
+
+    componentDidMount() {
+        this.props.clearErrors()
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {Object.values(this.props.errors).map((error, i) => {
+                    return (<li key={i}>
+                        {error}
+                    </li>)
+                })}
+            </ul>
+        )
+    }
+
+    // componentDidMount() {
+    //     this.props.fetchUser(this.props.currentUserId)
+    // }
 
     update(field) {
         return (e) => {
@@ -52,18 +74,25 @@ class AskOfferForm extends React.Component {
             timeCommitment: "",
             deadline: "",
             timeOfDay: "",
-            posterId: this.props.currentUser.id,
+            posterId: this.props.currentUserId,
             location: { lat: "", lng: "" },
         });
         this.props.processForm(data)
-            .then(() => this.props.history.push('/dashboard'));
+             .then((res) => {
+                if (res.type !== 'RECEIVE_OFFER_ERRORS') {
+                    this.props.history.push('/dashboard')
+             }})
     }
 
     render() {
-        const { formType } = this.props
+        const { formType, currentUser } = this.props
+        if (!currentUser) {
+            return null
+        }
         return (
             <div>
-                <h2>{formType}</h2>
+
+                <h2 className="formTitle" >{formType}</h2>
                 <label>location
                         <textarea
                         rows='3'  
@@ -75,8 +104,8 @@ class AskOfferForm extends React.Component {
                         onClick={() => this.submitAddress()}>Add Address
                         </button>
                 </label>
-                <form onSubmit={this.handleSubmit}>
-                    <select 
+                <form className="fullForm" onSubmit={this.handleSubmit}>
+                    <select className="categorySelect"
                         value={this.state.category} 
                         onChange={this.update('category')}>
                         <option value="" disabled>Select a category</option>
@@ -92,14 +121,14 @@ class AskOfferForm extends React.Component {
                     </select>
                     <br/>
                     <label>Title:
-                        <input
+                        <input className="formInput"
                             type="text"
                             value={this.state.title}
                             onChange={this.update('title')}/>
                     </label>
                     <br/>
                     <label>Description:
-                        <textarea 
+                        <textarea className="formInput" 
                             value={this.state.description}
                             cols="30" rows="10"
                             onChange={this.update('description')}>
@@ -107,7 +136,7 @@ class AskOfferForm extends React.Component {
                     </label>
                     <br/>
                     <label>Time Commitment:
-                        <input
+                        <input className="formInput"
                             type="number"
                             value={this.state.timeCommitment}
                             onChange={this.update('timeCommitment')}
@@ -115,14 +144,14 @@ class AskOfferForm extends React.Component {
                     </label>
                     <br/>
                     <label>Date task needs to be completed
-                        <input
+                        <input className="formInput"
                             type="date"
                             value={this.state.deadline}
                             onChange={this.update('deadline')} />
                     </label>
                     <br/>
                     <label>Time of Day
-                        <select
+                        <select className="formInput"
                             value={this.state.timeOfDay} 
                             onChange={this.update('timeOfDay')}>
                             <option value="" disabled>Select a time of day</option>
@@ -135,8 +164,11 @@ class AskOfferForm extends React.Component {
                     </label>
                     <br/> 
                     <br/>
-                    <button id="submit">{formType}</button>
-                </form>   
+                    <button className="submitBtn">{formType}</button>
+                    <div className='errors'>
+                        {this.renderErrors()}
+                    </div>
+                </form>
             </div>
         )
     }

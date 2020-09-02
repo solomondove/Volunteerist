@@ -5,10 +5,10 @@ export default function (oldState = {}, action) {
     let newState = Object.assign({}, oldState);
     switch (action.type) {
         case RECEIVE_ASK:
-            newState[action.ask.id] = action.ask
+            newState[action.ask.data._id] = action.ask.data
             return newState
         case RECEIVE_ALL_ASKS:
-            return action.asks
+            return Object.assign({}, action.asks.data); 
         case RECEIVE_USER_ASKS:
             return action.asks;
         case REMOVE_ASK:

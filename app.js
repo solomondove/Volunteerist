@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const path = require('path');
 
 const users = require('./routes/api/users');
 const asks = require('./routes/api/asks');
@@ -10,12 +11,12 @@ const offers = require('./routes/api/offers');
 const app = express();
 const db = require("./config/keys").mongoURI;
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('frontend/build'));
-//   app.get('/', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-//   })
-// }
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/public'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'public', 'index.html'));
+  })
+}
 
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -5,10 +5,7 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
             email: "",
-            gender: "", 
             password: "",
             password2: "",
             errors: {},
@@ -36,9 +33,6 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         let user = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            gender: this.state.gender,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
@@ -58,10 +52,10 @@ class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className="signup-form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="signup-form">
-                        <br />
+            <div className="signup-login-form-container">
+                <form className='signup-login-form' onSubmit={this.handleSubmit}>
+                    <h1>Sign up</h1>
+                    <div>
                         <input
                             type="text"
                             value={this.state.firstName}
@@ -106,7 +100,7 @@ class SignupForm extends React.Component {
                             placeholder="Confirm Password"
                         />
                         <br />
-                        <input type="submit" value="Submit" />
+                        <input className='btn' type="submit" value="Submit" />
                         {this.renderErrors()}
                     </div>
                 </form>

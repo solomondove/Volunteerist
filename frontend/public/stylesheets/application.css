@@ -1,0 +1,112 @@
+
+@import url("./main.css");
+@import url("./navbar.css");
+@import url("./profile.css");
+@import url("./session.css");
+@import url("./asks_offers.css");
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, button,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+  font-family: 'Lato', 'Noto Sans SC', sans-serif;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+a {
+	text-decoration: none;
+	padding: 6px 10px 4px;
+	border: 2px solid #ffffef;
+	display: block;
+	margin: 5px 10px 5px 0;
+	border-radius: 5px;
+	height: 20px;
+}
+
+a:hover {
+	background-color: #15a969;
+}
+
+a:visited{
+	color: #ffffef;
+}
+
+footer {
+  font-size: 14px;
+}
+
+body {
+	background-color: #ffffef;
+}
+
+.btn:hover{
+	background-color: #df6d08;
+}
+
+.btn {
+	color: #ffffef;
+	font-weight: 700;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+input {
+	width: 80%;
+}
+
+select {
+	width:88%;
+	border-radius: 5px;
+	background-color: #ffffef;
+	border-style: inset;
+	color: #333333;
+	border-color: #c7c7bc;
+	border-width: 2px;
+}
+
+input:focus, select:focus {
+	border: 1px solid white;
+	outline-color: #c2cb16;
+}
