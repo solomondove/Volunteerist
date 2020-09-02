@@ -1,4 +1,6 @@
 import React from 'react';
+import Geocode from 'react-geocode'; 
+import Keys from '../../util/keys'; 
 
 class AskOfferForm extends React.Component {
     constructor(props) {
@@ -10,16 +12,34 @@ class AskOfferForm extends React.Component {
             timeCommitment: "",
             deadline: "",
             timeOfDay: "",
+            address: '', 
             posterId: this.props.currentUser.id,
             location: { lat: "", lng: ""},
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this); 
+        this.submitAddress = this.submitAddress.bind(this); 
+    }
+
+    componentDidMount() {
+        Geocode.setApiKey(Keys.GoogleMapsAPI); 
     }
 
     update(field) {
         return (e) => {
             this.setState({ [field]: e.currentTarget.value });
         }
+    }
+    
+    submitAddress(){
+        Geocode.fromAddress(this.state.address).then(
+            response => {
+                const formattedAddress = response.results[0].formatted_address; 
+                const {lat, lng} = response.results[0].geometry.location; 
+                this.setState({location: { lat: lat, lng: lng }, address: formattedAddress}); 
+                console.log(lat, lng); 
+            }, 
+            error => console.log(error)
+        )
     }
 
     handleSubmit(e) {
@@ -44,6 +64,17 @@ class AskOfferForm extends React.Component {
         return (
             <div>
                 <h2>{formType}</h2>
+                <label>location
+                        <textarea
+                        rows='3'  
+                        columns="30"
+                        placeholder="address"
+                        value={this.state.address}
+                        onChange={this.update('address')} />
+                    <button
+                        onClick={() => this.submitAddress()}>Add Address
+                        </button>
+                </label>
                 <form onSubmit={this.handleSubmit}>
                     <select 
                         value={this.state.category} 
@@ -102,9 +133,10 @@ class AskOfferForm extends React.Component {
                             <option value="any">Any</option>
                         </select>
                     </label>
+                    <br/> 
                     <br/>
-                    <button>{formType}</button>
-                </form>
+                    <button id="submit">{formType}</button>
+                </form>   
             </div>
         )
     }

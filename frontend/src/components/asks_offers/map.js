@@ -1,7 +1,6 @@
 import React from 'react'; 
 import { GoogleApiWrapper, Map, InfoWindow, Marker } from 'google-maps-react';
 import Keys from '../../util/keys'; 
-import Geocode from 'react-geocode'; 
 import {mapStyle} from './map_styles'; 
 
 class AskMap extends React.Component {
