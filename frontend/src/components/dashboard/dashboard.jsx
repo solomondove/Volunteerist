@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 
 class Dashboard extends React.Component {
     
+
     componentDidMount() {
         this.props.fetchAsks()
     }
+
 
     render() {
         if (!this.props.currentUser) {
