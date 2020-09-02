@@ -10,11 +10,15 @@ class AskOfferForm extends React.Component {
             timeCommitment: "",
             deadline: "",
             timeOfDay: "",
-            posterId: this.props.currentUser.id,
+            posterId: this.props.currentUserId,
             location: { lat: "", lng: ""},
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    // componentDidMount() {
+    //     this.props.fetchUser(this.props.currentUserId)
+    // }
 
     update(field) {
         return (e) => {
@@ -32,7 +36,7 @@ class AskOfferForm extends React.Component {
             timeCommitment: "",
             deadline: "",
             timeOfDay: "",
-            posterId: this.props.currentUser.id,
+            posterId: this.props.currentUserId,
             location: { lat: "", lng: "" },
         });
         this.props.processForm(data)
@@ -40,7 +44,10 @@ class AskOfferForm extends React.Component {
     }
 
     render() {
-        const { formType } = this.props
+        const { formType, currentUser } = this.props
+        if (!currentUser) {
+            return null
+        }
         return (
             <div>
                 <h2>{formType}</h2>

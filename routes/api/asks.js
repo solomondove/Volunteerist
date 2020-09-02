@@ -29,9 +29,7 @@ router.get('/:id', (req, res) => {
     );
 })
 
-router.post('/',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
+router.post('/', (req, res) => {
     const { errors, isValid } = validateAskInput(req.body);
 
     if (!isValid) {
