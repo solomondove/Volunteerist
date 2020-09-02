@@ -7,8 +7,8 @@ import SignupFormContainer from './session/signup_form_container';
 import MainPage from './main/main_page';
 import ProfileContainer from './profile/profile_container';
 import NavBarContainer from './nav/nav_bar_container';
-import AskFormContainer from './asks_offers/ask_form_container';
-import OfferFormContainer from './asks_offers/offer_form_container';
+import AskFormContainer from './asks_offers_form/ask_form_container';
+import OfferFormContainer from './asks_offers_form/offer_form_container';
 import DashboardContainer from './dashboard/dashboard_container';
 
 
