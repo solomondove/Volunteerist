@@ -1,4 +1,5 @@
 import { fetchAsks } from '../../actions/ask_actions';
+import { fetchUser } from '../../actions/user_actions';
 import { connect } from 'react-redux';
 import AskIndex from './asks_index';
 
@@ -12,7 +13,8 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return ({
-        fetchAsks: () => dispatch(fetchAsks())
+        fetchAsks: () => dispatch(fetchAsks()),
+        fetchUser: (userId) => dispatch(fetchUser(userId))
     })
 }
 

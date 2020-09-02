@@ -3,6 +3,11 @@ import AskIndexItem from "./ask_index_item";
 
 class AsksIndex extends React.Component {
 
+    componentDidMount() {
+        this.props.fetchAsks()
+        this.props.fetchUser(this.props.currentUserId)
+    }
+
     render() {
         if (!this.props.asks) {
             return null

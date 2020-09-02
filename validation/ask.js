@@ -7,6 +7,13 @@ module.exports = function validateAskInput(data) {
   data.category = validText(data.category) ? data.category : '';
   data.title = validText(data.title) ? data.title : '';
   data.description = validText(data.description) ? data.description : '';
+  data.location.lat = validText(data.location.lat.toString()) ? data.location.lat.toString() : '';
+  data.location.lng = validText(data.location.lng.toString()) ? data.location.lng.toString() : '';
+  let location = `${data.location.lat}, ${data.location.lng}`;
+
+  console.log(location)
+
+
 
   if (Validator.isEmpty(data.title)) {
     errors.title = 'Please enter a title';
@@ -20,7 +27,7 @@ module.exports = function validateAskInput(data) {
     errors.description = 'Please enter a description of your ask';
   }
 
-  if (Validator.isEmpty(data.location)) {
+  if (!Validator.isLatLong(location)) {
     errors.location = 'Please enter a valid address';
   }
 
