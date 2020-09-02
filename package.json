@@ -21,6 +21,8 @@
     "mongoose": "^5.10.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "react-geocode": "^0.2.1",
+    "react-google-autocomplete": "^1.2.6",
     "validator": "^13.1.1"
   },
   "devDependencies": {
