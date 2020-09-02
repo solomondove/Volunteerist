@@ -34,7 +34,7 @@ app.post('/api/asks/:id/comment', (req, res) => {
       Ask.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
     )).catch(err => console.log(err))
 
-    io.emit('comment', req.body);
+    io.emit('message', req.body);
     res.sendStatus(200);
 })
 
@@ -68,7 +68,7 @@ io.on('connection', (socket) => {
   console.log("New user connected");
   
   socket.on('sendMessage', (message, callback) => {
-    console.log(message)
+    // console.log(message)
   })
 
 })

@@ -12,8 +12,7 @@ const CommentSchema = new Schema({
   },
   body: {
     type: String,
-    required: true,
-    minlength: 5
+    required: true
   }
 }, {
   timestamps: true

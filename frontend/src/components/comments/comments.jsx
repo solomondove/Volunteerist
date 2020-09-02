@@ -4,18 +4,19 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 let socket;
 
-const Comments = (askId, currentUser) => {
+const Comments = ({addAskComment, askId, currentUser}) => {
 
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [ask, setAskId] = useState('');
+  const [currUser, setCurrentUser] = useState(currentUser);
   const ENDPOINT = 'localhost:5000';
 
   useEffect(() => {
     socket = io(ENDPOINT);
 
-    setName(currentUser.firstname + " " + currentUser.lastname)
+    setName(`${currUser.firstName} ${currUser.lastName}`)
     setAskId(askId);
 
     return () => {
@@ -34,8 +35,9 @@ const Comments = (askId, currentUser) => {
     event.preventDefault();
 
     if(message) {
-
+      addAskComment({body: message, posterId: currUser._id, askId: ask})
       socket.emit('sendMessage', message, () => setMessage(''))
+      setMessage('')
     }
   }
 
@@ -45,13 +47,13 @@ const Comments = (askId, currentUser) => {
     <div>
       <ScrollToBottom>
         {messages.map((message, i) => (
-          <div key={i}>{message}</div>
+          <div key={i}>{name}: {message.body}</div>
         ))}
       </ScrollToBottom>
       <form>
         <input type="text"
         value={message}
-        onChange={(event) => setMessage(event.target.value)}
+        onChange={({target: { value } }) => setMessage(value)}
         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null }
         />
         <button onClick={(event) => sendMessage(event)}>Send</button>
