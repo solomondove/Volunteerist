@@ -24,7 +24,7 @@ class AskOfferForm extends React.Component {
 
     componentDidMount() {
         Geocode.setApiKey(Keys.GoogleMapsAPI);
-        this.props.clearErrors()
+        this.props.clearErrors();
         this.props.fetchUser(this.props.currentUserId)
     }
 
@@ -56,7 +56,6 @@ class AskOfferForm extends React.Component {
                 const formattedAddress = response.results[0].formatted_address; 
                 const {lat, lng} = response.results[0].geometry.location; 
                 this.setState({location: { lat: lat, lng: lng }, address: formattedAddress}); 
-                console.log(lat, lng); 
             }, 
             error => console.log(error)
         )
@@ -67,7 +66,7 @@ class AskOfferForm extends React.Component {
         this.props.processForm(this.state)
              .then((res) => {
                 if (res.type !== 'RECEIVE_OFFER_ERRORS' && res.type !== 'RECEIVE_ASK_ERRORS') {
-                    this.props.history.push('/dashboard')
+               this.props.history.push('/dashboard')
              }})
     }
 
