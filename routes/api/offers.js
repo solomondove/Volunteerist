@@ -29,9 +29,7 @@ router.get('/:id', (req, res) => {
     );
 })
 
-router.post('/',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
+router.post('/', (req, res) => {
     const { errors, isValid } = validateOfferInput(req.body);
 
     if (!isValid) {
@@ -48,7 +46,6 @@ router.post('/',
       posterId: req.body.posterId,
       location: req.body.location,
     })
-
     newOffer.save().then(offer => res.json(offer));
   }
 );

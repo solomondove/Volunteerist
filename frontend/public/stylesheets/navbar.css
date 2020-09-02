@@ -1,0 +1,37 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0bb66c;
+  color: white;
+  border-bottom: 1px solid #15a969;
+}
+
+.navbar h1 {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid white;
+  margin: 10px;
+}
+
+.navbar-right {
+  display: flex;
+}
+
+.navbar-right a {
+  margin-top: 15px;
+}
+
+.navbar-right button {
+	padding: 3px 10px 7px;
+	border: 2px solid #ffffef;
+	display: block;
+	margin: 15px 10px 15px 0;
+  border-radius: 5px;
+  color: #ffffef;
+  background-color: #0bb66c;
+  font-size: 16px;
+}
+
+.navbar-right button:hover {
+	background-color: #15a969;
+}
