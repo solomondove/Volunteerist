@@ -1,4 +1,5 @@
 import React from 'react';
+import Comments from '../comments/comments';
 
 class Ask extends React.Component {
 
@@ -8,7 +9,10 @@ class Ask extends React.Component {
 
   render() {
     return (
-      <Comments askId={this.props.askId}/>
+      <div>
+        <h1>HIIII {this.props.currentUser.firstName}</h1>
+        <Comments askId={this.props.askId} currentUser={this.props.currentUser}/>
+      </div>
     )
   }
 

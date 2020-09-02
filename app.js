@@ -64,8 +64,13 @@ app.post('/api/asks/:id/comment', (req, res) => {
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-io.on('connection', () => {
-  console.log('a user is connected')
+io.on('connection', (socket) => {
+  console.log("New user connected");
+  
+  socket.on('sendMessage', (message, callback) => {
+    console.log(message)
+  })
+
 })
 
 mongoose

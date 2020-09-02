@@ -24,6 +24,6 @@ export const getUserAsks = (id) => {
     return axios.get(`/api/asks/user/${id}`)
 };
 
-export const addAskComment = (partialAsk) => {
-    return axios.patch(`/api/asks/${partialAsk.id}/comment`)
+export const addAskComment = (comment) => {
+    return axios.post(`/api/asks/${comment.askId}/comment`, comment);
 };
