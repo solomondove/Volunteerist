@@ -6,7 +6,7 @@ let socket;
 
 const Comments = ({ addOfferComment, offerId, currentUser, comments }) => {
 
-  const [name, setName] = useState('');
+  const [name] = useState(`${currentUser.firstName} ${currentUser.lastName}`);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState(comments);
   const [offer, setOfferId] = useState('');
@@ -15,7 +15,6 @@ const Comments = ({ addOfferComment, offerId, currentUser, comments }) => {
   useEffect(() => {
     socket = io();
 
-    setName(`${currUser.firstName} ${currUser.lastName}`)
     setOfferId(offerId);
 
     return () => {
