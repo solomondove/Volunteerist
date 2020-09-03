@@ -1,6 +1,6 @@
 import React from 'react';
 import Comments from '../comments/offer_comments';
-import AskMap from './ask_map_container';
+import AskMap from './ask_show_map_container';
 import { Link, Redirect } from 'react-router-dom';
 
 class Offer extends React.Component {
