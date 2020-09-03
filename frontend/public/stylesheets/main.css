@@ -9,3 +9,43 @@
 .dashboard-asks a {
   color: green
 }
+
+.main-page {
+  background-image: url("../images/splash.jpg");
+  background-size: 100%;
+  text-align: center;
+  color: #ffffef;
+  height: 100%;
+}
+
+.main-page h1 {
+  font-size: 48px;
+  background-color: #0BB66C;
+  border-radius: 50px;
+  width: 300px;
+  padding: 20px;
+  position: absolute;
+  left: calc(50% - 170px);
+  top: 20%;
+}
+
+.main-page p {
+  background-color: #0BB66C;
+  width: 200px;
+  padding: 5px;
+  border-radius: 20px;
+  position: absolute;
+  left: calc(50% - 105px);
+  top: calc(20% + 110px)
+}
+
+.main-page footer {
+  position: absolute;
+  left: calc(50% - 155px);
+  width: 300px;
+  bottom: 10px;
+  background-color: #0BB66C;
+  padding: 5px;
+  border-radius: 20px;
+}
+

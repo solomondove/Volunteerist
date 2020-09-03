@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const Ask = require('./models/Ask');
+const Comment = require('./models/Comment');
 const path = require('path');
 
 const users = require('./routes/api/users');
@@ -9,6 +11,8 @@ const asks = require('./routes/api/asks');
 const offers = require('./routes/api/offers');
 
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const db = require("./config/keys").mongoURI;
 
 if (process.env.NODE_ENV === 'production') {
@@ -18,11 +22,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to MongoDB successfully"))
-  .catch((err) => console.log(err));
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -30,11 +29,38 @@ app.use("/api/users", users);
 app.use("/api/asks", asks);
 app.use("/api/offers", offers);
 
+app.post('/api/asks/:id/comments', (req, res) => {
+    let comment = new Comment(req.body);
+    comment.save().then(result => (
+      Ask.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
+    )).catch(err => console.log(err))
+
+    io.emit('message', req.body);
+    res.sendStatus(200);
+})
+
+app.get('/api/asks/:id/comments', (req, res) => {
+  Comment.find({ askId: req.params.id })
+    .then(comments => res.json(comments))
+    .catch(err => console.log(err))
+})
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-// app.get("/", (req, res) => res.send("Volunteerist"));
+io.on('connection', (socket) => {
+  console.log("New user connected");
+  
+  // socket.on('sendMessage', (message, callback) => {
+  // })
+
+})
+
+mongoose
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB successfully"))
+  .catch((err) => console.log(err));
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+http.listen(port, () => console.log(`Server is running on port ${port}`));

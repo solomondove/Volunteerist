@@ -3,7 +3,7 @@ import Map from './map';
 import { fetchAsks } from '../../actions/ask_actions';
 
 const mapSTP = state => ({ 
-    listings: state.entities.asks
+    listings: Object.values(state.entities.asks)
     
 })  
 

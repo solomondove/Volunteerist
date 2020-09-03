@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// const Comment = require('./Comment.js').schema;
 
 const AskSchema = new Schema({
   category: {
@@ -33,17 +34,17 @@ const AskSchema = new Schema({
   location: {
     lat: {
       type: Number,
+      // required: true
     },
     lng: {
       type: Number,
+      // required: true
     }, 
   },
   volunteers: {
     type: Array,
   },
-  comments: {
-    type: Array,
-  },
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   date: {
     type: Date,
     default: Date.now

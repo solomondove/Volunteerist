@@ -5,7 +5,11 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            firstName: "",
+            lastName: "",
+            gneder: "",
             email: "",
+            gender: "",
             password: "",
             password2: "",
             errors: {},
@@ -33,7 +37,11 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         let user = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            gender: this.state.gender,
             email: this.state.email,
+            gender: this.state.gender,
             password: this.state.password,
             password2: this.state.password2,
         };
