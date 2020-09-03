@@ -8,29 +8,57 @@ class AskIndexItem extends React.Component {
         if (!ask) {
             return null
         }
+        const description = ask.description.length > 50 ? (
+            ask.description.slice(0, 50).concat("...") 
+        ) : ( ask.description )
+
         return (
-            <div>
-            <h3>ASK</h3>
-            <br/>
-            <p>Category: {ask.category}</p>
-            <br />
-            <p>Title: {ask.title}</p>
-            <br />
-            <p>Description: {ask.description}</p>
-            <br />
-            <p>Time Commitment: {ask.timeCommitment} hours</p>
-            <br />
-            <p>Deadline: {ask.deadline}</p>
-            <br />
-            <p>Time of Day: {ask.timeOfDay}</p>
-            <br />
-            {/* <p>Location: {[ask.location}</p>
-            <br /> */}
-            {ask.posterId === currentUserId ? 
-                <Link to={`/asks/edit/${ask._id}`}>Edit Ask</Link>
-                : 
-                null}
-          </div>
+            <div className="ask-index-item">
+                <div>
+
+                    <h2 className="ask-header">ASK</h2>
+                    <br />
+                    <h3 className="ai-category-header">Title:</h3>
+                    <p className="index-title">{ask.title}</p>
+                    <br/>
+                    <div className="sub-categories">
+                        <span>
+                            <h3 className="ai-category-header">Category: </h3>
+                            <p>{ask.category}</p>
+                        <br />
+                        </span>
+                        <span>
+                            <h3 className="ai-category-header"> Time Est.:</h3>
+                            <p>{ask.timeCommitment} <span className="index-hours">hour(s)</span></p>
+                            <br />
+                        </span>
+                        <span>
+                            <h3 className="ai-category-header">Time of Day:</h3>
+                            <p>{ask.timeOfDay}</p>
+                            <br />
+                        </span>
+                    </div> 
+                    <h3 className="ai-category-header">Description:</h3>
+                    <p>{description}</p>
+                    <br />
+                    <div className="index-buttons">
+                        {ask.posterId === currentUserId ? 
+                            <div className="edit-delete-container">
+                                <button><Link to={`/asks/edit/${ask._id}`}>Edit Ask</Link></button>
+                                <button onClick={() => this.props.clearAsk(ask._id)}>Delete Ask</button>
+                                <button><Link to={`/asks/${ask._id}`}>Details</Link></button>
+                            </div>
+                            : 
+                            <div className="edit-delete-container"> 
+                                <button><Link to={`/asks/${ask._id}`}>Details</Link></button>
+                            </div>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+          
+         
         );
     }
 }

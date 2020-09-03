@@ -44,7 +44,6 @@
 
 .signup-login-form .btn:hover {
   border-bottom: 0;
-  margin-top: 11px;
   background-color: #dc7e5a;
 }
 
@@ -52,7 +51,7 @@
   font-size: 14px;
   padding: 8px 5px;
   margin: 10px 0;
-  width: calc(90% - 23px)
+  width: 87%; 
 }
 
 .signup-login-form-container {

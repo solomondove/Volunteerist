@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import AskOfferForm from './create_ask_offer_form';
 import { createOffer, clearOfferErrors } from '../../actions/offer_actions';
 import { fetchUser } from "../../actions/user_actions";
+import { withRouter } from 'react-router-dom';
 
 const mSTP = state => {
     return {
@@ -31,4 +32,4 @@ const mDTP = dispatch => {
     })
 }
 
-export default connect(mSTP, mDTP)(AskOfferForm)
+export default withRouter(connect(mSTP, mDTP)(AskOfferForm))

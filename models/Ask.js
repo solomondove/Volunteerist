@@ -45,13 +45,21 @@ const AskSchema = new Schema({
       // required: true
     }, 
   },
-  volunteers: {
-    type: Array,
+  volunteer: {
+    type: String
   },
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   date: {
     type: Date,
     default: Date.now
+  },
+  hasVolunteer: {
+    type: Boolean,
+    default: false
+  },
+  askCompleted: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

@@ -38,10 +38,14 @@ class AskMap extends React.Component {
     }
 
    render() { 
+       const containerStyle = {
+           height: '85%'
+       }
+       
        return ( 
-           <div> 
+           <div className="map-container"> 
 
-                <Map google={this.props.google} styles={mapStyle} zoom={14} onClick={this.onMapClicked}>
+                <Map google={this.props.google} styles={mapStyle} containerStyle={containerStyle} zoom={14} onClick={this.onMapClicked}>
                     {this.props.listings.map(listing => 
                         <Marker onClick={this.onMarkerClick}
                             key={listing._id}
