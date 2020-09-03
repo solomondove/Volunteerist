@@ -3,8 +3,10 @@ import CreateAskOfferForm from "./create_ask_offer_form";
 import { updateAsk, clearAsk, fetchAsk } from '../../actions/ask_actions';
 import { clearAskErrors } from "../../actions/ask_actions";
 import { fetchUser } from "../../actions/user_actions";
+import { withRouter } from "react-router-dom";
 
 const mSTP = (state, ownProps) => {
+    debugger
     return {
       data: state.entities.asks[ownProps.match.params.ask_id],
       formType: "Edit Ask",
@@ -24,4 +26,4 @@ const mDTP = (dispatch) => {
     };
 }
 
-export default connect(mSTP, mDTP)(CreateAskOfferForm)
+export default withRouter(connect(mSTP, mDTP)(CreateAskOfferForm))

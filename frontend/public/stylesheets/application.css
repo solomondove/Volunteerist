@@ -59,7 +59,7 @@ h1 {
 a {
 	text-decoration: none;
 	padding: 6px 10px 4px;
-	color: white;
+	/* color: white; */
 	border: 2px solid #ffffef;
 	display: block;
 	margin: 5px 10px 5px 0;
