@@ -8,9 +8,12 @@ export default function (oldState = {}, action) {
             newState[action.ask.data._id] = action.ask.data
             return newState
         case RECEIVE_ALL_ASKS:
-            return Object.assign({}, action.asks.data); 
+            action.asks.data.forEach(ask => {
+                newState[ask._id] = ask
+            })
+            return newState
         case RECEIVE_USER_ASKS:
-            return action.asks;
+            return action.asks.data;
         case REMOVE_ASK:
             delete newState[action.askId];
             return newState;
