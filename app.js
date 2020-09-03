@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const Ask = require('./models/Ask');
 const Comment = require('./models/Comment');
+const Offer = require('./models/Offer');
 const path = require('path');
 
 const users = require('./routes/api/users');
@@ -45,15 +46,27 @@ app.get('/api/asks/:id/comments', (req, res) => {
     .catch(err => console.log(err))
 })
 
+app.post('/api/offers/:id/comments', (req, res) => {
+    let comment = new Comment(req.body);
+    comment.save().then(result => (
+      Offer.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
+    )).catch(err => console.log(err))
+
+    io.emit('message', req.body);
+    res.sendStatus(200);
+})
+
+app.get('/api/offers/:id/comments', (req, res) => {
+  Comment.find({ offerId: req.params.id })
+    .then(comments => res.json(comments))
+    .catch(err => console.log(err))
+})
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
 io.on('connection', (socket) => {
   console.log("New user connected");
-  
-  // socket.on('sendMessage', (message, callback) => {
-  // })
-
 })
 
 mongoose

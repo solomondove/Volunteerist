@@ -23,3 +23,7 @@ export const deleteOffer = (offerId) => {
 export const getUserOffers = (id) => {
     return axios.get(`/api/offers/user/${id}`)
 }
+
+export const addOfferComment = (comment) => {
+    return axios.post(`/api/offers/${comment.offerId}/comments`, comment);
+};

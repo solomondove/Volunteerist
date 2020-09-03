@@ -33,8 +33,9 @@ class NavBar extends React.Component {
                         </ul>
                     </div>
                     <div className="navbar-trigger-dashboard">
-                        <div className="navbar-label-dashboard">Dashboard</div>
+                        <div className="navbar-label-dashboard">Account</div>
                         <ul className="navbar-dropdown-dashboard">
+                            <Link to={"/dashboard"}>Dashboard</Link>
                             <Link to={"/profile"}>Profile</Link>
                             <button onClick={this.logoutUser}>Logout</button>
                         </ul>

@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
       timeOfDay: req.body.timeOfDay,
       posterId: req.body.posterId,
       location: req.body.location,
-      address: req.body.location
+      address: req.body.address
     })
     newOffer.save().then(offer => res.json(offer));
   }

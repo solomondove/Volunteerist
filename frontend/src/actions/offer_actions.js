@@ -92,3 +92,8 @@ export const fetchUserOffers = id => dispatch => {
             (err) => dispatch(receiveOfferErrors(err.response.data))
         );
 }
+
+export const addOfferComment = partialOffer => dispatch => {
+    return OfferAPIUtil.addOfferComment(partialOffer)
+        .then(offer => dispatch(receiveOffer(offer)))
+}

@@ -12,10 +12,6 @@ module.exports = function validateAskInput(data) {
   data.address = validText(data.address) ? data.address : "";
   let location = `${data.location.lat}, ${data.location.lng}`;
 
-  
-
-
-
   if (Validator.isEmpty(data.title)) {
     errors.title = 'Please enter a title';
   }
