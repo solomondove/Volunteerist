@@ -1,5 +1,6 @@
 import React from "react";
-import UserAsksIndexContainer from "../asks_offers/user_asks_index_container"
+import UserAsksIndexContainer from "../asks_offers/user_asks_index_container";
+import UserOffersIndexContainer from "../asks_offers/user_offers_index_container";
 
 class Profile extends React.Component {
 
@@ -11,10 +12,15 @@ class Profile extends React.Component {
             return null
         }
         return (
-            <div>
-                <h2>{`Welcome ${currentUser.firstName} ${currentUser.lastName}.`}</h2>
-                <UserAsksIndexContainer />
+          <div>
+            <h2>{`Welcome ${currentUser.firstName} ${currentUser.lastName}.`}</h2>
+            <div className="userAsks">
+              <UserAsksIndexContainer />
             </div>
+            <div className="userOffers">
+              <UserOffersIndexContainer />
+            </div>
+          </div>
         );
     }
 }   

@@ -13,7 +13,7 @@ export const postOffer = (offer) => {
 };
 
 export const editOffer = (offer) => {
-    return axios.patch(`/api/offers/${offer.id}`)
+    return axios.patch(`/api/offers/${offer._id}`, offer)
 }
 
 export const deleteOffer = (offerId) => {
