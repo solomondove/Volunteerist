@@ -13,17 +13,17 @@ class AsksIndex extends React.Component {
             return null
         }
         return (
-            <div>
-                <ul>
+            <div className="ask-index-container">
+                <ul className="ask-index-ul">
                     {this.props.asks.map((ask) => (
-                        <AskIndexItem
-                            key={Math.random()}
-                            currentUser={this.props.currentUser}
-                            currentUserId={this.props.currentUserId}
-                            ask={ask}
-                            clearAsk={this.props.clearAsk}
-                            updateAsk={this.props.updateAsk}
-                        />
+                            <AskIndexItem
+                                key={Math.random()}
+                                currentUser={this.props.currentUser}
+                                currentUserId={this.props.currentUserId}
+                                ask={ask}
+                                clearAsk={this.props.clearAsk}
+                                updateAsk={this.props.updateAsk}
+                                /> 
                         ))}
                 </ul>
             </div>
