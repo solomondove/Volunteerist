@@ -19,8 +19,7 @@ class Ask extends React.Component {
 
   render() {
     if(this.state.currentUser && Array.isArray(this.props.comments)) {
-      // let comment_texts = this.props.comments.map((comment) => (comment.body))
-      // debugger
+
       return (
         <div>
           <h1>HIIII {this.state.currentUser.firstName}</h1>
