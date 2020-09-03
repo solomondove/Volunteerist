@@ -15,7 +15,7 @@ const Comments = ({addAskComment, askId, currentUser, comments}) => {
   useEffect(() => {
     socket = io();
 
-    setName(`${currUser.firstName} ${currUser.lastName}`)
+    setName(`${currentUser.firstName} ${currUser.lastName}`)
     setAskId(askId);
 
     return () => {

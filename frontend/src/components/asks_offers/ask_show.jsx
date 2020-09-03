@@ -6,27 +6,28 @@ class Ask extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: []
+      comments: [],
+      currentUser: null
     };
   }
 
   componentDidMount() {
     this.props.fetchAsk(this.props.askId);
+    this.props.fetchUser(this.props.currentUserId).then(currentUser => this.setState({currentUser}))
     this.props.fetchAskComments(this.props.askId).then(comments => this.setState({ comments }))
   }
 
   render() {
-
-    if(this.props.currentUser && Array.isArray(this.props.comments)) {
+    if(this.state.currentUser && Array.isArray(this.props.comments)) {
       // let comment_texts = this.props.comments.map((comment) => (comment.body))
-      
+      // debugger
       return (
         <div>
-          <h1>HIIII {this.props.currentUser.firstName}</h1>
+          <h1>HIIII {this.state.currentUser.firstName}</h1>
           <Comments 
           addAskComment={this.props.addAskComment} 
           askId={this.props.askId} 
-          currentUser={this.props.currentUser}
+          currentUser={this.state.currentUser.user.data}
           comments={this.props.comments}
           />
         </div>
