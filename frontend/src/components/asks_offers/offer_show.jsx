@@ -1,6 +1,6 @@
 import React from 'react';
 import Comments from '../comments/offer_comments';
-import AskMap from './ask_map_container';
+import AskMap from './ask_show_map_container';
 import { Link } from 'react-router-dom';
 
 class Offer extends React.Component {
@@ -60,7 +60,7 @@ class Offer extends React.Component {
               <h1>Comments</h1>
               <Comments
                 addOfferComment={this.props.addOfferComment}
-                askId={this.props.offerId}
+                offerId={this.props.offerId}
                 currentUser={this.state.currentUser}
                 comments={this.props.comments}
               />
