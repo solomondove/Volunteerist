@@ -11,10 +11,9 @@ const Comments = ({addAskComment, askId, currentUser, comments}) => {
   const [messages, setMessages] = useState(comments);
   const [ask, setAskId] = useState('');
   const [currUser] = useState(currentUser);
-  const ENDPOINT = 'localhost:5000';
 
   useEffect(() => {
-    socket = io(ENDPOINT);
+    socket = io();
 
     setName(`${currUser.firstName} ${currUser.lastName}`)
     setAskId(askId);
@@ -23,7 +22,7 @@ const Comments = ({addAskComment, askId, currentUser, comments}) => {
       socket.emit('disconnect');
       socket.off();
     }
-  }, [ENDPOINT, askId])
+  }, [askId])
 
   useEffect(() => {
     socket.on('message', (message) => {

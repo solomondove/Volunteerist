@@ -44,38 +44,14 @@ app.get('/api/asks/:id/comments', (req, res) => {
     .catch(err => console.log(err))
 })
 
-// app.patch('/api/asks/:id/comment', async (req, res) => {
-//   let comments = Comment.find({ askId: req.params.id })
-//   Ask.findById(req.params.id)
-//     .then(ask => {
-//       console.log(ask)
-//       if (!ask) {
-//         errors.id = 'Ask does not exist';
-//         return res.status(400).json(errors);
-//       } else {
-//         Ask.findByIdAndUpdate(req.params.id, { comments: comments }, { new: true }, function (err, ask) {
-//           if (err) {
-//             console.log("err", err);
-//             res.status(500).send(err);
-//           } else {
-//             io.emit('comment', req.body);
-//             res.sendStatus(200);
-//           }
-//         })
-//       }
-//     })
-//     .catch(err => console.log(err))
-// });
-
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
 io.on('connection', (socket) => {
   console.log("New user connected");
   
-  socket.on('sendMessage', (message, callback) => {
-    // console.log(message)
-  })
+  // socket.on('sendMessage', (message, callback) => {
+  // })
 
 })
 
