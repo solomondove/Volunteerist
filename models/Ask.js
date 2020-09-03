@@ -30,6 +30,10 @@ const AskSchema = new Schema({
     type: String,
     required: true
   },
+  address: {
+    type: String,
+    required: true
+  },
   location: {
     lat: {
       type: Number,

@@ -45,9 +45,9 @@ class AskMap extends React.Component {
            <div> 
 
                 <Map google={this.props.google} styles={mapStyle} zoom={14} onClick={this.onMapClicked}>
-                    {this.state.listings.map(listing => {
+                    {this.state.listings.map((listing, i) => {
                         return (
-                            <Marker onClick={() => this.onMarkerClick()}
+                            <Marker key={i} onClick={() => this.onMarkerClick()}
                             listing={listing}
                             position={listing.location} /> 
                             )

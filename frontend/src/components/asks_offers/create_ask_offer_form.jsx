@@ -5,18 +5,8 @@ import Keys from '../../util/keys';
 class AskOfferForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            category: "",
-            title: "",
-            description: "",
-            timeCommitment: "",
-            deadline: "",
-            timeOfDay: "",
-            address: '', 
-            posterId: this.props.currentUserId,
-            location: { lat: "", lng: ""},
-
-        }
+        this.state = this.props.data;
+        this.state.posterId = this.props.currentUserId
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.submitAddress = this.submitAddress.bind(this); 
         this.renderErrors = this.renderErrors.bind(this)

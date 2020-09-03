@@ -4,8 +4,8 @@ import AskIndexItem from "./ask_index_item";
 class AsksIndex extends React.Component {
 
     componentDidMount() {
-        this.props.fetchAsks()
-        this.props.fetchUser(this.props.currentUserId)
+        this.props.fetchAsks();
+        this.props.fetchUser(this.props.currentUserId);
     }
 
     render() {
@@ -17,7 +17,7 @@ class AsksIndex extends React.Component {
                 <ul>
                     {this.props.asks.map((ask) => (
                         <AskIndexItem
-                            key={ask.id}
+                            key={Math.random()}
                             currentUser={this.props.currentUser}
                             currentUserId={this.props.currentUserId}
                             ask={ask}

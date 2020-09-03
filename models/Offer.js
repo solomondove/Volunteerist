@@ -1,57 +1,64 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const OfferSchema = new Schema({
-  category: {
-    type: String,
-    required: true,
-    default: 'general'
-  },
-  title: {
-    type: String,
-    required: true,
-    minlength: 5
-  },
-  description: {
-    type: String,
-    required: true,
-    minlength: 25
-  },
-  timeCommitment: {
-    type: Number,
-  },
-  deadline: {
-    type: Date,
-  },
-  timeOfDay: {
-    type: String,
-  },
-  posterId: {
-    type: String,
-    required: true
-  },
-  location: {
-    lat: {
-      type: Number,
-      required: true
+const OfferSchema = new Schema(
+  {
+    category: {
+      type: String,
+      required: true,
+      default: "general",
     },
-    lng: {
+    title: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+    description: {
+      type: String,
+      required: true,
+      minlength: 25,
+    },
+    timeCommitment: {
       type: Number,
-      required: true
+    },
+    deadline: {
+      type: Date,
+    },
+    timeOfDay: {
+      type: String,
+    },
+    posterId: {
+      type: String,
+      required: true,
+    },
+    location: {
+      lat: {
+        type: Number,
+        // required: true,
+      },
+      lng: {
+        type: Number,
+        // required: true,
+      },
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    volunteers: {
+      type: Array,
+    },
+    comments: {
+      type: Array,
+    },
+    date: {
+      type: Date,
+      default: Date.now,
     },
   },
-  volunteers: {
-    type: Array,
-  },
-  comments: {
-    type: Array,
-  },
-  date: {
-    type: Date,
-    default: Date.now
+  {
+    timestamps: true,
   }
-}, {
-  timestamps: true
-})
+);
 
 module.exports = Offer = mongoose.model('Offer', OfferSchema);

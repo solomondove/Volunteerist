@@ -35,7 +35,7 @@ router.patch('/:id/comment', (req, res) => {
 });
 
 router.get('/user/:user_id', (req, res) => {
-  Ask.find({ user: req.params.user_id })
+  Ask.find({ posterId: req.params.user_id })
     .then(asks => res.json(asks))
     .catch(err => 
       res.status(404).json({ noasksfound: "No asks found from that user"})
@@ -66,6 +66,7 @@ router.post('/', (req, res) => {
       timeOfDay: req.body.timeOfDay,
       posterId: req.body.posterId,
       location: req.body.location,
+      address: req.body.address
     })
 
     newAsk.save().then(ask => res.json(ask));
