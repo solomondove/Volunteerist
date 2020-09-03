@@ -5,6 +5,7 @@ import { fetchAsk, addAskComment } from '../../actions/ask_actions';
 import { fetchAskComments } from '../../actions/comment_actions';
 
 const mSTP = (state, { match }) => {
+  debugger
   return ({
     currentUserId: state.session.id,
     askId: match.params.ask_id,

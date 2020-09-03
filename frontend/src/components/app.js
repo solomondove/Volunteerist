@@ -14,7 +14,7 @@ import AskShowContainer from './asks_offers/ask_show_container';
 import AsksIndexContainer from "./asks_offers/asks_index_container"
 
 const App = () => (
-    <div>
+    <div className='app'>
         <NavBarContainer /> 
         <Switch>
             
