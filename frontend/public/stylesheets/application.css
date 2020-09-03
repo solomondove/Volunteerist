@@ -96,10 +96,15 @@ body {
 
 input {
 	width: 80%;
+	border: 1px solid #ffffef; 
+}
+
+textarea {
+	font-family: inherit; 
 }
 
 select {
-	width:88%;
+	width:80%;
 	border-radius: 5px;
 	background-color: #ffffef;
 	border-style: inset;
@@ -108,10 +113,11 @@ select {
 	border-width: 2px;
 }
 
-input:focus, select:focus {
-	border: 1px solid white;
+input:focus, select:focus, textarea:focus {
+	/* border: 1px solid white; */
 	outline-color: #c9c183;
 }
+
 
 #root, .app, body, html {
 	height: 100%;
