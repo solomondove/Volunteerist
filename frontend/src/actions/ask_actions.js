@@ -91,3 +91,10 @@ export const fetchUserAsks = id => dispatch => {
         );
 }
 
+export const addAskComment = partialAsk => dispatch => {
+    return AskAPIUtil.addAskComment(partialAsk)
+        .then(ask => dispatch(receiveAsk(ask)))
+}
+
+
+
