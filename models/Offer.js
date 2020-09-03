@@ -45,8 +45,8 @@ const OfferSchema = new Schema(
       type: String,
       required: true,
     },
-    volunteers: {
-      type: Array,
+    acceptor: {
+      type: String,
     },
     comments: {
       type: Array,
@@ -55,6 +55,14 @@ const OfferSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    hasBeenAccepted: {
+      type: Boolean,
+      default: false
+    },
+    offerCompleted: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

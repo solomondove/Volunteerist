@@ -23,3 +23,7 @@ export const deleteOffer = (offerId) => {
 export const getUserOffers = (id) => {
     return axios.get(`/api/offers/user/${id}`)
 }
+
+export const addAcceptor = (offerId, userId) => {
+    return axios.patch(`/api/offers/${offerId}/acceptor`, userId)
+}

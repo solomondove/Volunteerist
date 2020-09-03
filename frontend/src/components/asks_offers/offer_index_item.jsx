@@ -30,7 +30,9 @@ class OfferIndexItem extends React.Component {
             <button><Link to={`/offers/edit/${offer._id}`}>Edit Offer</Link></button>
             <button onClick={() => this.props.clearOffer(offer._id)}>Delete Offer</button>
           </div>
-        ) : null}
+        ) : 
+          <button onClick={() => this.props.fetchAcceptor(offer._id, currentUserId)}>Accept help</button>
+        }
       </div>
     );
   }

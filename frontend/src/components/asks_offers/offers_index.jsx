@@ -22,6 +22,7 @@ class AsksIndex extends React.Component {
               offer={offer}
               clearOffer={this.props.clearOffer}
               updateOffer={this.props.updateOffer}
+              fetchAcceptor={this.props.fetchAcceptor}
             />
           ))}
         </ul>
