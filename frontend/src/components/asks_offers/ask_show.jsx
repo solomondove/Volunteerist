@@ -32,7 +32,13 @@ class Ask extends React.Component {
         null
     )
 
-    const volunteer = this.props.currentUserId === this.props.posterId ? (
+    const volunteer = this.props.ask.hasVolunteer ? (
+      <li>This ask has a volunteer!</li>
+    ) : (
+      null
+    )
+
+    const buttonMenu = this.props.currentUserId === this.props.posterId ? (
       <div className="edit-delete-container">
         <button><Link to={`/asks/edit/${this.props.ask._id}`}>Edit Ask</Link></button>
         <button onClick={() => this.props.clearAsk(this.props.ask._id)}>Delete Ask</button>
@@ -65,9 +71,11 @@ if (this.state.postUser && Array.isArray(this.props.comments)) {
                 <h2 className="show-info-reqs">Requirements:</h2>
                 <ul>
                   <li>Approximate time commitment (hrs): {this.props.ask.timeCommitment}</li>
-                  <li>{this.props.ask.deadline ? <div>Deadline: {this.props.ask.deadline.slice(5, 10)}-{this.props.ask.deadline.slice(0, 4)}</div> : null}</li>
+                  <li>{this.props.ask.deadline ? <div>Deadline: {this.props.ask.deadline.slice(5, 10)}-{this.props.ask.deadline.slice(0, 4)}</div> : "no set deadline"}</li>
                   <li>Time of day: {this.props.ask.timeOfDay}</li>
+                  {volunteer}
                 </ul>
+                {buttonMenu}
               </div>
 
               <div className="show-map">

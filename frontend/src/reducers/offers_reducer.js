@@ -21,7 +21,7 @@ export default function (oldState = {}, action) {
             return newState
         case REMOVE_OFFER:
             delete newState[action.offerId.data];
-            return newState;
+            return newState; 
         default:
             return oldState;
     }

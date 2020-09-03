@@ -24,8 +24,7 @@ class AskIndexItem extends React.Component {
                 <br />
                 <p>Time of Day: {ask.timeOfDay}</p>
                 <br />
-                {/* <p>Location: {[ask.location}</p>
-                <br /> */}
+
                 {ask.posterId === currentUserId ? 
                     <div className="edit-delete-container">
                         <button><Link to={`/asks/edit/${ask._id}`}>Edit Ask</Link></button>

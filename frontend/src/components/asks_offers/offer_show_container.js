@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import OfferShow from './offer_show';
 import { fetchUser } from '../../actions/user_actions';
-import { fetchOffer, addOfferComment } from '../../actions/offer_actions';
+import { fetchOffer, addOfferComment, clearOffer } from '../../actions/offer_actions';
 import { fetchOfferComments } from '../../actions/comment_actions';
+import { fetchAcceptor } from "../../actions/offer_actions"; 
 
 const mSTP = (state, { match }) => {
   let posterId;
@@ -24,7 +25,9 @@ const mDTP = dispatch => {
     fetchOffer: (offerId) => (dispatch(fetchOffer(offerId))),
     addOfferComment: (comment) => (dispatch(addOfferComment(comment))),
     fetchOfferComments: (offerId) => (dispatch(fetchOfferComments(offerId))),
-    fetchUser: (userId) => (dispatch(fetchUser(userId)))
+    fetchUser: (userId) => (dispatch(fetchUser(userId))),
+    fetchAcceptor: (offerId, userId) => dispatch(fetchAcceptor(offerId, userId)),
+    clearOffer: offerId => dispatch(clearOffer(offerId))
   })
 }
 

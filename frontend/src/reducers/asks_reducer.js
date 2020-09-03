@@ -17,7 +17,7 @@ export default function (oldState = {}, action) {
             newState = {};
             action.asks.data.forEach(ask => {
                 newState[ask._id] = ask
-            })
+            });
             return newState
         case REMOVE_ASK:
             delete newState[action.askId.data];

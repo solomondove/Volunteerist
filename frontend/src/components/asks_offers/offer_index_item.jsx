@@ -26,13 +26,16 @@ class OfferIndexItem extends React.Component {
         {/* <p>Location: {[offer.location}</p>
             <br /> */}
         {offer.posterId === currentUserId ? (
-          <div>
+          <div className='edit-delete-container'>
             <button><Link to={`/offers/edit/${offer._id}`}>Edit Offer</Link></button>
             <button onClick={() => this.props.clearOffer(offer._id)}>Delete Offer</button>
+            <button><Link to={`/offers/${offer._id}`}>Details</Link></button>
           </div>
-        ) : 
-          <button onClick={() => this.props.fetchAcceptor(offer._id, currentUserId)}>Accept help</button>
-        }
+        ) : (
+            <div className="edit-delete-container">
+              <button><Link to={`/offers/${offer._id}`}>Details</Link></button>
+            </div>
+        )}
       </div>
     );
   }
