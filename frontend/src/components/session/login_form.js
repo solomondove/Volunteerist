@@ -13,16 +13,17 @@ class LoginForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.clearedErrors = false;
     }
 
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.currentUser === true) {
-    //         this.props.history.push('/dashboard');
-    //     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.currentUser === true) {
+            this.props.history.push('/dashboard');
+        }
 
-    //     this.setState({ errors: nextProps.errors })
-    // }
+        this.setState({ errors: nextProps.errors })
+    }
 
     update(field) {
         return e => this.setState({
@@ -32,22 +33,21 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
         let user = {
             email: this.state.email,
             password: this.state.password
         };
-
-        this.props.login(user).then(() => this.props.history.push('/dashboard'));
+        this.props.login(user)
+            if (!this.state.errors) {
+                this.props.history.push('/dashboard')
+            }
     }
 
     renderErrors() {
         return (
             <ul>
                 {Object.keys(this.state.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.state.errors[error]}
-                    </li>
+                    <li key={`error-${i}`}>{this.state.errors[error]}</li>
                 ))}
             </ul>
         );
@@ -55,8 +55,9 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="signup-login-form-container">
+                <form className="signup-login-form" onSubmit={this.handleSubmit}> 
+                    <h1>Login</h1>
                     <div>
                         <input type="text"
                             value={this.state.email}
@@ -70,9 +71,10 @@ class LoginForm extends React.Component {
                             placeholder="Password"
                         />
                         <br />
-                        <input type="submit" value="Submit" />
+                        <input className="btn" type="submit" value="Submit" />
                         {this.renderErrors()}
                     </div>
+                        {this.renderErrors()}
                 </form>
             </div>
         );

@@ -8,7 +8,8 @@
     "server": "nodemon app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
@@ -23,9 +24,14 @@
     "passport-jwt": "^4.0.0",
     "socket.io": "^2.3.0",
     "socket.io-redis": "^5.4.0",
+    "react-geocode": "^0.2.1",
+    "react-google-autocomplete": "^1.2.6",
     "validator": "^13.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
+  },
+  "engines": {
+    "node": "10.13.0"
   }
 }

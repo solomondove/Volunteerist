@@ -1,20 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import AskMapContainer from '../asks_offers/ask_map_container'; 
+import OfferMapContainer from '../asks_offers/offer_map_container'; 
 
 class Dashboard extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.state = {
+          visible: "asks"
+        }; 
+
+      this.handleAskOfferSwitch = this.handleAskOfferSwitch.bind(this); 
+    }  
+
+    handleAskOfferSwitch(){
+      return e => this.setState({visible: e.currentTarget.value})
+    }
 
     render() {
-        return (
-            <div>
-                <div>
-                    <Link to={"/ask"}>Create an Ask</Link>
-                    <Link to={"/offer"}>Create an Offer</Link>
-                </div>
-                <div>
-                    <Link to={"/profile"}>Your Profile</Link>
-                </div>
-            </div>
+        const mapComponent = (this.state.visible === "asks") ? (
+          <AskMapContainer />
+        ) : (
+          <OfferMapContainer />
         )
+        
+        return (
+          <div className="dashboard">
+            <select name="asksOffers" value={this.state.visible} onChange={this.handleAskOfferSwitch()}> 
+              <option value="asks">Asks</option>
+              <option value="offers">Offers</option> 
+            </select>
+
+            {mapComponent}
+          </div>
+        );
     }
 }
 

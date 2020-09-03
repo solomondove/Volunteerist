@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const Ask = require('./models/Ask');
 const Comment = require('./models/Comment');
+const path = require('path');
 
 const users = require('./routes/api/users');
 const asks = require('./routes/api/asks');
@@ -14,12 +15,12 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const db = require("./config/keys").mongoURI;
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('frontend/build'));
-//   app.get('/', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-//   })
-// }
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
