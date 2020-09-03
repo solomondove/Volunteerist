@@ -96,5 +96,11 @@ export const addAskComment = partialAsk => dispatch => {
         .then(ask => dispatch(receiveAsk(ask)))
 }
 
+export const fetchVolunteer = (askId, userId) => dispatch => {
+    return AskAPIUtil.addVolunteer(askId, userId)
+        .then((ask) => dispatch(receiveAsk(ask)),
+            (err) => dispatch(receiveAskErrors(err.response.data))
+        );
+}
 
 

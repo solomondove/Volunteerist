@@ -7,7 +7,7 @@ class SignupForm extends React.Component {
         this.state = {
             firstName: "",
             lastName: "",
-            gneder: "",
+            gender: "",
             email: "",
             gender: "",
             password: "",
@@ -41,7 +41,6 @@ class SignupForm extends React.Component {
             lastName: this.state.lastName,
             gender: this.state.gender,
             email: this.state.email,
-            gender: this.state.gender,
             password: this.state.password,
             password2: this.state.password2,
         };

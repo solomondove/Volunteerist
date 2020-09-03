@@ -35,7 +35,6 @@ router.post('/', (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-
     const newAsk = new Ask({
       category: req.body.category,
       title: req.body.title,
@@ -78,7 +77,9 @@ router.delete('/:id', (req, res) => {
   Ask.findById(req.params.id)
     .then(ask => {
       ask.delete()
-        .then(ask => res.json(ask))
+        .then(ask => {
+          res.json(ask._id)
+        })
         .catch(err => 
           res.status(400).json({ asknotchanged: "Ask could not be deleted"})
         );
@@ -86,6 +87,23 @@ router.delete('/:id', (req, res) => {
     .catch(err =>
       res.status(404).json({ noaskfound: "No ask found with that ID"})
     );
+});
+
+router.patch("/:id/volunteer", (req, res) => {
+  const userId = Object.keys(req.body)[0]
+  Ask.findById(req.params.id)
+      .then((ask) => {
+        ask.volunteer = userId;
+        ask.hasVolunteer = true;
+        ask
+          .save()
+          .then((ask) => res.json(ask))
+          .catch((err) =>
+            res.status(400).json({asknotchanged: "Could not volunteer"}))
+      })
+      .catch((err) =>
+      res.status(404).json({ noaskfound: "No ask found with that ID" })
+      );
 });
 
 module.exports = router;
