@@ -6,11 +6,13 @@
   border-bottom: 1px solid #15a969;
 }
 
-.navbar h1 {
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid white;
-  margin: 10px;
+.navbar > a {
+	padding: 6px 10px 4px;
+	border: 2px solid #ffffef;
+	display: block;
+	margin: 10px;
+	border-radius: 5px;
+	height: 25px;
 }
 
 .navbar-right {
@@ -25,7 +27,7 @@
 	padding: 3px 10px 7px;
 	border: 2px solid #ffffef;
 	display: block;
-	margin: 15px 10px 15px 0;
+	margin: 15px 10px 10px 0;
   border-radius: 5px;
   color: #ffffef;
   background-color: #0bb66c;

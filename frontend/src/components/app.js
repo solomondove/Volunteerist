@@ -17,7 +17,7 @@ import EditAskContainer from "./asks_offers/edit_ask_container";
 import EditOfferContainer from "./asks_offers/edit_offer_container";
 
 const App = () => (
-    <div>
+    <div className='app'>
         <NavBarContainer /> 
         <Switch>
             
