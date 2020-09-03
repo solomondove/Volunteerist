@@ -1,6 +1,7 @@
-import { fetchUserAsks, clearAsk, updateAsk, fetchAsks } from "../../actions/ask_actions";
+import { fetchUserAsks, clearAsk, updateAsk } from "../../actions/ask_actions";
+import { fetchUser } from "../../actions/user_actions";
 import { connect } from "react-redux";
-import AsksIndex from './asks_index';
+import UserAsksIndex from './user_asks_index';
 
 const mSTP = (state) => {
   return {
@@ -13,10 +14,10 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
   return {
     fetchUserAsks: (userId) => dispatch(fetchUserAsks(userId)),
-    fetchAsks: () => dispatch(fetchAsks()),
     clearAsk: (askId) => dispatch(clearAsk(askId)),
-    updateAsk: (ask) => dispatch(updateAsk(ask))
+    updateAsk: (ask) => dispatch(updateAsk(ask)),
+    fetchUser: userId => dispatch(fetchUser(userId))
   };
 };
 
-export default connect(mSTP, mDTP)(AsksIndex);
+export default connect(mSTP, mDTP)(UserAsksIndex);

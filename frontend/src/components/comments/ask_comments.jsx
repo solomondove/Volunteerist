@@ -43,9 +43,11 @@ const Comments = ({addAskComment, askId, currentUser, comments}) => {
   return(
     <div>
       <ScrollToBottom>
-        {messages.map((message, i) => (
-          <div key={i}>{message.posterName}: {message.body}</div>
-        ))}
+        <div className="show-comments-list">
+          {messages.map((message, i) => (
+            <div key={i} className="comment">{message.posterName}: {message.body}</div>
+          ))}
+        </div>
       </ScrollToBottom>
       <form>
         <input type="text"

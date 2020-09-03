@@ -1,9 +1,9 @@
 import React from "react";
 import OfferIndexItem from "./offer_index_item";
 
-class AsksIndex extends React.Component {
+class UserOffersIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchOffers();
+    this.props.fetchUserOffers(this.props.currentUserId);
     this.props.fetchUser(this.props.currentUserId);
   }
 
@@ -22,7 +22,6 @@ class AsksIndex extends React.Component {
               offer={offer}
               clearOffer={this.props.clearOffer}
               updateOffer={this.props.updateOffer}
-              fetchAcceptor={this.props.fetchAcceptor}
             />
           ))}
         </ul>
@@ -31,4 +30,4 @@ class AsksIndex extends React.Component {
   }
 }
 
-export default AsksIndex;
+export default UserOffersIndex;

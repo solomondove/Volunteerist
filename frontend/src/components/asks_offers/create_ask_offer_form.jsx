@@ -5,21 +5,11 @@ import Keys from '../../util/keys';
 class AskOfferForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            category: "",
-            title: "",
-            description: "",
-            timeCommitment: "",
-            deadline: "",
-            timeOfDay: "",
-            address: '', 
-            posterId: this.props.currentUserId,
-            location: { lat: "", lng: ""},
-
-        }
+        this.state = this.props.data;
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.submitAddress = this.submitAddress.bind(this); 
         this.renderErrors = this.renderErrors.bind(this)
+        this.goBack = this.goBack.bind(this)
     }
 
     componentDidMount() {
@@ -66,8 +56,16 @@ class AskOfferForm extends React.Component {
         this.props.processForm(this.state)
              .then((res) => {
                 if (res.type !== 'RECEIVE_OFFER_ERRORS' && res.type !== 'RECEIVE_ASK_ERRORS') {
-               this.props.history.push('/dashboard')
+                    if (this.props.formType === 'Create an Ask') {
+                        this.props.history.push('/asks')
+                    } else {
+                        this.props.history.push('/offers')
+                    }
              }})
+    }
+
+    goBack() {
+        this.props.history.goBack()
     }
 
     render() {
@@ -150,6 +148,7 @@ class AskOfferForm extends React.Component {
                     </label>
                     <br/> 
                     <br/>
+                    <button onClick={this.goBack}>Cancel</button>
                     <button className="submitBtn">{formType}</button>
                     <div className='errors'>
                         {this.renderErrors()}

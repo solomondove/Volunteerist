@@ -1,7 +1,7 @@
-import { fetchOffers, clearOffer } from "../../actions/offer_actions";
+import { fetchUserOffers, clearOffer, updateOffer } from "../../actions/offer_actions";
 import { fetchUser } from "../../actions/user_actions";
 import { connect } from "react-redux";
-import OffersIndex from "./offers_index";
+import UserOffersIndex from "./user_offers_index";
 
 const mSTP = (state) => {
   return {
@@ -13,10 +13,11 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
   return {
-    fetchOffers: () => dispatch(fetchOffers()),
+    fetchUserOffers: (userId) => dispatch(fetchUserOffers(userId)),
+    clearOffer: (offerId) => dispatch(clearOffer(offerId)),
+    updateOffer: (offer) => dispatch(updateOffer(offer)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
-    clearOffer: id => dispatch(clearOffer(id)),
   };
 };
 
-export default connect(mSTP, mDTP)(OffersIndex);
+export default connect(mSTP, mDTP)(UserOffersIndex);
