@@ -26,7 +26,10 @@ class OfferIndexItem extends React.Component {
         {/* <p>Location: {[offer.location}</p>
             <br /> */}
         {offer.posterId === currentUserId ? (
-          <Link to={`/offers/edit/${offer._id}`}>Edit Offer</Link>
+          <div>
+            <button><Link to={`/offers/edit/${offer._id}`}>Edit Offer</Link></button>
+            <button onClick={() => this.props.clearOffer(offer._id)}>Delete Offer</button>
+          </div>
         ) : null}
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import Comments from '../comments/comments';
+import { Link } from 'react-router-dom';
 
 class Ask extends React.Component {
 
@@ -20,7 +21,30 @@ class Ask extends React.Component {
   }
 
   render() {
-    if(this.state.postUser && Array.isArray(this.props.comments)) {
+    if (!this.props.ask) return null;
+
+    const volunteerButton = !this.props.ask.hasVolunteer ? (
+        <button onClick={() => this.props.fetchVolunteer(this.props.askId, this.props.currentUserId)}>
+          I volunteer!
+        </button>
+    ) : (
+        null
+    )
+
+    const volunteer = this.props.currentUserId === this.props.posterId ? (
+      <div className="edit-delete-container">
+        <button><Link to={`/asks/edit/${this.props.ask._id}`}>Edit Ask</Link></button>
+        <button onClick={() => this.props.clearAsk(this.props.ask._id)}>Delete Ask</button>
+        <button><Link to={`/asks`}>Back to all asks</Link></button>
+      </div>
+    ) : (
+      <div className="edit-delete-container"> 
+        {volunteerButton}
+        <button><Link to={`/asks`}>Back to all asks</Link></button>
+      </div>
+    )
+
+if (this.state.postUser && Array.isArray(this.props.comments)) {
       return (
         <div>
 
@@ -32,7 +56,9 @@ class Ask extends React.Component {
             <div>Approximate time commitment (hrs): {this.props.ask.timeCommitment}</div>
             {this.props.ask.deadline ? <div>Deadline: {this.props.ask.deadline.slice(5, 10)}-{this.props.ask.deadline.slice(0, 4)}</div> : null}
             <div>Time of day: {this.props.ask.timeOfDay}</div>
+            {volunteer}
           </div>
+
           <br/>
           <div>
             <h1>Comments</h1>

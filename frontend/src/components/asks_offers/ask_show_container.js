@@ -3,6 +3,7 @@ import AskShow from './ask_show';
 import { fetchUser } from '../../actions/user_actions';
 import { fetchAsk, addAskComment } from '../../actions/ask_actions';
 import { fetchAskComments } from '../../actions/comment_actions';
+import { fetchVolunteer } from '../../actions/ask_actions';
 
 const mSTP = (state, { match }) => {
   let posterId;
@@ -24,7 +25,8 @@ const mDTP = dispatch => {
     fetchAsk: (askId) => (dispatch(fetchAsk(askId))),
     addAskComment: (comment) => (dispatch(addAskComment(comment))),
     fetchAskComments: (askId) => (dispatch(fetchAskComments(askId))),
-    fetchUser: (userId) => (dispatch(fetchUser(userId)))
+    fetchUser: (userId) => (dispatch(fetchUser(userId))),
+    fetchVolunteer: (askId, userId) => dispatch(fetchVolunteer(askId, userId))
   })
 }
 

@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
       timeOfDay: req.body.timeOfDay,
       posterId: req.body.posterId,
       location: req.body.location,
-      address: req.body.location
+      address: req.body.address
     })
     newOffer.save().then(offer => res.json(offer));
   }
@@ -77,7 +77,7 @@ router.delete('/:id', (req, res) => {
   Offer.findById(req.params.id)
     .then(offer => {
       offer.delete()
-        .then(offer => res.json(offer))
+        .then(offer => res.json(offer._id))
         .catch(err =>
           res.status(400).json({ offernotchanged: "Offer could not be deleted" })
         );
