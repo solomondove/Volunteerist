@@ -27,3 +27,7 @@ export const getUserAsks = (id) => {
 export const addAskComment = (comment) => {
     return axios.post(`/api/asks/${comment.askId}/comments`, comment);
 };
+
+export const addVolunteer = (askId, userId) => {
+    return axios.patch(`/api/asks/${askId}/volunteer`, userId)
+}

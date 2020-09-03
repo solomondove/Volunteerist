@@ -16,14 +16,18 @@ class AsksIndex extends React.Component {
             <div className="ask-index-container">
                 <ul className="ask-index-ul">
                     {this.props.asks.map((ask) => (
-                            <AskIndexItem
-                                key={Math.random()}
-                                currentUser={this.props.currentUser}
-                                currentUserId={this.props.currentUserId}
-                                ask={ask}
-                                clearAsk={this.props.clearAsk}
-                                updateAsk={this.props.updateAsk}
-                                /> 
+                     !ask.hasVolunteer && !ask.askCompleted ? (
+                        <AskIndexItem
+                            key={ask._id}
+                            currentUser={this.props.currentUser}
+                            currentUserId={this.props.currentUserId}
+                            ask={ask}
+                            clearAsk={this.props.clearAsk}
+                            updateAsk={this.props.updateAsk}
+                            />
+                     ) : (
+                         null
+                     )
                         ))}
                 </ul>
             </div>

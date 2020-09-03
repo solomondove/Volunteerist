@@ -92,3 +92,14 @@ export const fetchUserOffers = id => dispatch => {
             (err) => dispatch(receiveOfferErrors(err.response.data))
         );
 }
+
+export const fetchAcceptor = (offerId, userId) => dispatch => {
+    return OfferAPIUtil.addAcceptor(offerId, userId)
+        .then((offer) => dispatch(receiveOffer(offer)),
+            (err) => dispatch(receiveOfferErrors(err.response.data))
+        );
+}
+export const addOfferComment = partialOffer => dispatch => {
+    return OfferAPIUtil.addOfferComment(partialOffer)
+        .then(offer => dispatch(receiveOffer(offer)))
+}

@@ -16,12 +16,13 @@ class AsksIndex extends React.Component {
         <ul>
           {this.props.offers.map((offer, i) => (
             <OfferIndexItem
-              key={Math.random()}
+              key={offer._id}
               currentUser={this.props.currentUser}
               currentUserId={this.props.currentUserId}
               offer={offer}
               clearOffer={this.props.clearOffer}
               updateOffer={this.props.updateOffer}
+              fetchAcceptor={this.props.fetchAcceptor}
             />
           ))}
         </ul>

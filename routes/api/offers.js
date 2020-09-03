@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
       timeOfDay: req.body.timeOfDay,
       posterId: req.body.posterId,
       location: req.body.location,
-      address: req.body.location
+      address: req.body.address
     })
     newOffer.save().then(offer => res.json(offer));
   }
@@ -77,12 +77,29 @@ router.delete('/:id', (req, res) => {
   Offer.findById(req.params.id)
     .then(offer => {
       offer.delete()
-        .then(offer => res.json(offer))
+        .then(offer => res.json(offer._id))
         .catch(err =>
           res.status(400).json({ offernotchanged: "Offer could not be deleted" })
         );
     })
     .catch(err =>
+      res.status(404).json({ noofferfound: "No offer found with that ID" })
+    );
+});
+
+router.patch("/:id/acceptor", (req, res) => {
+  const userId = Object.keys(req.body)[0]
+  Offer.findById(req.params.id)
+    .then((offer) => {
+      offer.acceptor = userId;
+      offer.hasBeenAccepted = true;
+      offer
+        .save()
+        .then((offer) => res.json(offer))
+        .catch((err) =>
+          res.status(400).json({ offernotchanged: "Could not volunteer" }))
+    })
+    .catch((err) =>
       res.status(404).json({ noofferfound: "No offer found with that ID" })
     );
 });

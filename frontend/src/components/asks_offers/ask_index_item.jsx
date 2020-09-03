@@ -42,14 +42,23 @@ class AskIndexItem extends React.Component {
                     <p>{description}</p>
                     <br />
                     <div className="index-buttons">
-                        <a className="index-button">See Details</a>  
                         {ask.posterId === currentUserId ? 
-                            <Link to={`/asks/edit/${ask._id}`} className="index-button">Edit Ask</Link>
+                            <div className="edit-delete-container">
+                                <button><Link to={`/asks/edit/${ask._id}`}>Edit Ask</Link></button>
+                                <button onClick={() => this.props.clearAsk(ask._id)}>Delete Ask</button>
+                                <button><Link to={`/asks/${ask._id}`}>Details</Link></button>
+                            </div>
                             : 
-                            null}
-                        </div>
+                            <div className="edit-delete-container"> 
+                                <button><Link to={`/asks/${ask._id}`}>Details</Link></button>
+                            </div>
+                        }
+                        
                     </div>
+                </div>
             </div>
+          
+         
         );
     }
 }
