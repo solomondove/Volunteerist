@@ -8,12 +8,17 @@ export default function (oldState = {}, action) {
             newState[action.offer.data._id] = action.offer.data
             return newState
         case RECEIVE_ALL_OFFERS:
+            newState = {}
             action.offers.data.forEach((offer) => {
               newState[offer._id] = offer;
             });
             return newState
         case RECEIVE_USER_OFFERS:
-            return action.offers.data;
+            newState = {}
+            action.offers.data.forEach((offer) => {
+                newState[offer._id] = offer;
+            });
+            return newState
         case REMOVE_OFFER:
             delete newState[action.offerId];
             return newState;
