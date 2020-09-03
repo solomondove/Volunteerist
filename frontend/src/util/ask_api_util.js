@@ -13,8 +13,8 @@ export const postAsk = (ask) => {
 };
 
 export const editAsk = (ask) => {
-    return axios.patch(`/api/asks/${ask.id}`)
-};
+    return axios.patch(`/api/asks/${ask._id}`, ask)
+}
 
 export const deleteAsk = (askId) => {
     return axios.delete(`/api/asks/${askId}`)

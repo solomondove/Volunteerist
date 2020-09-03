@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.get('/user/:user_id', (req, res) => {
-  Offer.find({ user: req.params.user_id })
+  Offer.find({ posterId: req.params.user_id })
     .then(offers => res.json(offers))
     .catch(err =>
       res.status(404).json({ nooffersfound: "No offers found from that user" })
@@ -45,6 +45,7 @@ router.post('/', (req, res) => {
       timeOfDay: req.body.timeOfDay,
       posterId: req.body.posterId,
       location: req.body.location,
+      address: req.body.location
     })
     newOffer.save().then(offer => res.json(offer));
   }
