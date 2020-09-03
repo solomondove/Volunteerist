@@ -3,8 +3,9 @@ import UserAsksIndexContainer from "../asks_offers/user_asks_index_container";
 import UserOffersIndexContainer from "../asks_offers/user_offers_index_container";
 
 class Profile extends React.Component {
-
-    
+    componentDidMount() {
+      this.props.fetchUser(this.props.currentUserId);
+    }
 
     render() {
         const { currentUser } = this.props

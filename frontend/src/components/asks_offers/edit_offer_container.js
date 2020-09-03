@@ -3,6 +3,7 @@ import CreateAskOfferForm from "./create_ask_offer_form";
 import { updateOffer, clearOffer, fetchOffer } from "../../actions/offer_actions";
 import { clearOfferErrors } from "../../actions/offer_actions";
 import { fetchUser } from "../../actions/user_actions";
+import { withRouter } from "react-router-dom";
 
 const mSTP = (state, ownProps) => {
   return {
@@ -24,4 +25,4 @@ const mDTP = (dispatch) => {
   };
 };
 
-export default connect(mSTP, mDTP)(CreateAskOfferForm);
+export default withRouter(connect(mSTP, mDTP)(CreateAskOfferForm));

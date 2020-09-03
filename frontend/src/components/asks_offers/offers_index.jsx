@@ -14,7 +14,7 @@ class AsksIndex extends React.Component {
     return (
       <div>
         <ul>
-          {this.props.offers.map((offer, i) => (
+          {this.props.offers.map((offer) => (
             <OfferIndexItem
               key={offer._id}
               currentUser={this.props.currentUser}
