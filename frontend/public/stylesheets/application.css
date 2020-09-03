@@ -4,6 +4,7 @@
 @import url("./profile.css");
 @import url("./session.css");
 @import url("./asks_offers.css");
+@import url("./show.css");
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -58,6 +59,7 @@ h1 {
 a {
 	text-decoration: none;
 	padding: 6px 10px 4px;
+	color: white;
 	border: 2px solid #ffffef;
 	display: block;
 	margin: 5px 10px 5px 0;

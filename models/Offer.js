@@ -48,9 +48,7 @@ const OfferSchema = new Schema(
     acceptor: {
       type: String,
     },
-    comments: {
-      type: Array,
-    },
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     date: {
       type: Date,
       default: Date.now,

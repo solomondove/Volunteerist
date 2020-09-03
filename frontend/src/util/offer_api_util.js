@@ -27,3 +27,6 @@ export const getUserOffers = (id) => {
 export const addAcceptor = (offerId, userId) => {
     return axios.patch(`/api/offers/${offerId}/acceptor`, userId)
 }
+export const addOfferComment = (comment) => {
+    return axios.post(`/api/offers/${comment.offerId}/comments`, comment);
+};

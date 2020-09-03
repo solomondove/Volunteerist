@@ -11,8 +11,10 @@ const CommentSchema = new Schema({
     required: true
   },
   askId: {
-    type: String,
-    required: true
+    type: String
+  },
+  offerId: {
+    type: String
   },
   body: {
     type: String,
