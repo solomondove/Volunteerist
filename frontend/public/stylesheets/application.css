@@ -65,9 +65,9 @@ a {
 	height: 20px;
 }
 
-a:hover {
+/* a:hover {
 	background-color: #15a969;
-}
+} */
 
 a:visited{
 	color: #ffffef;
@@ -108,7 +108,7 @@ select {
 
 input:focus, select:focus {
 	border: 1px solid white;
-	outline-color: #c2cb16;
+	outline-color: #c9c183;
 }
 
 #root, .app, body, html {

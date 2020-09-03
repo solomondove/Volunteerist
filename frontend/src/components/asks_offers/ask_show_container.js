@@ -5,11 +5,17 @@ import { fetchAsk, addAskComment } from '../../actions/ask_actions';
 import { fetchAskComments } from '../../actions/comment_actions';
 
 const mSTP = (state, { match }) => {
-  debugger
+  let posterId;
+  if(state.entities.asks[match.params.ask_id]) {
+    posterId = state.entities.asks[match.params.ask_id].posterId
+  }
   return ({
     currentUserId: state.session.id,
     askId: match.params.ask_id,
-    comments: state.entities.comments
+    comments: state.entities.comments,
+    postUser: state.entities.users[posterId],
+    ask: state.entities.asks[match.params.ask_id],
+    posterId
   })
 }
 

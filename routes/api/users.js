@@ -19,7 +19,9 @@ router.get('/test', (req, res) => res.json({ msg: "This is the users route" }));
 
 router.get('/:id', (req, res) => {
   User.findById(req.params.id)
-    .then(user => res.json(user))
+    .then(user => {
+      res.json(user)
+    })
     .catch(err => res.status(404).json({ nouserfound: 'No user found with that ID' }))
 })
 

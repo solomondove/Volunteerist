@@ -1,39 +1,123 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #0bb66c;
+  background-color: #57824a;
   color: white;
-  border-bottom: 1px solid #15a969;
+  border-bottom: 1px solid white;
+  height: 56px;
 }
 
 .navbar > a {
-	padding: 6px 10px 4px;
-	border: 2px solid #ffffef;
+	padding: 5px;
+	border: none;
 	display: block;
 	margin: 10px;
 	border-radius: 5px;
-	height: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-right {
   display: flex;
+  align-items: center;
 }
 
-.navbar-right a {
-  margin-top: 15px;
+.navbar-right > a {
+  border: none;
+  background-color: #285129;
+  transition: 0.25s;
+  color: white;
 }
+
+.navbar-right > a:hover, .navbar-right > button:hover {
+  background-color: #223d22;
+}
+
+/* .navbar-right a {
+  margin-top: 15px;
+} */
 
 .navbar-right button {
-	padding: 3px 10px 7px;
-	border: 2px solid #ffffef;
+	padding: 7px;
+  border: none;
 	display: block;
-	margin: 15px 10px 10px 0;
   border-radius: 5px;
   color: #ffffef;
-  background-color: #0bb66c;
+  background-color: #285129;
   font-size: 16px;
+  transition: 0.25s;
 }
 
-.navbar-right button:hover {
-	background-color: #15a969;
+[class*="navbar-trigger"] {
+  position: relative;
+  z-index: 2;
+}
+
+[class*="navbar-trigger"] ul {
+  display: none;
+}
+
+[class*="navbar-trigger"] > div {
+  height: 57px;
+  line-height: 57px;
+  padding: 0px 10px;
+  display: block;
+  border-bottom: 1px solid white;
+}
+
+[class*="navbar-trigger"]:hover > ul {
+  display: block;
+  position: absolute;
+  background-color: #57824a;
+}
+
+[class*="navbar-trigger"]:hover {
+  background-color: #57824a;
+}
+
+[class*="navbar-trigger"] ul a {
+  border-radius: 0px;
+  margin: 0px;
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0px 10px 10px;
+  color: white;
+}
+
+[class*="navbar-trigger"] ul a:hover {
+  background-color: #668c59;
+}
+
+[class*="navbar-trigger"]:hover > div {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: none;
+}
+
+.navbar-trigger-volunteer ul, .navbar-trigger-ask ul {
+  width: 130px;
+}
+
+.navbar-trigger-dashboard ul {
+  right: 0px;
+  width: calc(100% + 20px);
+}
+
+.navbar-trigger-dashboard > div {
+  padding-right: 20px;
+}
+
+.navbar-trigger-dashboard button {
+  background-color: #57824a;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.navbar-trigger-dashboard button:hover {
+  background-color: #668c59;
 }
