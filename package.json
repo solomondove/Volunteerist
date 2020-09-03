@@ -26,6 +26,7 @@
     "socket.io-redis": "^5.4.0",
     "react-geocode": "^0.2.1",
     "react-google-autocomplete": "^1.2.6",
+    "react-icons": "^3.11.0",
     "validator": "^13.1.1"
   },
   "devDependencies": {
