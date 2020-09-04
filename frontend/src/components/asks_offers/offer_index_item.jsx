@@ -11,6 +11,10 @@ class OfferIndexItem extends React.Component {
     }
     const { offer, currentUserId } = this.props;
 
+    const title = offer.title.length > 30 ? (
+      offer.title.slice(0, 30).concat("...")
+    ) : (offer.title)
+
     const description = offer.description.length > 50 ? (
       offer.description.slice(0, 50).concat("...")
     ) : (offer.description)

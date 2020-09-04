@@ -34,10 +34,8 @@ router.patch('/update/:id', (req, res) => {
     } else {
       User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, user) {
         if (err) {
-          console.log("err", err);
           res.status(500).send(err);
         } else {
-          console.log("success");
           res.send(user);
         }
       })
