@@ -1,7 +1,8 @@
 import React from 'react';
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
-import Keys from '../../util/keys';
 import { mapStyle } from './map_styles';
+import { retrieveMapKey, getMapKey, setMapCookie } from '../../util/map_api_util';
+
 
 class AskMap extends React.Component {
   render() {
@@ -18,4 +19,13 @@ class AskMap extends React.Component {
   }
 };
 
-export default GoogleApiWrapper({ apiKey: Keys.GoogleMapsAPI })(AskMap); 
+// for retrieving map api from backend
+const mapKey = retrieveMapKey("mapKeyCookie");
+if (mapKey === '') {
+  getMapKey().then(key => {
+    setMapCookie("mapKeyCookie", key.data, 1);
+    window.location.reload();
+  });
+}
+
+export default GoogleApiWrapper({ apiKey: mapKey })(AskMap); 
