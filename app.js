@@ -29,7 +29,6 @@ app.use(bodyParser.json());
 
 
 app.get('/mapapi', (req, res) => {
-  console.log(mapKeys);
   res.json(mapKeys);
 })
 

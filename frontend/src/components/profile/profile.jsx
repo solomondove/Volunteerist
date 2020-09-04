@@ -52,7 +52,7 @@ class Profile extends React.Component {
 
                 <h2><span>{currentUser.firstName} {currentUser.lastName}</span></h2>
                 <div className="profile-email">{currentUser.email}</div>
-                <div className="profile-gender">{currentUser.gender}</div>
+                <div className="profile-pronouns">{currentUser.pronouns}</div>
 
                 <div className="profile-totals">
                   <h1>YOUR STATS</h1>
@@ -86,7 +86,7 @@ class Profile extends React.Component {
                 <select value={this.state.currentShow} onChange={(event) => this.setState({currentShow: event.currentTarget.value})}>
                   <option value="ask">My Asks</option>
                   <option value="offer">My Offers</option>
-                  <option value="volunteer">Asks Volunteered</option>
+                  <option value="volunteer">Asks Volunteered For</option>
                 </select>
               </div>
 

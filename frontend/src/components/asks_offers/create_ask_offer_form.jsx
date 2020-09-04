@@ -101,9 +101,8 @@ class AskOfferForm extends React.Component {
                 <div className="AO-form">
                     <h1 className="formTitle" >{formType}</h1>
                     <div style={formHeight}>
-                        
-                    
-                        <label className="AO-location-label">Location:
+                        <p className="category-required">* required field</p>
+                        <label className="AO-location-label">Location: *
                             <br/> 
                             <div>
                                 <textarea
@@ -118,7 +117,7 @@ class AskOfferForm extends React.Component {
                             </div>
                         </label>
                         <form className="fullForm" onSubmit={this.handleSubmit}>
-                            <label className="category-label">Category:</label>
+                            <label className="category-label">Category: *</label>
                             <br/>
                             <select className="categorySelect"
                                 value={this.state.category} 
@@ -135,7 +134,7 @@ class AskOfferForm extends React.Component {
                                 <option value="other">Other</option>
                             </select>
                             <br/>
-                            <label>Title:
+                            <label>Title: *
                                 <br/> 
                                 <input className="formInput"
                                     placeholder="name of the post"
@@ -144,7 +143,7 @@ class AskOfferForm extends React.Component {
                                     onChange={this.update('title')}/>
                             </label>
                             <br/>
-                            <label>Description:
+                            <label>Description: *
                                 <br/> 
                                 <textarea className="formInput" 
                                     placeholder="what it is"
@@ -182,11 +181,11 @@ class AskOfferForm extends React.Component {
                             <br/> 
                             <br/>
                             <button className="submitBtn btn offer-btn">{formType}</button>
-                            <button className="cancel-btn" onClick={this.goBack}>Cancel</button>
                             <div className='errors'>
                                 {this.renderErrors()}
                             </div>
                         </form>
+                            <button className="cancel-btn" onClick={this.goBack}>Cancel</button>
                     </div>
                 </div>
             </div>

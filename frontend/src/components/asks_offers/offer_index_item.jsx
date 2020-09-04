@@ -2,11 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class OfferIndexItem extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchOffer(this.props.offer._id)
+  }
+  
+
   render() {
     const { offer, currentUserId } = this.props;
     if (!offer) {
       return null;
     }
+
+    const title = offer.title.length > 30 ? (
+      offer.title.slice(0, 30).concat("...")
+    ) : (offer.title)
+
     const description = offer.description.length > 50 ? (
       offer.description.slice(0, 50).concat("...")
     ) : (offer.description)
@@ -17,7 +28,7 @@ class OfferIndexItem extends React.Component {
           <h2 className="ask-header">OFFER</h2>
           <br />
           <h3 className="ai-category-header">Title</h3>
-          <p className="index-title">{offer.title}</p>
+          <p className="index-title">{title}</p>
           <br />
           <div className="sub-categories">
             <span>
@@ -41,8 +52,8 @@ class OfferIndexItem extends React.Component {
           <br />
           {offer.posterId === currentUserId ? (
             <div className='edit-delete-container'>
-              <Link to={`/offers/edit/${offer._id}`} className="index-button">Edit Offer</Link>
-              <button className="index-button" id="index-button" onClick={() => this.props.clearOffer(offer._id)}>Delete Offer</button>
+              <Link to={`/offers/edit/${offer._id}`} className="index-button">Edit</Link>
+              <button className="index-button" id="index-button" onClick={() => this.props.clearOffer(offer._id)}>Delete</button>
               <Link to={`/offers/${offer._id}`} className="index-button">Details</Link>
             </div>
           ) : (
