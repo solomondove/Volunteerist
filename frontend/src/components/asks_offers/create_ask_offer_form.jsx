@@ -89,27 +89,37 @@ class AskOfferForm extends React.Component {
                     value={this.state.deadline}
                     onChange={this.update('deadline')} />
             </label>
-        ) : (<span></span>)
+        ) : (<label></label>)
+        let formHeight;
+        if (formType === "Create an Ask") {
+            formHeight = { '--form-height': '890px' }
+        } else {
+            formHeight = { '--form-height': '820px' }
+        } 
         return (
             <div className="AO-form-container">
                 <div className="AO-form">
                     <h1 className="formTitle" >{formType}</h1>
-                    <div>
+                    <div style={formHeight}>
                         
                     
-                        <label>Location:
+                        <label className="AO-location-label">Location:
                             <br/> 
+                            <div>
                                 <textarea
                                 rows='3'  
                                 columns="30"
                                 placeholder="address"
                                 value={this.state.address}
                                 onChange={this.update('address')} />
-                            <button className="btn"
-                                onClick={() => this.submitAddress()}>Add Address
+                                <button className="address-btn"
+                                    onClick={() => this.submitAddress()}>Add Address
                                 </button>
+                            </div>
                         </label>
                         <form className="fullForm" onSubmit={this.handleSubmit}>
+                            <label className="category-label">Category:</label>
+                            <br/>
                             <select className="categorySelect"
                                 value={this.state.category} 
                                 onChange={this.update('category')}>
@@ -171,8 +181,8 @@ class AskOfferForm extends React.Component {
                             {deadline}
                             <br/> 
                             <br/>
-                            <button className="submitBtn btn">{formType}</button>
-                            <button onClick={this.goBack}>Cancel</button>
+                            <button className="submitBtn btn offer-btn">{formType}</button>
+                            <button className="cancel-btn" onClick={this.goBack}>Cancel</button>
                             <div className='errors'>
                                 {this.renderErrors()}
                             </div>

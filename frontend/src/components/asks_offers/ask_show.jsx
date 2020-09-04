@@ -53,16 +53,16 @@ class Ask extends React.Component {
     )
 
     const buttonMenu = this.props.currentUserId === this.props.posterId ? (
-      <div className="edit-delete-container">
-        <button><Link to={`/asks/edit/${this.props.ask._id}`}>Edit Ask</Link></button>
+      <div className="show-edit-button-container">
+        <Link to={`/asks/edit/${this.props.ask._id}`}>Edit Ask</Link>
         <button onClick={this.deleteAskClick}>Delete Ask</button>
         {completeButton}
-        <button><Link to={`/asks`}>Back to all asks</Link></button>
+        <Link to={`/asks`}>Back to all asks</Link>
       </div>
     ) : (
-      <div className="edit-delete-container"> 
+      <div className="show-edit-delete-container"> 
+        <Link to={`/asks`}>Back to all asks</Link>
         {volunteerButton}
-        <button><Link to={`/asks`}>Back to all asks</Link></button>
       </div>
     )
 
