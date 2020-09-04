@@ -17,7 +17,7 @@ class OfferIndexItem extends React.Component {
           <h2 className="ask-header">OFFER</h2>
           <br />
           <h3 className="ai-category-header">Title</h3>
-          <p clasName="index-title">{offer.title}</p>
+          <p className="index-title">{offer.title}</p>
           <br />
           <div className="sub-categories">
             <span>

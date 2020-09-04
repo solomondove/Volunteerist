@@ -23,9 +23,10 @@ class CompleteAskForm extends React.Component {
         return e => {
             switch (field) {
                 case "hoursWorked":
-                    this.setState({[field]: parseInt(e.currentTarget.value)})
+                    this.setState({[field]: parseInt(e.currentTarget.value)});
+                    break; 
                 default:
-                break
+                    break
             }
            
         }
