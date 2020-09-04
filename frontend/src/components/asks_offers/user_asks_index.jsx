@@ -15,6 +15,7 @@ class UserAsksIndex extends React.Component {
       <div>
         <ul>
           {this.props.asks.map((ask) => (
+            !ask.askCompleted ? (
             <AskIndexItem
               key={ask._id}
               currentUser={this.props.currentUser}
@@ -22,7 +23,10 @@ class UserAsksIndex extends React.Component {
               ask={ask}
               clearAsk={this.props.clearAsk}
               updateAsk={this.props.updateAsk}
-            />
+            />)
+            :(
+            null
+            )
           ))}
         </ul>
       </div>

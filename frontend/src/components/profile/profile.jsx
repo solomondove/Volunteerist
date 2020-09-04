@@ -16,6 +16,10 @@ class Profile extends React.Component {
       this.props.fetchUser(this.props.currentUserId);
     }
 
+    getLevel() {
+      return Math.floor(this.props.currentUser.stats.hrsCompleted / 5)
+    }
+
     render() {
         const { currentUser } = this.props
         if (!currentUser) {
@@ -39,6 +43,10 @@ class Profile extends React.Component {
 
                 <div className="profile-totals">
                   <h1>TOTALS</h1>
+                  <div className="profile-outer-level">
+                    <div className="profile-level">Level {this.getLevel()}:</div>
+                    <div className="profile-level-bar"></div>
+                  </div>
                 </div>
 
               </div>
