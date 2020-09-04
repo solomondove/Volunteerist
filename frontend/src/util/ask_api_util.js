@@ -31,3 +31,7 @@ export const addAskComment = (comment) => {
 export const addVolunteer = (askId, userId) => {
     return axios.patch(`/api/asks/${askId}/volunteer`, userId)
 }
+
+export const addCompletion = (askId) => {
+    return axios.patch(`/api/asks/${askId}/complete`)
+}
