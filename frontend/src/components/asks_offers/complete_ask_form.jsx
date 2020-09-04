@@ -91,7 +91,7 @@ class CompleteAskForm extends React.Component {
         return (
           <div className="AO-form-container">
             <div className="AO-form">
-              <form className="fullForm askForm" onSubmit={this.handleSubmit}>
+              <form className="askForm" onSubmit={this.handleSubmit}>
                 <h1 className="formTitle">
                   Please leave a review for your volunteer!
                 </h1>
