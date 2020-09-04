@@ -4,9 +4,9 @@ const validText = require('./valid-text');
 module.exports = function validateEditInput(data) {
   let errors = {};
 
-  data.firstName = validText(data.firstName) ? data.firstName : '';
-  data.lastName = validText(data.lastName) ? data.lastName : '';
-  data.email = validText(data.email) ? data.email : '';
+  // data.firstName = validText(data.firstName) ? data.firstName : '';
+  // data.lastName = validText(data.lastName) ? data.lastName : '';
+  // data.email = validText(data.email) ? data.email : '';
 
   // if (Validator.isEmpty(data.firstName)) {
   //   errors.firstName = 'First name is required';

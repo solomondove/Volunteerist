@@ -102,4 +102,4 @@ class AskMap extends React.Component {
    }
 }; 
 
-export default GoogleApiWrapper({apiKey: process.env.GOOGLE_MAPS_API})(AskMap); 
+export default GoogleApiWrapper({apiKey: Keys.GoogleMapsAPI})(AskMap); 

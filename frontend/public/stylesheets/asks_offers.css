@@ -187,3 +187,8 @@
 .description {
   height: 40px; 
 }
+
+.askForm {
+  background-color: #57824a;
+  border-radius: 20px;
+}

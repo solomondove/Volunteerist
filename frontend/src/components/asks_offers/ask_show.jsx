@@ -11,6 +11,7 @@ class Ask extends React.Component {
       currentUser: null,
       postUser: null
     };
+    this.deleteAskClick = this.deleteAskClick.bind(this)
   }
 
   componentDidMount() {
@@ -19,6 +20,13 @@ class Ask extends React.Component {
     })
     this.props.fetchUser(this.props.currentUserId).then(result => this.setState({currentUser: result.user.data}))
     this.props.fetchAskComments(this.props.askId);
+  }
+
+  deleteAskClick(e) {
+    e.preventDefault();
+    this.props.clearAsk(this.props.ask._id);
+    this.props.history.push('/asks')
+
   }
 
   render() {
@@ -47,7 +55,7 @@ class Ask extends React.Component {
     const buttonMenu = this.props.currentUserId === this.props.posterId ? (
       <div className="edit-delete-container">
         <button><Link to={`/asks/edit/${this.props.ask._id}`}>Edit Ask</Link></button>
-        <button onClick={() => this.props.clearAsk(this.props.ask._id)}>Delete Ask</button>
+        <button onClick={this.deleteAskClick}>Delete Ask</button>
         {completeButton}
         <button><Link to={`/asks`}>Back to all asks</Link></button>
       </div>
