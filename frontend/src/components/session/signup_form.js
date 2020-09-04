@@ -8,7 +8,7 @@ class SignupForm extends React.Component {
             firstName: "",
             lastName: "",
             email: "",
-            gender: "",
+            pronouns: "",
             password: "",
             password2: "",
             errors: {},
@@ -38,7 +38,7 @@ class SignupForm extends React.Component {
         let user = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            gender: this.state.gender, 
+            pronouns: this.state.pronouns, 
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
@@ -76,11 +76,11 @@ class SignupForm extends React.Component {
                             placeholder="Last Name"
                         />
                         <div className="signup-dropdown-div">
-                            <select value={this.state.gender} onChange={this.update('gender')}>
-                                <option value="" disabled>Select a gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="non-binary">Non-binary</option>
+                            <select value={this.state.pronouns} onChange={this.update('pronouns')}>
+                                <option value="" disabled>Select your pronouns</option>
+                                <option value="he/him/his">he/him/his</option>
+                                <option value="she/her/hers">she/her/hers</option>
+                                <option value="they/them/theirs">they/them/theirs</option>
                                 <option value="other">Other</option>
                                 <option value="decline to answer">Decline to answer</option>
                             </select>
