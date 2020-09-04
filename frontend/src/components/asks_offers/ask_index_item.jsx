@@ -3,30 +3,59 @@ import { Link } from 'react-router-dom';
 
 class AskIndexItem extends React.Component {
 
-
     render() {
-        const { ask, clearAsk, updateAsk } = this.props
+        const { ask, currentUserId } = this.props
         if (!ask) {
             return null
         }
+        const description = ask.description.length > 50 ? (
+            ask.description.slice(0, 50).concat("...") 
+        ) : ( ask.description )
+
         return (
-          <div>
-            <p>Category: {ask.category}</p>
-            <br />
-            <p>Title: {ask.title}</p>
-            <br />
-            <p>Description: {ask.description}</p>
-            <br />
-            <p>Time Commitment: {ask.timeCommitment}</p>
-            <br />
-            <p>Deadline: {ask.deadline}</p>
-            <br />
-            <p>Time of Day: {ask.timeOfDay}</p>
-            <br />
-            {/* <p>Location: {[ask.location}</p>
-            <br /> */}
-            <Link to={`/ask/edit/${ask._id}`}>Edit Ask</Link>
-          </div>
+            <div className="ask-index-item">
+                <div>
+
+                    <h2 className="ask-header">ASK</h2>
+                    <br />
+                    <h3 className="ai-category-header">Title:</h3>
+                    <p className="index-title">{ask.title}</p>
+                    <br/>
+                    <div className="sub-categories">
+                        <span>
+                            <h3 className="ai-category-header">Category:</h3>
+                            <p>{ask.category}</p>
+                        <br />
+                        </span>
+                        <span>
+                            <h3 className="ai-category-header">Time Est.:</h3>
+                            <p>{ask.timeCommitment ? ask.timeCommitment.toString().concat("hr") : "na"}</p>
+                            <br />
+                        </span>
+                        <span>
+                            <h3 className="ai-category-header">Time of Day:</h3>
+                            <p>{ask.timeOfDay ? ask.timeOfDay : "na"}</p>
+                            <br />
+                        </span>
+                    </div> 
+                    <h3 className="ai-category-header">Description:</h3>
+                    <p className="description">{description}</p>
+                    <br />
+                    {ask.posterId === currentUserId ? 
+                        <div className="edit-delete-container">
+                            <Link to={`/asks/edit/${ask._id}`} className="index-button">Edit</Link>
+                            <button className="index-button" id="index-button" onClick={() => this.props.clearAsk(ask._id)}>Delete</button>
+                            <Link to={`/asks/${ask._id}`} className="index-button">Details</Link>
+                        </div>
+                        : 
+                        <div className="edit-delete-container"> 
+                            <Link to={`/asks/${ask._id}`} className="index-button">Details</Link>
+                        </div>
+                    }
+                </div>
+            </div>
+          
+         
         );
     }
 }

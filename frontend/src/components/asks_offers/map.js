@@ -1,7 +1,8 @@
 import React from 'react'; 
-import { GoogleApiWrapper, Map, InfoWindow, Marker } from 'google-maps-react';
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 import Keys from '../../util/keys'; 
-import {mapStyle} from './map_styles'; 
+import { mapStyle } from './map_styles'; 
+import InfoWindowEx from './map_info_window_ex'; 
 
 class AskMap extends React.Component {
     constructor(props) {
@@ -14,11 +15,14 @@ class AskMap extends React.Component {
 
         this.onMarkerClick = this.onMarkerClick.bind(this); 
         this.onMapClicked = this.onMapClicked.bind(this); 
+        this.selectedListing = this.selectedListing.bind(this); 
+        this.showDetails = this.showDetails.bind(this); 
     }
 
     componentDidMount() {
         this.props.fetch(); 
     }
+
 
     onMarkerClick = (props, marker, e) => {
         this.setState({
@@ -37,19 +41,51 @@ class AskMap extends React.Component {
         }
     }
 
-   render() { 
-       return ( 
-           <div> 
+    selectedListing = (listing) => {
+        if (this.props.type === "ask") {
+            if (!listing.hasVolunteer && !listing.askCompleted ) {
+                return ( 
+                    <Marker onClick={this.onMarkerClick}
+                        key={listing._id}
+                        listing={listing}
+                        position={listing.location} />  
+                )
+            }
+        } else { 
+            if (!listing.offerCompleted) {
+                return ( 
+                    <Marker onClick={this.onMarkerClick}
+                        key={listing._id}
+                        listing={listing}
+                        position={listing.location} />  
+                )
+            }
+        }
+    }; 
 
-                <Map google={this.props.google} styles={mapStyle} zoom={14} onClick={this.onMapClicked}>
+    showDetails = () => {
+        debugger; 
+        if (this.props.type === 'ask') {
+            this.props.history.push(`/asks/${this.state.selectedPlace._id}`)
+        } else {
+            this.props.history.push(`/offers/${this.state.selectedPlace._id}`)
+        }
+    }
+
+   render() { 
+       const containerStyle = {
+           height: '85%'
+       }
+       
+       return ( 
+           <div className="map-container"> 
+
+                <Map google={this.props.google} styles={mapStyle} containerStyle={containerStyle} zoom={14} onClick={this.onMapClicked}>
                     {this.props.listings.map(listing => 
-                        <Marker onClick={this.onMarkerClick}
-                            key={listing._id}
-                            listing={listing}
-                            position={listing.location} />    
+                        this.selectedListing(listing)  
                     )}
                     
-                    <InfoWindow 
+                    <InfoWindowEx 
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}> 
                         <div id="info-window">
@@ -57,12 +93,13 @@ class AskMap extends React.Component {
                             <p>Category: {this.state.selectedPlace.category}</p> 
                             <p>Est. Time: {this.state.selectedPlace.timeCommitment} hr</p>
                             <p>Description: {this.state.selectedPlace.description}</p>
+                            <button onClick={() => this.showDetails()}>Details</button>  
                         </div>
-                    </InfoWindow>
+                    </InfoWindowEx>
                 </Map>
            </div>
        )
    }
 }; 
 
-export default GoogleApiWrapper({apiKey: Keys.GoogleMapsAPI})(AskMap); 
+export default GoogleApiWrapper({apiKey: process.env.GOOGLE_MAPS_API})(AskMap); 

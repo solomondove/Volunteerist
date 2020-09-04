@@ -9,11 +9,8 @@ module.exports = function validateAskInput(data) {
   data.description = validText(data.description) ? data.description : '';
   data.location.lat = validText(data.location.lat.toString()) ? data.location.lat.toString() : '';
   data.location.lng = validText(data.location.lng.toString()) ? data.location.lng.toString() : '';
+  data.address = validText(data.address) ? data.address : "";
   let location = `${data.location.lat}, ${data.location.lng}`;
-
-  
-
-
 
   if (Validator.isEmpty(data.title)) {
     errors.title = 'Please enter a title';
@@ -33,6 +30,10 @@ module.exports = function validateAskInput(data) {
 
   if (!Validator.isLength(data.description, { min: 25 })) {
     errors.description = 'Please describe your ask using at least 25 characters';
+  }
+
+  if (Validator.isEmpty(data.address)) {
+    errors.description = "Please enter a valid address";
   }
 
   return {

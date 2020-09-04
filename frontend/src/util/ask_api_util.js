@@ -13,8 +13,8 @@ export const postAsk = (ask) => {
 };
 
 export const editAsk = (ask) => {
-    return axios.patch(`/api/asks/${ask.id}`)
-};
+    return axios.patch(`/api/asks/${ask._id}`, ask)
+}
 
 export const deleteAsk = (askId) => {
     return axios.delete(`/api/asks/${askId}`)
@@ -27,3 +27,11 @@ export const getUserAsks = (id) => {
 export const addAskComment = (comment) => {
     return axios.post(`/api/asks/${comment.askId}/comments`, comment);
 };
+
+export const addVolunteer = (askId, userId) => {
+    return axios.patch(`/api/asks/${askId}/volunteer`, userId)
+}
+
+export const addCompletion = (askId) => {
+    return axios.patch(`/api/asks/${askId}/complete`)
+}

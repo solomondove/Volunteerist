@@ -25,12 +25,13 @@ class Dashboard extends React.Component {
         
         return (
           <div className="dashboard">
-            <select name="asksOffers" value={this.state.visible} onChange={this.handleAskOfferSwitch()}> 
+            <select className="dash-select" name="asksOffers" value={this.state.visible} onChange={this.handleAskOfferSwitch()}> 
               <option value="asks">Asks</option>
               <option value="offers">Offers</option> 
             </select>
-
-            {mapComponent}
+            <div className="dash-map">
+              {mapComponent}
+            </div>
           </div>
         );
     }
