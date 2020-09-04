@@ -6,6 +6,7 @@
   padding: 20px;
   border: 2px solid #57824a;
   border-radius: 30px;
+  max-width: 500px;
 }
 
 .signup-login-form h1 {
@@ -57,7 +58,7 @@
 
 .signup-login-form-container {
   background-image: url("../images/splash.jpg");
-  height: calc(100% - 180px);
+  height: calc(100% - 177px);
   padding: 60px;
   background-size: 100%;
 }

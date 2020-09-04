@@ -106,23 +106,36 @@
 .profile-owned-items {
   background-color: #c2b9a8;
   padding: 20px;
+  min-height: calc(100vh - 207px);
 }
 
 .profile-outer-level {
   display: flex;
   position: relative;
   top: 60px;
-  padding: 20px;
+  padding: 20px 0px 20px 20px;
   width: 100%;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .profile-level {
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 .profile-level-bar {
-  width: 80%;
+  width: 70%;
   height: 20px;
-  border: 1px solid pink;
+  border: 1px solid #ea4335;
+}
+
+.profile-level-bar-fill {
+  height: 100%;
+  width: calc((var(--level-hrs) * 100% / var(--level-goal)));
+  background-color: #ea4335;
+}
+
+.ask-index-item-ul {
+  display: flex;
+  flex-wrap: wrap;
 }

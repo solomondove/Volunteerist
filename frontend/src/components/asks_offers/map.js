@@ -20,6 +20,13 @@ class AskMap extends React.Component {
     }
 
     componentDidMount() {
+        console.log(process);
+        console.log('break=================================');
+        console.log(process.env);
+        console.log('break=================================');
+        console.log(process.env.GOOGLE_MAPS_API)
+        console.log('break=================================');
+        console.log(Keys.GoogleMapsAPI)
         this.props.fetch(); 
     }
 
@@ -64,7 +71,6 @@ class AskMap extends React.Component {
     }; 
 
     showDetails = () => {
-        debugger; 
         if (this.props.type === 'ask') {
             this.props.history.push(`/asks/${this.state.selectedPlace._id}`)
         } else {
