@@ -3,7 +3,6 @@ import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 import Keys from '../../util/keys'; 
 import { mapStyle } from './map_styles'; 
 import InfoWindowEx from './map_info_window_ex'; 
-import { Link } from 'react-router-dom'; 
 
 class AskMap extends React.Component {
     constructor(props) {
