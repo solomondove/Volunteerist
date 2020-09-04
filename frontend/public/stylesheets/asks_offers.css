@@ -1,6 +1,6 @@
 .AO-form-container {
   background-image: url("../images/splash.jpg");
-  height: calc(200% );
+  height: calc(200% - 700px);
   padding: 60px;
   background-size: 100%;
 }
@@ -99,12 +99,10 @@
 .ask-index-item {
   width: 320px;
   margin: auto;
-  margin-top: 10px; 
-  /* text-align: center; */
-  /* margin-top: 60px; */
-  padding: 20px;
-  border: 2px solid #57824a;
+  margin-top: 20px; 
+  padding: 10px;
   border-radius: 30px;
+
 }
 
 .ask-header {
@@ -149,31 +147,43 @@
   font-size: 15px; 
 }
 
-.ask-index-item div {
+.ask-index-item > div {
   padding: 10px;
   background-color: #57824a;
   color: #ffffef;
   border-radius: 20px;
 }
 
-.index-buttons {
+.edit-delete-container {
   display: flex; 
-  justify-content: space-between; 
+  justify-content: center; 
 }
 
 .index-button {
+  border-radius: 5px; 
   text-align: center; 
   border-style: outset;
   border: none; 
   background-color: rgb(232, 224, 215);
   transition: background-color 0.25s;
   display: block;
-  margin: 10px auto;
+
   margin-right: 3px; 
   width: calc(80% + 23px);
   color: rgb(72,92,88); 
 }
 
+#index-button {
+  margin-top: 5px; 
+  margin-bottom: 5px; 
+  padding-left: 10px;
+  padding-right: 10px;  
+}
+
 .index-button:hover {
   background-color: rgb(208, 198, 170);
+}
+
+.description {
+  height: 40px; 
 }

@@ -1,4 +1,4 @@
-import { getUser } from '../util/user_api_util';
+import { getUser, rateUser } from '../util/user_api_util';
 
 
 export const RECEIVE_USER = "RECEIVE_USER";
@@ -12,6 +12,12 @@ export const receiveUser = user => {
 
 export const fetchUser = userId => dispatch => {
     return getUser(userId)
+        .then(user => dispatch(receiveUser(user)))
+}
+
+export const addStats = (userId, newStats) => dispatch => {
+    debugger
+    return rateUser(userId, newStats)
         .then(user => dispatch(receiveUser(user)))
 }
 
