@@ -1,5 +1,6 @@
 .AO-form-container {
   background-image: url("../images/splash.jpg");
+  background-size: cover;
   height: calc(200% - 700px);
   padding: 60px;
   background-size: 100%;
