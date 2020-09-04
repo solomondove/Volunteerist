@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import CompleteAskForm from "./complete_ask_form";
 import { completeAsk, fetchAsk } from "../../actions/ask_actions";
 import { connect } from "react-redux";
+import { addStats } from "../../actions/user_actions";
 
 export const mSTP = (state, ownProps) => {
     let volunteerId
@@ -21,7 +22,9 @@ export const mDTP = dispatch => {
     return ({
         fetchUser: userId => dispatch(fetchUser(userId)),
         completeAsk: askId => dispatch(completeAsk(askId)),
-        fetchAsk: askId => dispatch(fetchAsk(askId))
+        fetchAsk: askId => dispatch(fetchAsk(askId)),
+        addStats: (userId, newStats) => dispatch(addStats(userId, newStats))
+
     })
 }
 

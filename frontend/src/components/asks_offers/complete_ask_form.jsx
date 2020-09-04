@@ -23,7 +23,7 @@ class CompleteAskForm extends React.Component {
         return e => {
             switch (field) {
                 case "hoursWorked":
-                    this.setState({[field]: e.currentTarget.value})
+                    this.setState({[field]: parseInt(e.currentTarget.value)})
                 default:
                 break
             }
@@ -45,18 +45,48 @@ class CompleteAskForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        let asksCompleted = {}
-        let newStats = {}
+        let asksCompleted = this.props.volunteer.stats.asksCompleted 
+        if (this.state.satisfaction[0] === 0) {
+            asksCompleted += 1
+        }
+
+        let hrsCompleted = this.props.volunteer.stats.hrsCompleted 
+        if (this.state.satisfaction[0] === 0) {
+            hrsCompleted += this.state.hoursWorked
+        }
+
+        let didNotShow = this.props.volunteer.stats.didNotShow 
+            didNotShow += this.state.satisfaction[0]
+
+        let notSatisfied = this.props.volunteer.stats.notSatisfied
+            notSatisfied += this.state.satisfaction[1]
+
+        let satisfied = this.props.volunteer.stats.satisfied 
+            satisfied += this.state.satisfaction[2]
+
+        let verySatisfied = this.props.volunteer.stats.verySatisfied 
+            verySatisfied += this.state.satisfaction[3]
+
+        let newStats = {
+            stats: {
+            hrsCompleted,
+            asksCompleted,
+            didNotShow,
+            notSatisfied,
+            satisfied,
+            verySatisfied
+            }
+        }
         
+        this.props.addStats(this.props.volunteer._id, newStats);
         this.props.completeAsk(this.props.ask._id);
-        this.props.history.push('/profile')
+        this.props.history.push('/profile');
     }
 
     render() {
         if (!this.props.ask) {
             return null
         }
-        debugger
         return (
           <div>
             <form onSubmit={this.handleSubmit}>
@@ -76,15 +106,13 @@ class CompleteAskForm extends React.Component {
               <br />
               <input
                 type="number"
-                min="1"
+                min="0"
                 max="10"
                 placeholder="Enter number of hours"
                 value={this.state.hoursWorked}
                 onChange={this.update("hoursWorked")}
               />
               <br/>
-
-
 
               <button>Submit Review</button>
             </form>
