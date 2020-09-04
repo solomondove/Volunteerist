@@ -12,10 +12,6 @@ class Dashboard extends React.Component {
       this.handleAskOfferSwitch = this.handleAskOfferSwitch.bind(this); 
     }  
 
-    componentDidMount() {
-        this.props.fetchAsks()
-    }
-
     handleAskOfferSwitch(){
       return e => this.setState({visible: e.currentTarget.value})
     }
