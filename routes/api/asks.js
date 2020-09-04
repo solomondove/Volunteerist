@@ -106,4 +106,20 @@ router.patch("/:id/volunteer", (req, res) => {
       );
 });
 
+router.patch("/:id/complete", (req, res) => {
+  Ask.findById(req.params.id)
+    .then((ask) => {
+      ask.askCompleted = true;
+      ask
+        .save()
+        .then((ask) => res.json(ask))
+        .catch((err) =>
+          res.status(400).json({ asknotchanged: "Could not submit review" })
+        );
+    })
+    .catch((err) =>
+      res.status(404).json({ noaskfound: "No ask found with that ID" })
+    );
+});
+
 module.exports = router;
