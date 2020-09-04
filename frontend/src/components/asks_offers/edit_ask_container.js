@@ -6,7 +6,6 @@ import { fetchUser } from "../../actions/user_actions";
 import { withRouter } from "react-router-dom";
 
 const mSTP = (state, ownProps) => {
-    debugger
     return {
       data: state.entities.asks[ownProps.match.params.ask_id],
       formType: "Edit Ask",

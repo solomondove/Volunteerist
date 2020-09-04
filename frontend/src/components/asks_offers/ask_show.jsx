@@ -24,6 +24,12 @@ class Ask extends React.Component {
   render() {
     if (!this.props.ask) return null;
 
+    const completeButton = this.props.ask.hasVolunteer ? (
+      <button><Link to={`/asks/completed/${this.props.ask._id}`}>Mark ask as complete</Link></button>
+    ) : (
+      null
+    )
+
     const volunteerButton = !this.props.ask.hasVolunteer ? (
         <button onClick={() => this.props.fetchVolunteer(this.props.askId, this.props.currentUserId)}>
           I volunteer!
@@ -42,6 +48,7 @@ class Ask extends React.Component {
       <div className="edit-delete-container">
         <button><Link to={`/asks/edit/${this.props.ask._id}`}>Edit Ask</Link></button>
         <button onClick={() => this.props.clearAsk(this.props.ask._id)}>Delete Ask</button>
+        {completeButton}
         <button><Link to={`/asks`}>Back to all asks</Link></button>
       </div>
     ) : (

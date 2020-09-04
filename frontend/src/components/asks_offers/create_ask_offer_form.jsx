@@ -142,6 +142,7 @@ class AskOfferForm extends React.Component {
                                     type="number"
                                     value={this.state.timeCommitment}
                                     onChange={this.update('timeCommitment')}
+                                    min='0'
                                     placeholder="Enter number of hours"/>
                             </label>
                             <br/>
