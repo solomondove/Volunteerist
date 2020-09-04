@@ -16,7 +16,6 @@ export const fetchUser = userId => dispatch => {
 }
 
 export const addStats = (userId, newStats) => dispatch => {
-    debugger
     return rateUser(userId, newStats)
         .then(user => dispatch(receiveUser(user)))
 }
