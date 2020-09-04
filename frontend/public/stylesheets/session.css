@@ -57,7 +57,7 @@
 
 .signup-login-form-container {
   background-image: url("../images/splash.jpg");
-  height: calc(100% - 180px);
+  height: calc(100% - 177px);
   padding: 60px;
   background-size: 100%;
 }

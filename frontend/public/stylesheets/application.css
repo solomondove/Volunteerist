@@ -124,6 +124,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 
-#root, .app, body, html {
+html, body, #root, .app {
 	height: 100%;
 }
+
+/* .app > div:nth-child(2) {
+	height: calc(100% - 57px);
+} */
