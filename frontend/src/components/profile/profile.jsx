@@ -52,7 +52,7 @@ class Profile extends React.Component {
 
                 <h2><span>{currentUser.firstName} {currentUser.lastName}</span></h2>
                 <div className="profile-email">{currentUser.email}</div>
-                <div className="profile-gender">{currentUser.gender}</div>
+                <div className="profile-pronouns">{currentUser.pronouns}</div>
 
                 <div className="profile-totals">
                   <h1>YOUR STATS</h1>
