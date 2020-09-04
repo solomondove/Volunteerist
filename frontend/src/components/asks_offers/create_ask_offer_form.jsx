@@ -181,11 +181,11 @@ class AskOfferForm extends React.Component {
                             <br/> 
                             <br/>
                             <button className="submitBtn btn offer-btn">{formType}</button>
-                            <button className="cancel-btn" onClick={this.goBack}>Cancel</button>
                             <div className='errors'>
                                 {this.renderErrors()}
                             </div>
                         </form>
+                            <button className="cancel-btn" onClick={this.goBack}>Cancel</button>
                     </div>
                 </div>
             </div>
