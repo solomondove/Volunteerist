@@ -86,7 +86,7 @@
 
 .profile-totals h1 {
   position: relative;
-  padding: 10px;
+  padding: 20px;
   top: 75px;
 }
 
@@ -106,4 +106,23 @@
 .profile-owned-items {
   background-color: #c2b9a8;
   padding: 20px;
+}
+
+.profile-outer-level {
+  display: flex;
+  position: relative;
+  top: 60px;
+  padding: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.profile-level {
+  padding-right: 5px;
+}
+
+.profile-level-bar {
+  width: 80%;
+  height: 20px;
+  border: 1px solid pink;
 }
