@@ -75,10 +75,19 @@ class AskMap extends React.Component {
            height: '85%'
        }
        
+       const mapTypeControlOptions = {
+           mapTypeControl: false,
+        //    disableDefaultUI: true, 
+       }
        return ( 
            <div className="map-container"> 
 
-                <Map google={this.props.google} styles={mapStyle} containerStyle={containerStyle} zoom={14} onClick={this.onMapClicked}>
+                <Map google={this.props.google} 
+                    styles={mapStyle} 
+                    containerStyle={containerStyle} 
+                    disableDefaultUI="true"
+                    zoom={14} 
+                    onClick={this.onMapClicked}>
                     {this.props.listings.map(listing => 
                         this.selectedListing(listing)  
                     )}
@@ -91,7 +100,7 @@ class AskMap extends React.Component {
                             <p>Category: {this.state.selectedPlace.category}</p> 
                             <p>Est. Time: {this.state.selectedPlace.timeCommitment} hr</p>
                             <p>Description: {this.state.selectedPlace.description}</p>
-                            <button onClick={() => this.showDetails()}>Details</button>  
+                            <button className="dash-select" id="info-window-btn" onClick={() => this.showDetails()}>Details</button>  
                         </div>
                     </InfoWindowEx>
                 </Map>
