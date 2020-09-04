@@ -50,15 +50,15 @@ class Offer extends React.Component {
     )
 
     const buttonsMenu = this.props.currentUserId === this.props.posterId ? (
-      <div className="edit-delete-container">
-        <button><Link to={`/offers/edit/${this.props.offer._id}`}>Edit Offer</Link></button>
+      <div className="show-edit-button-container">
+        <Link to={`/offers/edit/${this.props.offer._id}`}>Edit Offer</Link>
         <button onClick={ this.handleClick }>Delete Offer</button>
-        <button><Link to={`/offers`}>Back to all offers</Link></button>
+        <Link to={`/offers`}>Back to all offers</Link>
       </div>
     ) : (
-      <div className="edit-delete-container"> 
+      <div className="show-edit-delete-container"> 
+        <Link to={`/offers`}>Back to all offers</Link>
         {acceptButton}
-        <button><Link to={`/offers`}>Back to all offers</Link></button>
       </div>
     )
     if (this.state.postUser && Array.isArray(this.props.comments)) {
