@@ -25,7 +25,7 @@ class OfferIndexItem extends React.Component {
           <h2 className="ask-header">OFFER</h2>
           <br />
           <h3 className="ai-category-header">Title</h3>
-          <p className="index-title">{offer.title}</p>
+          <p className="index-title">{title}</p>
           <br />
           <div className="sub-categories">
             <span>
@@ -49,8 +49,8 @@ class OfferIndexItem extends React.Component {
           <br />
           {offer.posterId === currentUserId ? (
             <div className='edit-delete-container'>
-              <Link to={`/offers/edit/${offer._id}`} className="index-button">Edit Offer</Link>
-              <button className="index-button" id="index-button" onClick={() => this.props.clearOffer(offer._id)}>Delete Offer</button>
+              <Link to={`/offers/edit/${offer._id}`} className="index-button">Edit</Link>
+              <button className="index-button" id="index-button" onClick={() => this.props.clearOffer(offer._id)}>Delete</button>
               <Link to={`/offers/${offer._id}`} className="index-button">Details</Link>
             </div>
           ) : (
