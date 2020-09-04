@@ -5,12 +5,12 @@
   /* background-color: #c9d29b; */
   display: flex;
   justify-content: center;
+  padding: 50px;
 }
 
 .show-main-inner-div {
   display: block;
   height: calc(100% - 500px);
-  margin-top: 50px;
   width: calc(100% - 100px)
 }
 
@@ -52,6 +52,10 @@
 
 .show-second-header-name:hover {
   color: #285129;
+}
+
+.show-main-background {
+  min-height: 400px;
 }
 
 .show-info {
@@ -99,7 +103,7 @@
   display: block;
 }
 
-.show-map > div > div {
+.show-map > div:first-child {
   width: 100%;
   height: 100%;
   display: block;
