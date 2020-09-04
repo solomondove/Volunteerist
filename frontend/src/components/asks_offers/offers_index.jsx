@@ -12,8 +12,8 @@ class AsksIndex extends React.Component {
       return null;
     }
     return (
-      <div>
-        <ul>
+      <div className="ask-index-container">
+        <ul className="ask-index-ul">
           {this.props.offers.map((offer) => (
             <OfferIndexItem
               key={offer._id}
