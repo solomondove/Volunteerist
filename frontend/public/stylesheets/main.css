@@ -15,7 +15,7 @@
   background-size: 100%;
   text-align: center;
   color: #ffffef;
-  height: 100%;
+  height: calc(100% - 57px);
   display: flex;
   justify-content: center;
 }
