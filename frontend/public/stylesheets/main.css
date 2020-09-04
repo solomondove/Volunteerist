@@ -94,3 +94,8 @@
   border-bottom: 2px solid #cd7e5a;
   background-color: #dc7e5a;
 }
+
+#info-window-btn {
+  width: 100px; 
+  border-radius: 5px; 
+}
