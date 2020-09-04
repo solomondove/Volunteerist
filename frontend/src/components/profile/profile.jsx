@@ -86,7 +86,7 @@ class Profile extends React.Component {
                 <select value={this.state.currentShow} onChange={(event) => this.setState({currentShow: event.currentTarget.value})}>
                   <option value="ask">My Asks</option>
                   <option value="offer">My Offers</option>
-                  <option value="volunteer">Asks Volunteered</option>
+                  <option value="volunteer">Asks Volunteered For</option>
                 </select>
               </div>
 

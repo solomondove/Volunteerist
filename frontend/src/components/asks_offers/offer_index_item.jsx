@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class OfferIndexItem extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchOffer(this.props.offer._id)
+  }
+  
+
   render() {
     const { offer, currentUserId } = this.props;
     if (!offer) {

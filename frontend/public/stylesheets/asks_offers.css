@@ -1,5 +1,6 @@
 .AO-form-container {
   background-image: url("../images/splash.jpg");
+  background-size: cover;
   height: calc(200% - 700px);
   padding: 60px;
   background-size: 100%;
@@ -270,6 +271,8 @@
   font-weight: 700;
   letter-spacing: 1px;
   cursor: pointer;
+  position: relative;
+  bottom: 130px;
 }
 
 .fullForm div {
@@ -294,4 +297,10 @@
 .fullForm label:last-of-type {
   position: relative;
   top: 135px;
+}
+
+.category-required {
+  color: white;
+  text-align: right;
+  padding: 10px 10px 0 0;
 }

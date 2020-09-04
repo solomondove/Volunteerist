@@ -1,4 +1,4 @@
-import { fetchOffers, clearOffer } from "../../actions/offer_actions";
+import { fetchOffers, clearOffer, fetchOffer } from "../../actions/offer_actions";
 import { fetchUser } from "../../actions/user_actions";
 import { connect } from "react-redux";
 import OffersIndex from "./offers_index";
@@ -16,6 +16,7 @@ const mDTP = (dispatch) => {
     fetchOffers: () => dispatch(fetchOffers()),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
     clearOffer: id => dispatch(clearOffer(id)),
+    fetchOffer: offerId => dispatch(fetchOffer(offerId))
   };
 };
 

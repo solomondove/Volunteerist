@@ -33,7 +33,7 @@ class Ask extends React.Component {
     if (!this.props.ask) return null;
 
     const completeButton = this.props.ask.hasVolunteer ? (
-      <button><Link to={`/asks/completed/${this.props.ask._id}`}>Mark ask as complete</Link></button>
+      <button><Link to={`/asks/completed/${this.props.ask._id}`}>Mark as complete</Link></button>
     ) : (
       null
     )
