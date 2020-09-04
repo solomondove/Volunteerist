@@ -91,7 +91,7 @@ class CompleteAskForm extends React.Component {
         return (
           <div className="AO-form-container">
             <div className="AO-form">
-              <form className="fullForm askForm" onSubmit={this.handleSubmit}>
+              <form className="askForm" onSubmit={this.handleSubmit}>
                 <h1 className="formTitle">
                   Please leave a review for your volunteer!
                 </h1>
@@ -101,6 +101,7 @@ class CompleteAskForm extends React.Component {
                 </h2>
                 <br />
                 <select className="categorySelect" onChange={this.checkSat}>
+                  <option value="" disabled>Select your satifsaction level</option>
                   <option value="noShow">Did not show up</option>
                   <option value="notSat">Not satisfied</option>
                   <option value="sat">Satisfied</option>
@@ -123,7 +124,7 @@ class CompleteAskForm extends React.Component {
                 />
                 <br />
 
-                <button className="submitBtn index-button btn">Submit Review</button>
+                <button className="submitBtn btn">Submit Review</button>
                 <br/>
               </form>
             </div>

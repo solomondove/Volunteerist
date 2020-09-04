@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
@@ -12,10 +12,14 @@ const Comments = ({ addOfferComment, offerId, currentUser, comments }) => {
   const [offer, setOfferId] = useState('');
   const [currUser] = useState(currentUser);
 
+  const messagesEndRef = useRef(null);
+
   useEffect(() => {
     socket = io();
 
     setOfferId(offerId);
+
+    scrollToBottom();
 
     return () => {
       socket.emit('disconnect');
@@ -24,10 +28,19 @@ const Comments = ({ addOfferComment, offerId, currentUser, comments }) => {
   }, [offerId])
 
   useEffect(() => {
+    scrollToBottom()
+  }, [])
+
+  useEffect(() => {
     socket.on('message', (message) => {
       setMessages([...messages, message]);
+      scrollToBottom();
     })
   }, [messages]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -42,9 +55,12 @@ const Comments = ({ addOfferComment, offerId, currentUser, comments }) => {
   return (
     <div>
       <ScrollToBottom>
-        {messages.map((message, i) => (
-          <div key={i}>{message.posterName}: {message.body}</div>
-        ))}
+        <div className="show-comments-list">
+          {messages.map((message, i) => (
+            <div key={i}>{message.posterName}: {message.body}</div>
+          ))}
+          <div ref={messagesEndRef}></div>
+        </div>
       </ScrollToBottom>
       <form>
         <input type="text"

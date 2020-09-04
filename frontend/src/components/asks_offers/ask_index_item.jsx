@@ -8,6 +8,11 @@ class AskIndexItem extends React.Component {
         if (!ask) {
             return null
         }
+
+        const title = ask.title.length > 30 ? (
+            ask.title.slice(0, 30).concat("...")
+        ) : (ask.title)
+
         const description = ask.description.length > 50 ? (
             ask.description.slice(0, 50).concat("...") 
         ) : ( ask.description )
@@ -19,7 +24,7 @@ class AskIndexItem extends React.Component {
                     <h2 className="ask-header">ASK</h2>
                     <br />
                     <h3 className="ai-category-header">Title:</h3>
-                    <p className="index-title">{ask.title}</p>
+                    <p className="index-title">{title}</p>
                     <br/>
                     <div className="sub-categories">
                         <span>

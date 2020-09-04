@@ -26,7 +26,7 @@ class NavBar extends React.Component {
                         </ul>
                     </div>
                     <div className="navbar-trigger-ask">
-                        <div className="navbar-label-ask">Ask</div>
+                        <div className="navbar-label-ask">Request</div>
                         <ul className="navbar-dropdown-volunteer">
                             <Link to={"/asks/new"}>Create Ask</Link>
                             <Link to={"/offers"}>All Offers</Link>

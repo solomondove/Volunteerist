@@ -16,7 +16,7 @@ const mSTP = state => {
         deadline: "",
         timeOfDay: "",
         address: "",
-        posterId: "",
+        posterId: state.session.id,
         location: { lat: "", lng: "" },
       },
       formType: "Create an Offer",

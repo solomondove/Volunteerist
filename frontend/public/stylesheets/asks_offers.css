@@ -1,5 +1,6 @@
 .AO-form-container {
   background-image: url("../images/splash.jpg");
+  background-size: cover;
   height: calc(200% - 700px);
   padding: 60px;
   background-size: 100%;
@@ -33,7 +34,7 @@
   background-color: #57824a;
   border-radius: 20px;
   margin-top: 20px;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .AO-form input {
@@ -191,4 +192,115 @@
 .askForm {
   background-color: #57824a;
   border-radius: 20px;
+  max-width: 600px;
+}
+
+.AO-location-label {
+  position: relative;
+  top: 555px;
+  z-index: 2;
+}
+
+.AO-form .fullForm {
+  position: relative;
+  bottom: 125px;
+}
+
+.fullForm {
+  margin-top: 20px;
+}
+
+.fullForm .btn {
+  margin-top: 130px;
+}
+
+.AO-form > div {
+  height: var(--form-height);
+  padding-top: 0px;
+}
+
+.AO-location-label > div {
+  display: flex;
+  z-index: 3;
+  align-items: center;
+  width: 85%;
+  margin: auto;
+}
+
+.address-btn {
+  width: 100px;
+  z-index: 5;
+  border-style: outset;
+  background-color: #e09d83;
+  border-bottom: 2px solid #666666;
+  transition: background-color 0.25s;
+  display: block;
+  padding: 0px 15px;
+  border-radius: 5px;
+  height: 74px;
+  color: #ffffef;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.address-btn:hover, .cancel-btn:hover {
+  border-bottom: 2px solid #cd7e5a;
+  background-color: #dc7e5a;
+}
+
+.AO-location-label > div > textarea {
+  z-index: 5;
+}
+
+.cancel-btn {
+  border-style: outset;
+  background-color: #e09d83;
+  border-bottom: 2px solid #666666;
+  transition: background-color 0.25s;
+  display: block;
+  margin: 10px auto;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  width: calc(80% + 23px);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  color: #ffffef;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  bottom: 130px;
+}
+
+.fullForm div {
+  padding: 0px 0px;
+}
+
+.AO-form div label {
+  color: white;  
+  text-align: left;
+  width: 50px;
+  align-self: flex-start;
+}
+
+.AO-location-label textarea {
+  margin: 0px;
+}
+
+.category-label {
+  margin-top: 20px;
+}
+
+.fullForm label:last-of-type {
+  position: relative;
+  top: 135px;
+}
+
+.category-required {
+  color: white;
+  text-align: right;
+  padding: 10px 10px 0 0;
 }

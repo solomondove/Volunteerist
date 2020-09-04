@@ -69,3 +69,8 @@
   width: 80%;
   margin: auto;
 }
+
+.demo-form {
+  padding-top: 0px; 
+  margin-top: 20px; 
+}

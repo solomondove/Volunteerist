@@ -19,6 +19,8 @@
   background-color: #c2b9a8;
   width: 30%;
   height: calc(100vh - 115px);
+  min-height: 766px;
+  min-width: 260px;
 }
 
 .profile-rhs {
@@ -76,7 +78,7 @@
   font-size: 14px;
 }
 
-.profile-gender {
+.profile-pronouns {
   position: relative;
   display: block;
   text-align: center;
@@ -98,7 +100,7 @@
   background-color: #7a938f;
   font-size: 16px;
   font-weight: bold;
-  color: black;
+  color: white;
   padding-left: 10px;
   box-sizing: border-box;
 }
@@ -138,4 +140,24 @@
 .ask-index-item-ul {
   display: flex;
   flex-wrap: wrap;
+}
+
+.profile-endorsements {
+  line-height: 20px;
+  font-size: 16px;
+}
+
+.stats-outer-level {
+  display: flex;
+  position: relative;
+  top: 35px;
+  padding: 0 0px 20px 20px;
+  width: 100%;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.stats-list {
+  list-style: inside;
+  margin: 35px 0 35px 0;
 }

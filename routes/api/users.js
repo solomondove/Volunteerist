@@ -34,10 +34,8 @@ router.patch('/update/:id', (req, res) => {
     } else {
       User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, user) {
         if (err) {
-          console.log("err", err);
           res.status(500).send(err);
         } else {
-          console.log("success");
           res.send(user);
         }
       })
@@ -69,7 +67,7 @@ router.post("/signup", (req, res) => {
       const newUser = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        gender: req.body.gender,
+        pronouns: req.body.pronouns,
         email: req.body.email,
         password: req.body.password
       });
