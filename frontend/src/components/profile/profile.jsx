@@ -25,6 +25,7 @@ class Profile extends React.Component {
         if (!currentUser) {
             return null
         }
+        let levelBar = { '--level-hrs': (this.props.currentUser.stats.hrsCompleted % 5), '--level-goal': 5 }
         return (
           <div className="profile-main">
 
@@ -45,7 +46,9 @@ class Profile extends React.Component {
                   <h1>TOTALS</h1>
                   <div className="profile-outer-level">
                     <div className="profile-level">Level {this.getLevel()}:</div>
-                    <div className="profile-level-bar"></div>
+                    <div className="profile-level-bar">
+                      <div style={levelBar} className="profile-level-bar-fill"></div>
+                    </div>
                   </div>
                 </div>
 
