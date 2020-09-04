@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 
 class OfferIndexItem extends React.Component {
 
+  componentDidMount() {
+    this.props.fetchOffer(this.props.offer._id)
+  }
   
 
   render() {
+    const { offer, currentUserId } = this.props;
     if (!offer) {
       return null;
     }
-    const { offer, currentUserId } = this.props;
 
     const title = offer.title.length > 30 ? (
       offer.title.slice(0, 30).concat("...")
