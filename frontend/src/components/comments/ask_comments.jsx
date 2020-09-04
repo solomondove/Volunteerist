@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import io from 'socket.io-client';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
@@ -12,40 +12,55 @@ const Comments = ({addAskComment, askId, currentUser, comments}) => {
   const [ask, setAskId] = useState('');
   const [currUser] = useState(currentUser);
 
+  const messagesEndRef = useRef(null);
+
   useEffect(() => {
     socket = io();
 
     setAskId(askId);
 
+    scrollToBottom();
+
     return () => {
       socket.emit('disconnect');
       socket.off();
     }
-  }, [askId])
+  }, [askId]);
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [])
 
   useEffect(() => {
     socket.on('message', (message) => {
-      setMessages([...messages, message]);
+      setMessages([...messages, message])
+      scrollToBottom();
     })
   }, [messages]);
 
+  
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+  
   const sendMessage = (event) => {
     event.preventDefault();
-
+    
     if(message) {
       addAskComment({body: message, posterId: currUser._id, askId: ask, posterName: name})
       socket.emit('sendMessage', message, () => setMessage(''))
       setMessage('')
     }
   }
-
+  
   return(
     <div>
       <ScrollToBottom>
         <div className="show-comments-list">
           {messages.map((message, i) => (
             <div key={i} className="comment">{message.posterName}: {message.body}</div>
-          ))}
+            ))}
+        <div ref={messagesEndRef}></div>
         </div>
       </ScrollToBottom>
       <form>
@@ -58,7 +73,7 @@ const Comments = ({addAskComment, askId, currentUser, comments}) => {
       </form>
     </div>
   )
-
+  
 }
 
 export default Comments;

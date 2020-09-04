@@ -57,6 +57,8 @@
 
 [class*="navbar-trigger"] ul {
   display: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 [class*="navbar-trigger"] > div {

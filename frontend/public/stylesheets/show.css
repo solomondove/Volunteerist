@@ -28,6 +28,8 @@
   border-left: 1px solid #285129;
   border-top: 1px solid #285129;
   border-right: 1px solid #285129;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .show-second-header {
@@ -68,6 +70,7 @@
   z-index: 1;
   height: 400px;
   position: relative;
+  border-top-left-radius: 10px;
 }
 
 .show-info > h2 {
@@ -97,6 +100,11 @@
   min-width: 250px;
   width: 50%;
   position: relative;
+  border-top-right-radius: 10px;
+}
+
+.show-map div {
+  border-top-right-radius: 10px;
 }
 
 .show-map > div {
@@ -129,6 +137,8 @@
   border-left: 1px solid #285129;
   border-right: 1px solid #285129;
   border-bottom: 1px solid #285129;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .show-comments-main h1 {
@@ -156,6 +166,7 @@
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
   cursor: pointer;
+  transition: 0.25s;
 }
 
 .comment {
@@ -181,6 +192,7 @@
   font-weight: bold;
   cursor: pointer;
   border-radius: 10px;
+  transition: 0.25s;
 }
 
 .show-edit-button-container a {
@@ -196,6 +208,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.25s;
 }
 
 .show-edit-button-container a:first-child {
@@ -229,6 +242,7 @@
   align-items: center;
   justify-content: center;
   width: 60%;
+  transition: 0.25s;
 }
 
 .show-edit-delete-container button {
@@ -242,5 +256,12 @@
   font-weight: bold;
   cursor: pointer;
   border-radius: 10px;
+  transition: 0.25s;
+}
+
+.show-edit-delete-container button:hover, .show-edit-delete-container a:hover, 
+.show-edit-button-container a:hover, .show-edit-button-container button:hover,
+.show-comments-main button:hover {
+  background-color: #be3124;
 }
 
