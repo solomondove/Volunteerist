@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import AskShow from './ask_show';
 import { fetchUser } from '../../actions/user_actions';
-import { fetchAsk, addAskComment } from '../../actions/ask_actions';
+import { fetchAsk, addAskComment, clearAsk } from '../../actions/ask_actions';
 import { fetchAskComments } from '../../actions/comment_actions';
 import { fetchVolunteer } from '../../actions/ask_actions';
+import { withRouter } from "react-router-dom";
 
 const mSTP = (state, { match }) => {
   let posterId;
@@ -26,8 +27,9 @@ const mDTP = dispatch => {
     addAskComment: (comment) => (dispatch(addAskComment(comment))),
     fetchAskComments: (askId) => (dispatch(fetchAskComments(askId))),
     fetchUser: (userId) => (dispatch(fetchUser(userId))),
-    fetchVolunteer: (askId, userId) => dispatch(fetchVolunteer(askId, userId))
+    fetchVolunteer: (askId, userId) => dispatch(fetchVolunteer(askId, userId)),
+    clearAsk: askId => (dispatch(clearAsk(askId)))
   })
 }
 
-export default connect(mSTP, mDTP)(AskShow)
+export default withRouter(connect(mSTP, mDTP)(AskShow))

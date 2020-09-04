@@ -97,7 +97,7 @@ class AskOfferForm extends React.Component {
                     <div>
                         
                     
-                        <label>location:
+                        <label>Location:
                             <br/> 
                                 <textarea
                                 rows='3'  

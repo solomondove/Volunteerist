@@ -13,6 +13,7 @@
   padding: 20px;
   border: 2px solid #57824a;
   border-radius: 30px;
+  max-width: 600px;
 }
 
 .AO-form h1 {
@@ -102,7 +103,6 @@
   margin-top: 20px; 
   padding: 10px;
   border-radius: 30px;
-
 }
 
 .ask-header {
@@ -186,4 +186,9 @@
 
 .description {
   height: 40px; 
+}
+
+.askForm {
+  background-color: #57824a;
+  border-radius: 20px;
 }

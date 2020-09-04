@@ -74,7 +74,6 @@ class LoginForm extends React.Component {
                         <input className="btn" type="submit" value="Submit" />
                         {this.renderErrors()}
                     </div>
-                        {this.renderErrors()}
                 </form>
             </div>
         );

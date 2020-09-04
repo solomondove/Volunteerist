@@ -13,7 +13,7 @@ class UserAsksIndex extends React.Component {
     }
     return (
       <div>
-        <ul>
+        <ul className="ask-index-item-ul">
           {this.props.asks.map((ask) => (
             !ask.askCompleted ? (
             <AskIndexItem

@@ -89,34 +89,44 @@ class CompleteAskForm extends React.Component {
             return null
         }
         return (
-          <div>
-            <form onSubmit={this.handleSubmit}>
-              <h1>Please leave a review for your volunteer!</h1>
+          <div className="AO-form-container">
+            <div className="AO-form">
+              <form className="fullForm askForm" onSubmit={this.handleSubmit}>
+                <h1 className="formTitle">
+                  Please leave a review for your volunteer!
+                </h1>
 
-              <h2>How did your volunteer do?</h2>
-              <br />
-              <select className="categorySelect" onChange={this.checkSat}>
-                <option value="noShow">Did not show up</option>
-                <option value="notSat">Not satisfied</option>
-                <option value="sat">Satisfied</option>
-                <option value="verySat">Very satisfied</option>
-              </select>
-              <br />
+                <h2 className="completeFormSection">
+                  How did your volunteer do?
+                </h2>
+                <br />
+                <select className="categorySelect" onChange={this.checkSat}>
+                  <option value="noShow">Did not show up</option>
+                  <option value="notSat">Not satisfied</option>
+                  <option value="sat">Satisfied</option>
+                  <option value="verySat">Very satisfied</option>
+                </select>
+                <br />
 
-              <h2>How many hours did the volunteer work?</h2>
-              <br />
-              <input
-                type="number"
-                min="0"
-                max="10"
-                placeholder="Enter number of hours"
-                value={this.state.hoursWorked}
-                onChange={this.update("hoursWorked")}
-              />
-              <br/>
+                <h2 className="completeFormSection">
+                  How many hours did the volunteer work?
+                </h2>
+                <br />
+                <input
+                  className="formInput"
+                  type="number"
+                  min="0"
+                  max="10"
+                  placeholder="Enter number of hours"
+                  value={this.state.hoursWorked}
+                  onChange={this.update("hoursWorked")}
+                />
+                <br />
 
-              <button>Submit Review</button>
-            </form>
+                <button className="submitBtn index-button btn">Submit Review</button>
+                <br/>
+              </form>
+            </div>
           </div>
         );}
 }
