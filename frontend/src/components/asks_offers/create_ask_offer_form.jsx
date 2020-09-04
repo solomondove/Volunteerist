@@ -1,6 +1,7 @@
 import React from 'react';
 import Geocode from 'react-geocode'; 
-import Keys from '../../util/keys'; 
+import { retrieveMapKey, getMapKey, setMapCookie } from '../../util/map_api_util';
+
 
 class AskOfferForm extends React.Component {
     constructor(props) {
@@ -13,7 +14,14 @@ class AskOfferForm extends React.Component {
     }
 
     componentDidMount() {
-        Geocode.setApiKey(Keys.GoogleMapsAPI);
+        const mapKey = retrieveMapKey("mapKeyCookie");
+        if (mapKey === '') {
+            getMapKey().then(key => {
+                setMapCookie("mapKeyCookie", key.data, 1);
+                window.location.reload();
+            });
+        }
+        Geocode.setApiKey(mapKey);
         this.props.clearErrors();
         this.props.fetchUser(this.props.currentUserId)
     }
