@@ -15,6 +15,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const db = require("./config/keys").mongoURI;
+const mapKeys = require("./config/keys").GoogleMapsAPI;
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -25,6 +26,12 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
+app.get('/mapapi', (req, res) => {
+  console.log(mapKeys);
+  res.json(mapKeys);
+})
 
 app.use("/api/users", users);
 app.use("/api/asks", asks);
@@ -68,6 +75,7 @@ require('./config/passport')(passport);
 io.on('connection', (socket) => {
   console.log("New user connected");
 })
+
 
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })

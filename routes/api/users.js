@@ -7,7 +7,6 @@ const passport = require('passport');
 
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
-const validateEditInput = require('../../validation/edit_user');
 
 const express = require('express');
 // const { db } = require('../../models/User');
@@ -26,12 +25,6 @@ router.get('/:id', (req, res) => {
 })
 
 router.patch('/update/:id', (req, res) => {
-
-  const { errors, isValid } = validateEditInput(req.body);
-
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
 
   User.findById(req.params.id)
   .then(user => {

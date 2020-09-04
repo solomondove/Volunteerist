@@ -1,8 +1,8 @@
 import React from 'react'; 
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
-import Keys from '../../util/keys'; 
 import { mapStyle } from './map_styles'; 
 import InfoWindowEx from './map_info_window_ex'; 
+import {retrieveMapKey, getMapKey, setMapCookie} from '../../util/map_api_util';
 
 class AskMap extends React.Component {
     constructor(props) {
@@ -10,9 +10,8 @@ class AskMap extends React.Component {
         this.state = {
             showingInfoWindow: false, 
             activeListing: {}, 
-            selectedPlace: {}
+            selectedPlace: {},
         }
-
         this.onMarkerClick = this.onMarkerClick.bind(this); 
         this.onMapClicked = this.onMapClicked.bind(this); 
         this.selectedListing = this.selectedListing.bind(this); 
@@ -20,13 +19,6 @@ class AskMap extends React.Component {
     }
 
     componentDidMount() {
-        console.log(process);
-        console.log('break=================================');
-        console.log(process.env);
-        console.log('break=================================');
-        console.log(process.env.GOOGLE_MAPS_API)
-        console.log('break=================================');
-        console.log(Keys.GoogleMapsAPI)
         this.props.fetch(); 
     }
 
@@ -71,7 +63,6 @@ class AskMap extends React.Component {
     }; 
 
     showDetails = () => {
-        debugger; 
         if (this.props.type === 'ask') {
             this.props.history.push(`/asks/${this.state.selectedPlace._id}`)
         } else {
@@ -109,4 +100,12 @@ class AskMap extends React.Component {
    }
 }; 
 
-export default GoogleApiWrapper({apiKey: process.env.GOOGLE_MAPS_API})(AskMap); 
+// for retrieving map api from backend
+const mapKey = retrieveMapKey("mapKeyCookie");
+if (mapKey === '') {
+    getMapKey().then(key => {
+        setMapCookie("mapKeyCookie", key.data, 1);
+        window.location.reload();
+    });
+}
+export default GoogleApiWrapper({apiKey: mapKey})(AskMap);
