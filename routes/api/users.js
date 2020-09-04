@@ -69,7 +69,7 @@ router.post("/signup", (req, res) => {
       const newUser = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        gender: req.body.gender,
+        pronouns: req.body.pronouns,
         email: req.body.email,
         password: req.body.password
       });
