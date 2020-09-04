@@ -20,6 +20,13 @@ class AskMap extends React.Component {
     }
 
     componentDidMount() {
+        console.log(process);
+        console.log('break=================================');
+        console.log(process.env);
+        console.log('break=================================');
+        console.log(process.env.GOOGLE_MAPS_API)
+        console.log('break=================================');
+        console.log(Keys.GoogleMapsAPI)
         this.props.fetch(); 
     }
 
