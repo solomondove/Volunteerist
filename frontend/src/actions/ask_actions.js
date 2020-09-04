@@ -103,4 +103,11 @@ export const fetchVolunteer = (askId, userId) => dispatch => {
         );
 }
 
+export const completeAsk = (askId) => dispatch => {
+    return AskAPIUtil.addCompletion(askId)
+        .then((ask) => dispatch(receiveAsk(ask)),
+            (err) => dispatch(receiveAskErrors(err.response.data))
+            );
+}
+
 

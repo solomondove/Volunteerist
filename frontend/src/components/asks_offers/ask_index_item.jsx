@@ -23,38 +23,35 @@ class AskIndexItem extends React.Component {
                     <br/>
                     <div className="sub-categories">
                         <span>
-                            <h3 className="ai-category-header">Category: </h3>
+                            <h3 className="ai-category-header">Category:</h3>
                             <p>{ask.category}</p>
                         <br />
                         </span>
                         <span>
-                            <h3 className="ai-category-header"> Time Est.:</h3>
-                            <p>{ask.timeCommitment} <span className="index-hours">hour(s)</span></p>
+                            <h3 className="ai-category-header">Time Est.:</h3>
+                            <p>{ask.timeCommitment ? ask.timeCommitment.toString().concat("hr") : "na"}</p>
                             <br />
                         </span>
                         <span>
                             <h3 className="ai-category-header">Time of Day:</h3>
-                            <p>{ask.timeOfDay}</p>
+                            <p>{ask.timeOfDay ? ask.timeOfDay : "na"}</p>
                             <br />
                         </span>
                     </div> 
                     <h3 className="ai-category-header">Description:</h3>
-                    <p>{description}</p>
+                    <p className="description">{description}</p>
                     <br />
-                    <div className="index-buttons">
-                        {ask.posterId === currentUserId ? 
-                            <div className="edit-delete-container">
-                                <button><Link to={`/asks/edit/${ask._id}`}>Edit Ask</Link></button>
-                                <button onClick={() => this.props.clearAsk(ask._id)}>Delete Ask</button>
-                                <button><Link to={`/asks/${ask._id}`}>Details</Link></button>
-                            </div>
-                            : 
-                            <div className="edit-delete-container"> 
-                                <button><Link to={`/asks/${ask._id}`}>Details</Link></button>
-                            </div>
-                        }
-                        
-                    </div>
+                    {ask.posterId === currentUserId ? 
+                        <div className="edit-delete-container">
+                            <Link to={`/asks/edit/${ask._id}`} className="index-button">Edit</Link>
+                            <button className="index-button" id="index-button" onClick={() => this.props.clearAsk(ask._id)}>Delete</button>
+                            <Link to={`/asks/${ask._id}`} className="index-button">Details</Link>
+                        </div>
+                        : 
+                        <div className="edit-delete-container"> 
+                            <Link to={`/asks/${ask._id}`} className="index-button">Details</Link>
+                        </div>
+                    }
                 </div>
             </div>
           
