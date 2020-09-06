@@ -62,14 +62,19 @@ class AskOfferForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.processForm(this.state)
-             .then((res) => {
-                if (res.type !== 'RECEIVE_OFFER_ERRORS' && res.type !== 'RECEIVE_ASK_ERRORS') {
-                    if (this.props.formType === 'Create an Ask') {
-                        this.props.history.push('/asks')
-                    } else {
-                        this.props.history.push('/offers')
-                    }
-             }})
+        .then((res) => {
+            if (res.type !== 'RECEIVE_OFFER_ERRORS' && res.type !== 'RECEIVE_ASK_ERRORS') {
+                if (this.props.formType === 'Create an Ask') {
+                    this.props.history.push('/asks')
+                } else if (this.props.formType === 'Create an Offer') {
+                    this.props.history.push('/offers')
+                } else if (this.props.formType === 'Edit Ask') {
+                    this.props.history.push(`/asks/${this.state._id}`)
+                } else if (this.props.formType === 'Edit Offer') {
+                    this.props.history.push(`/offers/${this.state._id}`)
+                }
+            }
+        })
     }
 
     goBack() {

@@ -1,0 +1,21 @@
+.contact-footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #57824a;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    z-index: 10;
+    border-top: 1px solid white;
+}
+
+.contact-footer > a {
+    color: #ffffef;
+    font-size: 15px;
+    border: none;
+}
+
+.contact-footer > a:hover {
+    color: #b3b3b0;
+}
+
