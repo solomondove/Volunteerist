@@ -75,17 +75,13 @@ class AskMap extends React.Component {
            height: '85%'
        }
        
-       const mapTypeControlOptions = {
-           mapTypeControl: false,
-        //    disableDefaultUI: true, 
-       }
        return ( 
            <div className="map-container"> 
 
                 <Map google={this.props.google} 
                     styles={mapStyle} 
                     containerStyle={containerStyle} 
-                    disableDefaultUI="true"
+                    disableDefaultUI={true}
                     zoom={14} 
                     onClick={this.onMapClicked}>
                     {this.props.listings.map(listing => 
