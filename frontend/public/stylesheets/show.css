@@ -162,7 +162,8 @@
   height: 26px;
   display: inline-block;
   padding: 0px 15px;
-  background-color: #ea4335;
+  background-color: #e09d83;
+  /* background-color: #ea4335; */
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
   cursor: pointer;
@@ -186,7 +187,8 @@
   margin: 0px 2px;
   height: 60px;
   text-align: center;
-  background-color: #ea4335;
+  background-color: #e09d83;
+  /* background-color: #ea4335; */
   color: black;
   border: none;
   font-weight: bold;
@@ -200,7 +202,8 @@
   margin: 0px 2px;
   height: 50px;
   text-align: center;
-  background-color: #ea4335;
+  background-color: #e09d83;
+  /* background-color: #ea4335; */
   color: black;
   border: none;
   font-weight: bold;
@@ -233,7 +236,8 @@
   margin: 0px 2px 0px 10px;
   height: 50px;
   text-align: center;
-  background-color: #ea4335;
+  background-color: #e09d83;
+  /* background-color: #ea4335; */
   color: black;
   border: none;
   font-weight: bold;
@@ -241,16 +245,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
+  width: 50%;
   transition: 0.25s;
 }
 
 .show-edit-delete-container button {
   margin: 0px 10px 0px 2px;
   height: 60px;
-  width: 40%;
+  width: 50%;
   text-align: center;
-  background-color: #ea4335;
+  background-color: #e09d83;
+  /* background-color: #ea4335; */
   color: black;
   border: none;
   font-weight: bold;
@@ -262,6 +267,7 @@
 .show-edit-delete-container button:hover, .show-edit-delete-container a:hover, 
 .show-edit-button-container a:hover, .show-edit-button-container button:hover,
 .show-comments-main button:hover {
-  background-color: #be3124;
+  background-color: #dc7e5a;
+  /* background-color: #be3124; */
 }
 

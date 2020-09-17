@@ -99,12 +99,15 @@ class AskOfferForm extends React.Component {
         if (formType === "Create an Ask") {
             formHeight = { '--form-height': '890px' }
         } else {
-            formHeight = { '--form-height': '820px' }
+            formHeight = { '--form-height': '850px' }
         } 
         return (
             <div className="AO-form-container">
                 <div className="AO-form">
                     <h1 className="formTitle" >{formType}</h1>
+                    <div className='errors'>
+                        {this.renderErrors()}
+                    </div>
                     <div style={formHeight}>
                         <p className="category-required">* required field</p>
                         <label className="AO-location-label">Location: *
@@ -186,11 +189,11 @@ class AskOfferForm extends React.Component {
                             <br/> 
                             <br/>
                             <button className="submitBtn btn offer-btn">{formType}</button>
-                            <div className='errors'>
-                                {this.renderErrors()}
-                            </div>
                         </form>
                             <button className="cancel-btn" onClick={this.goBack}>Cancel</button>
+                            {/* <div className='errors'>
+                                {this.renderErrors()}
+                            </div> */}
                     </div>
                 </div>
             </div>

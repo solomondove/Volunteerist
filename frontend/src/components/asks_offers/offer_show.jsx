@@ -98,7 +98,7 @@ class Offer extends React.Component {
             </div>
 
             <div className="show-comments-main">
-              <h1>Comments</h1>
+              <h1>Live Chat</h1>
               <Comments
                 addOfferComment={this.props.addOfferComment}
                 offerId={this.props.offerId}

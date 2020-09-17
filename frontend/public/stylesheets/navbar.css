@@ -92,6 +92,8 @@
 
 [class*="navbar-trigger"] ul a:hover {
   background-color: #668c59;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 [class*="navbar-trigger"]:hover > div {

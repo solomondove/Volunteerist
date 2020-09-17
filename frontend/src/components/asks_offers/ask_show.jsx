@@ -33,7 +33,7 @@ class Ask extends React.Component {
     if (!this.props.ask) return null;
 
     const completeButton = this.props.ask.hasVolunteer ? (
-      <button><Link to={`/asks/completed/${this.props.ask._id}`}>Mark as complete</Link></button>
+      <Link to={`/asks/completed/${this.props.ask._id}`}>Mark as complete</Link>
     ) : (
       null
     )
@@ -103,7 +103,7 @@ if (this.state.postUser && Array.isArray(this.props.comments)) {
             </div>
 
             <div className="show-comments-main">
-              <h1>Comments</h1>
+              <h1>Live Chat</h1>
               <Comments 
               addAskComment={this.props.addAskComment} 
               askId={this.props.askId} 
