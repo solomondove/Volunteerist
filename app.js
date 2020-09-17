@@ -41,9 +41,8 @@ app.post('/api/asks/:id/comments', (req, res) => {
     comment.save().then(result => (
       Ask.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
     )).catch(err => console.log(err))
-
+    Ask.findById(req.params.id).then((ask) => res.json(ask))
     io.emit('message', req.body);
-    res.sendStatus(200);
 })
 
 app.get('/api/asks/:id/comments', (req, res) => {
@@ -57,9 +56,8 @@ app.post('/api/offers/:id/comments', (req, res) => {
     comment.save().then(result => (
       Offer.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
     )).catch(err => console.log(err))
-
+    Offer.findById(req.params.id).then((offer) => res.json(offer))
     io.emit('message', req.body);
-    res.sendStatus(200);
 })
 
 app.get('/api/offers/:id/comments', (req, res) => {

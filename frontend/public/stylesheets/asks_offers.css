@@ -4,6 +4,7 @@
   height: calc(200% - 700px);
   padding: 60px;
   background-size: 100%;
+  min-height: 1200px;
 }
 
 .AO-form {
@@ -91,6 +92,7 @@
   height: calc(200% + 300px);
   padding: 60px;
   background-size: 100%;
+  overflow: auto;
 }
 
 .ask-index-ul {
@@ -303,4 +305,37 @@
   color: white;
   text-align: right;
   padding: 10px 10px 0 0;
+}
+
+.AO-form .errors {
+  padding: 0px;
+  position: relative;
+  /* bottom: 100px; */
+  color: white;
+}
+
+.AO-form .errors li {
+  padding: 5px;
+}
+
+.AO-form .errors ul li:first-child {
+  padding-top: 15px;
+}
+
+.AO-form .errors ul li:last-child {
+  padding-bottom: 15px;
+}
+
+.completeFormSection {
+  color: white;
+  padding-top: 30px;
+  font-size: 20px;
+}
+
+#completeFormTitle {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 30px 0px 0px 0px;
+  margin-top: 0px;
 }

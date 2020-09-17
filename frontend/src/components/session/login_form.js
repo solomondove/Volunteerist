@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
            password: "guestlogin" 
         }; 
         this.props.login(user)
-        if (!this.state.errors) {
+        if (!this.state.errors) {   
             this.props.history.push('/dashboard')
         }
     }

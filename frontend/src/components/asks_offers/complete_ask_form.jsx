@@ -92,9 +92,9 @@ class CompleteAskForm extends React.Component {
           <div className="AO-form-container">
             <div className="AO-form">
               <form className="askForm" onSubmit={this.handleSubmit}>
-                <h1 className="formTitle">
-                  Please leave a review for your volunteer!
-                </h1>
+                <div id="completeFormTitle">
+                  Please review your volunteer!
+                </div>
 
                 <h2 className="completeFormSection">
                   How did your volunteer do?

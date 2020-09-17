@@ -6,7 +6,7 @@
   padding: 20px;
   border: 2px solid #57824a;
   border-radius: 30px;
-  max-width: 500px;
+  max-width: 450px;
 }
 
 .signup-login-form h1 {
@@ -36,7 +36,8 @@
 
 .signup-login-form .btn {
   border-style: outset;
-  background-color: #e09d83;
+  /* background-color: #dc7e5a; */
+  background-color: #d76e3f;
   border-bottom: 2px solid #666666;
   transition: background-color 0.25s;
   display: block;
@@ -47,6 +48,7 @@
 .signup-login-form .btn:hover {
   /* border-bottom: 0; */
   background-color: #dc7e5a;
+  /* background-color: #c77056; */
 }
 
 .signup-login-form select {
@@ -61,6 +63,7 @@
   height: calc(100% - 177px);
   padding: 60px;
   background-size: 100%;
+  min-height: 700px;
 }
 
 .signup-dropdown-div {
@@ -73,4 +76,8 @@
 .demo-form {
   padding-top: 0px; 
   margin-top: 20px; 
+}
+
+.signup-login-form ul {
+  color: white;
 }
