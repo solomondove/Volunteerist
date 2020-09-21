@@ -32,10 +32,6 @@ module.exports = function validateAskInput(data) {
     errors.description = 'Please describe your ask using at least 25 characters';
   }
 
-  if (Validator.isEmpty(data.address)) {
-    errors.description = "Please enter a valid address";
-  }
-
   return {
     errors,
     isValid: Object.keys(errors).length === 0
