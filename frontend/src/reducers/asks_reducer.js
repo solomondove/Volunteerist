@@ -5,7 +5,6 @@ export default function (oldState = {}, action) {
     let newState = Object.assign({}, oldState);
     switch (action.type) {
         case RECEIVE_ASK:
-            // debugger
             newState[action.ask.data._id] = action.ask.data
             return newState
         case RECEIVE_ALL_ASKS:

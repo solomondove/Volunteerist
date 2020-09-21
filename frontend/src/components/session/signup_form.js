@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { RECEIVE_SESSION_ERRORS } from "../../actions/session_actions";
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -47,7 +48,9 @@ class SignupForm extends React.Component {
             email: this.state.email,
             password: this.state.password
         };
-        this.props.signup(user, this.props.history).then(() => this.props.login(loginUser));
+        this.props.signup(user).then((res) => {
+            if (res.type !== RECEIVE_SESSION_ERRORS) this.props.login(loginUser);
+        });
     }
 
     renderErrors() {
