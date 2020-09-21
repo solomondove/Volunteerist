@@ -24,6 +24,11 @@
   align-items: center;
 }
 
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-right > a {
   border: none;
   background-color: #285129;
@@ -31,13 +36,28 @@
   color: white;
 }
 
+.navbar-left > a {
+  border: none;
+  color: white;
+  padding-left: 20px;
+}
+
+.navbar-left > div {
+  transition: 0.25s;
+  height: 100%;
+  padding: 0px 20px;
+  text-align: center;
+  line-height: 57px;
+}
+
+.navbar-left > div:hover {
+  color: rgb(228, 228, 228);
+  cursor: pointer;
+}
+
 .navbar-right > a:hover, .navbar-right > button:hover {
   background-color: #223d22;
 }
-
-/* .navbar-right a {
-  margin-top: 15px;
-} */
 
 .navbar-right button {
 	padding: 7px;
@@ -59,6 +79,9 @@
   display: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 [class*="navbar-trigger"] > div {
@@ -66,6 +89,8 @@
   line-height: 57px;
   padding: 0px 10px;
   display: block;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   border-bottom: 1px solid white;
 }
 
@@ -126,4 +151,90 @@
 
 .navbar-trigger-dashboard button:hover {
   background-color: #668c59;
+}
+
+.about-div-loggedout {
+  transition: 0.25s;
+  height: 30px;
+  padding: 0px 10px;
+  text-align: center;
+  background-color: #285129;
+  border-radius: 5px;
+  margin-right: 10px;
+  line-height: 30px;
+}
+
+.about-div-loggedout:hover {
+  background-color: #223d22;
+  cursor: pointer;
+}
+
+.about-div {
+  transition: 0.25s;
+  height: 100%;
+  padding: 0px 10px;
+  text-align: center;
+  line-height: 55px;
+}
+
+.about-div:hover {
+  color: rgb(228, 228, 228);
+  cursor: pointer;
+}
+
+.about-modal-content {
+  background-color: #ffffef;
+  color: #57824a;
+  width: 60%;
+  height: 75%;
+  padding: 40px;
+  overflow: auto;
+  border-radius: 40px;
+}
+
+.about-modal {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.about-modal-loggedout {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.show-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-modal-content h1 {
+  font-size: 30px; 
+  font-weight: 900; 
+  color: #285129;
+}
+
+.about-modal-content h2 {
+  font-size: 20px; 
+  margin-top: 20px; 
+  font-weight: 700;
+  color: #285129;
+}
+
+.about-modal-content p {
+  font-size: 18px; 
+  margin-top: 10px; 
+  text-align: justify; 
 }
