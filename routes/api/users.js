@@ -9,8 +9,6 @@ const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
 
 const express = require('express');
-// const { db } = require('../../models/User');
-// const db = require("../../config/keys").mongoURI;
 const { isValidObjectId } = require('mongoose');
 const router = express.Router();
 
