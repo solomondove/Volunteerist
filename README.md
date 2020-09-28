@@ -6,7 +6,7 @@ Have you ever wanted to give back to your community? Ever felt isolated or in ne
 Link to live site: 
 https://volunteerist.herokuapp.com/#/
 
-![demo-gif](https://github.com/solomondove/Volunteerist/blob/master/frontend/public/images/dirthands.jpg)
+![demo-gif](https://github.com/solomondove/Volunteerist/blob/master/frontend/public/images/volunteerist-demo.gif)
 
 ## Development
 
