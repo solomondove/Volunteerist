@@ -6,6 +6,8 @@ Have you ever wanted to give back to your community? Ever felt isolated or in ne
 Link to live site: 
 https://volunteerist.herokuapp.com/#/
 
+![demo-gif](https://github.com/solomondove/Volunteerist/blob/master/frontend/public/images/volunteerist-demo.gif)
+
 ## Development
 
 This is an app built with the MERN stack (MongoDB, Express, React, and Node.js). We incorporated Socket.IO and Google Maps to provide an interactive experience to our users. The main functionality of our webapp is displayed through the creation and completion of asks and offers. 
