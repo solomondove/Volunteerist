@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import Map from './map';
 import { fetchOffers } from '../../actions/offer_actions';
+import {withRouter} from 'react-router-dom'; 
 
 const mapSTP = state => ({
-    listings: state.entities.offers
+    listings: Object.values(state.entities.offers), 
+    type: 'offer'
 
 })
 
@@ -12,4 +14,4 @@ const mapDTP = dispatch => ({
 
 })
 
-export default connect(mapSTP, mapDTP)(Map); 
+export default withRouter(connect(mapSTP, mapDTP)(Map)); 

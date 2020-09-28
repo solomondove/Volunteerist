@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { RECEIVE_SESSION_ERRORS } from "../../actions/session_actions";
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -7,8 +8,8 @@ class SignupForm extends React.Component {
         this.state = {
             firstName: "",
             lastName: "",
-            gneder: "",
             email: "",
+            pronouns: "",
             password: "",
             password2: "",
             errors: {},
@@ -38,12 +39,18 @@ class SignupForm extends React.Component {
         let user = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            gender: this.state.gender,
+            pronouns: this.state.pronouns, 
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
         };
-        this.props.signup(user, this.props.history);
+        let loginUser = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        this.props.signup(user).then((res) => {
+            if (res.type !== RECEIVE_SESSION_ERRORS) this.props.login(loginUser);
+        });
     }
 
     renderErrors() {
@@ -75,16 +82,16 @@ class SignupForm extends React.Component {
                             onChange={this.update("lastName")}
                             placeholder="Last Name"
                         />
-                        <br />
-                        <select value={this.state.gender} onChange={this.update('gender')}>
-                            <option value="" disabled>Select a gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="non-binary">Non-binary</option>
-                            <option value="other">Other</option>
-                            <option value="decline to answer">Decline to answer</option>
-                        </select>
-                        <br />
+                        <div className="signup-dropdown-div">
+                            <select value={this.state.pronouns} onChange={this.update('pronouns')}>
+                                <option value="" disabled>Select your pronouns</option>
+                                <option value="he/him/his">he/him/his</option>
+                                <option value="she/her/hers">she/her/hers</option>
+                                <option value="they/them/theirs">they/them/theirs</option>
+                                <option value="other">Other</option>
+                                <option value="decline to answer">Decline to answer</option>
+                            </select>
+                        </div>
                         <input
                             type="text"
                             value={this.state.email}

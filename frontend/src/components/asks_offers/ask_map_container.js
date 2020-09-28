@@ -1,9 +1,12 @@
 import { connect } from 'react-redux'; 
 import Map from './map'; 
 import { fetchAsks } from '../../actions/ask_actions';
+import { withRouter } from 'react-router-dom'; 
+
 
 const mapSTP = state => ({ 
-    listings: state.entities.asks
+    listings: Object.values(state.entities.asks),
+    type: 'ask'
     
 })  
 
@@ -12,4 +15,4 @@ const mapDTP = dispatch => ({
 
 })
 
-export default connect(mapSTP, mapDTP)(Map); 
+export default withRouter(connect(mapSTP, mapDTP)(Map)); 

@@ -1,22 +1,23 @@
 .signup-login-form {
-  width: 300px;
+  width: 60%;
   margin: auto;
   text-align: center;
-  margin-top: 60px;
+  /* margin-top: 60px; */
   padding: 20px;
-  border: 2px solid #0bb66c;
+  border: 2px solid #57824a;
   border-radius: 30px;
+  max-width: 450px;
 }
 
 .signup-login-form h1 {
   padding: 10px;
-  background-color: #0bb66c;
+  background-color: #57824a;
   color: white;
   border-radius: 20px;
 }
 
-.signup-login-form div {
-  background-color: #0bb66c;
+.signup-login-form > div {
+  background-color: #57824a;
   border-radius: 20px;
   margin-top: 20px;
   padding: 10px 0;
@@ -29,21 +30,54 @@
   background: #ffffef;
   border-style: inset;
   border-color: #c7c7bc;
+  width: 80%;
+  box-sizing: border-box;
 }
 
 .signup-login-form .btn {
   border-style: outset;
-  background-color: #e27d25;
+  /* background-color: #dc7e5a; */
+  background-color: #d76e3f;
   border-bottom: 2px solid #666666;
+  transition: background-color 0.25s;
+  display: block;
+  margin: 10px auto;
+  width: 60%;
 }
 
 .signup-login-form .btn:hover {
-  border-bottom: 0;
-  margin-top: 12px;
+  /* border-bottom: 0; */
+  background-color: #dc7e5a;
+  /* background-color: #c77056; */
 }
 
 .signup-login-form select {
   font-size: 14px;
-  padding: 5px;
+  padding: 8px 5px;
   margin: 10px 0;
+  width: 100%;
+}
+
+.signup-login-form-container {
+  background-image: url("../images/splash.jpg");
+  height: calc(100% - 177px);
+  padding: 60px;
+  background-size: 100%;
+  min-height: 700px;
+}
+
+.signup-dropdown-div {
+  padding: 0px;
+  margin: 0px;
+  width: 80%;
+  margin: auto;
+}
+
+.demo-form {
+  padding-top: 0px; 
+  margin-top: 20px; 
+}
+
+.signup-login-form ul {
+  color: white;
 }

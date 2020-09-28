@@ -13,29 +13,8 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json({ noasksfound: "No asks found"}));
 });
 
-router.patch('/:id/comment', (req, res) => {
-  Ask.findById(req.params.id)
-    .then(ask => {
-      if (!ask) {
-        errors.id = 'Ask does not exist';
-        return res.status(400).json(errors);
-      } else {
-        Ask.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, ask) {
-          if (err) {
-            console.log("err", err);
-            res.status(500).send(err);
-          } else {
-            console.log("success");
-            res.send(ask);
-          }
-        })
-      }
-    })
-    .catch(err => console.log(err))
-});
-
 router.get('/user/:user_id', (req, res) => {
-  Ask.find({ user: req.params.user_id })
+  Ask.find({ posterId: req.params.user_id })
     .then(asks => res.json(asks))
     .catch(err => 
       res.status(404).json({ noasksfound: "No asks found from that user"})
@@ -56,7 +35,6 @@ router.post('/', (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-
     const newAsk = new Ask({
       category: req.body.category,
       title: req.body.title,
@@ -66,6 +44,7 @@ router.post('/', (req, res) => {
       timeOfDay: req.body.timeOfDay,
       posterId: req.body.posterId,
       location: req.body.location,
+      address: req.body.address
     })
 
     newAsk.save().then(ask => res.json(ask));
@@ -98,13 +77,48 @@ router.delete('/:id', (req, res) => {
   Ask.findById(req.params.id)
     .then(ask => {
       ask.delete()
-        .then(ask => res.json(ask))
+        .then(ask => {
+          res.json(ask._id)
+        })
         .catch(err => 
           res.status(400).json({ asknotchanged: "Ask could not be deleted"})
         );
     })
     .catch(err =>
       res.status(404).json({ noaskfound: "No ask found with that ID"})
+    );
+});
+
+router.patch("/:id/volunteer", (req, res) => {
+  const userId = Object.keys(req.body)[0]
+  Ask.findById(req.params.id)
+      .then((ask) => {
+        ask.volunteer = userId;
+        ask.hasVolunteer = true;
+        ask
+          .save()
+          .then((ask) => res.json(ask))
+          .catch((err) =>
+            res.status(400).json({asknotchanged: "Could not volunteer"}))
+      })
+      .catch((err) =>
+      res.status(404).json({ noaskfound: "No ask found with that ID" })
+      );
+});
+
+router.patch("/:id/complete", (req, res) => {
+  Ask.findById(req.params.id)
+    .then((ask) => {
+      ask.askCompleted = true;
+      ask
+        .save()
+        .then((ask) => res.json(ask))
+        .catch((err) =>
+          res.status(400).json({ asknotchanged: "Could not submit review" })
+        );
+    })
+    .catch((err) =>
+      res.status(404).json({ noaskfound: "No ask found with that ID" })
     );
 });
 

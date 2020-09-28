@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const Ask = require('./models/Ask');
+const Comment = require('./models/Comment');
+const Offer = require('./models/Offer');
 const path = require('path');
 
 const users = require('./routes/api/users');
@@ -9,7 +12,10 @@ const asks = require('./routes/api/asks');
 const offers = require('./routes/api/offers');
 
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const db = require("./config/keys").mongoURI;
+const mapKeys = require("./config/keys").GoogleMapsAPI;
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -18,23 +24,61 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to MongoDB successfully"))
-  .catch((err) => console.log(err));
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
+app.get('/mapapi', (req, res) => {
+  res.json(mapKeys);
+})
 
 app.use("/api/users", users);
 app.use("/api/asks", asks);
 app.use("/api/offers", offers);
 
+app.post('/api/asks/:id/comments', (req, res) => {
+    let comment = new Comment(req.body);
+    comment.save().then(result => (
+      Ask.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
+    )).catch(err => console.log(err))
+    Ask.findById(req.params.id).then((ask) => res.json(ask))
+    io.emit('message', req.body);
+})
+
+app.get('/api/asks/:id/comments', (req, res) => {
+  Comment.find({ askId: req.params.id })
+    .then(comments => res.json(comments))
+    .catch(err => console.log(err))
+})
+
+app.post('/api/offers/:id/comments', (req, res) => {
+    let comment = new Comment(req.body);
+    comment.save().then(result => (
+      Offer.findByIdAndUpdate(req.params.id, { "$push": { "comments": result._id } })
+    )).catch(err => console.log(err))
+    Offer.findById(req.params.id).then((offer) => res.json(offer))
+    io.emit('message', req.body);
+})
+
+app.get('/api/offers/:id/comments', (req, res) => {
+  Comment.find({ offerId: req.params.id })
+    .then(comments => res.json(comments))
+    .catch(err => console.log(err))
+})
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-// app.get("/", (req, res) => res.send("Volunteerist"));
+io.on('connection', (socket) => {
+  console.log("New user connected");
+})
+
+
+mongoose
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+  .then(() => console.log("Connected to MongoDB successfully"))
+  .catch((err) => console.log(err));
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+http.listen(port, () => console.log(`Server is running on port ${port}`));

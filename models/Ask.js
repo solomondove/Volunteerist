@@ -30,6 +30,10 @@ const AskSchema = new Schema({
     type: String,
     required: true
   },
+  address: {
+    type: String,
+    required: true
+  },
   location: {
     lat: {
       type: Number,
@@ -38,15 +42,21 @@ const AskSchema = new Schema({
       type: Number,
     }, 
   },
-  volunteers: {
-    type: Array,
+  volunteer: {
+    type: String
   },
-  comments: {
-    type: Array,
-  },
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   date: {
     type: Date,
     default: Date.now
+  },
+  hasVolunteer: {
+    type: Boolean,
+    default: false
+  },
+  askCompleted: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

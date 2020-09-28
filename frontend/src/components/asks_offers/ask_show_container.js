@@ -1,18 +1,35 @@
 import { connect } from 'react-redux';
 import AskShow from './ask_show';
-import { fetchAsk } from '../../actions/ask_actions';
+import { fetchUser } from '../../actions/user_actions';
+import { fetchAsk, addAskComment, clearAsk } from '../../actions/ask_actions';
+import { fetchAskComments } from '../../actions/comment_actions';
+import { fetchVolunteer } from '../../actions/ask_actions';
+import { withRouter } from "react-router-dom";
 
 const mSTP = (state, { match }) => {
+  let posterId;
+  if(state.entities.asks[match.params.ask_id]) {
+    posterId = state.entities.asks[match.params.ask_id].posterId
+  }
   return ({
-    currentUser: state.entities.users[state.session.id],
-    askId: match.params.ask_id
+    currentUserId: state.session.id,
+    askId: match.params.ask_id,
+    comments: state.entities.comments,
+    postUser: state.entities.users[posterId],
+    ask: state.entities.asks[match.params.ask_id],
+    posterId
   })
 }
 
 const mDTP = dispatch => {
   return ({
-    fetchAsk: (askId) => (dispatch(fetchAsk(askId)))
+    fetchAsk: (askId) => (dispatch(fetchAsk(askId))),
+    addAskComment: (comment) => (dispatch(addAskComment(comment))),
+    fetchAskComments: (askId) => (dispatch(fetchAskComments(askId))),
+    fetchUser: (userId) => (dispatch(fetchUser(userId))),
+    fetchVolunteer: (askId, userId) => dispatch(fetchVolunteer(askId, userId)),
+    clearAsk: askId => (dispatch(clearAsk(askId)))
   })
 }
 
-export default connect(mSTP, mDTP)(AskShow)
+export default withRouter(connect(mSTP, mDTP)(AskShow))

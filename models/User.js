@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  gender: {
+  pronouns: {
     type: String
   },
   location: {
@@ -26,12 +26,12 @@ const UserSchema = new Schema({
     lng: { type: Number }
   },
   stats: {
-    hrsCompleted: { type: Number },
-    asksCompleted: { type: Number },
-    didNotShow: { type: Number },
-    notSatisfied: { type: Number },
-    satisfied: { type: Number },
-    verySatisfied: { type: Number }
+    hrsCompleted: { type: Number, default: 0 },
+    asksCompleted: { type: Number, default: 0 },
+    didNotShow: { type: Number, default: 0 },
+    notSatisfied: { type: Number, default: 0 },
+    satisfied: { type: Number, default: 0 },
+    verySatisfied: { type: Number, default: 0 }
   },
   completedAskIds: { type: Array },
   acceptedAskIds: { type: Array },
